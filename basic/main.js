@@ -2,40 +2,61 @@ import * as THREE from 'three';
 
 // 1. create the scene
 const scene = new THREE.Scene();
-scene.background = new THREE.Color('#F0F0F0');
+scene.background = new THREE.Color('#2E282A');
 
-// 2. add camera (FOV/aspect ratio = window/near and far planes)
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 5
+// ----- add camera (fov/aspect ratio = window/near and far planes)
+const camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.z = 15
 
-// 3. create and add an object
-const geometry = new THREE.CapsuleGeometry( 1, 1, 4, 8 ); 
+// ----- create a custom curve for the tube geometry
+class CustomSinCurve extends THREE.Curve {
+    constructor(scale = 1) {
+        super();
+        this.scale = scale;
+    }
+
+    getPoint(t, optionalTarget = new THREE.Vector3()) {
+        const tx = t * 3 - 1.5;   // x position
+        const ty = Math.sin(2 * Math.PI * t);   // y position (sine wave pattern)
+        const tz = 0;             // z position (2d in xy plane)
+        return optionalTarget.set(tx, ty, tz).multiplyScalar(this.scale); // apply scale
+    }
+}
+
+// create the path using CustomSinCurve
+const path = new CustomSinCurve(10);
+
+// create the tube geometry (path, tubular segments, radius, radial segments, closed)
+const geometry = new THREE.TubeGeometry(path, 20, 2, 8, false);
+
+// ----- create the material f
 const material = new THREE.MeshToonMaterial({
-  color: 0xC44900, // blue color
-  flatShading: true, // makes the shading look flat like toon/cel shading
-  gradientMap: null // optional, allows you to use a gradient texture map
+    color: 0xC44900, // red-orange color
+    flatShading: true // makes the shading look flat like toon/cel shading
 });
 
-const capsule = new THREE.Mesh(geometry, material); // create the mesh (geometry + material)
+// create the mesh with the tube geometry and material
+const tube = new THREE.Mesh(geometry, material);
 
-scene.add(capsule); // add the object to the scene
+// add the tube to the scene
+scene.add(tube);
 
-// 4. add lighting
-const light = new THREE.DirectionalLight(0x9CDBA6, 10); // (color hexdecimal, intensity)
+// ----- lighting
+const light = new THREE.DirectionalLight(0x9CDBA6, 10); // (color hexadecimal, intensity)
 light.position.set(1, 1, 1); // (x, y, z)
 scene.add(light);
 
-// 5. set up renderer
+// ----- set up renderer
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// 6. animate scene
+// ----- animate 
 function animate() {
   requestAnimationFrame(animate);
 
-  capsule.rotation.x += 0.01;
-  capsule.rotation.y += 0.01;
+  tube.rotation.x += 0.0005;
+  tube.rotation.y += 0.0005;
 
   renderer.render(scene, camera);
 }
