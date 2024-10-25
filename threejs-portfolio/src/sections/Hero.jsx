@@ -5,8 +5,9 @@ import { PerspectiveCamera } from "@react-three/drei";
 import Star from '../components/Star.jsx';
 import { Suspense } from "react";
 import CanvasLoader from "../components/CanvasLoader";
-import { useControls, Leva } from "leva";
+// import { useControls, Leva } from "leva";
 import { useMediaQuery } from "react-responsive"
+import HeroCamera from '../components/HeroCamera.jsx';
 
 
 const Hero = () => {
@@ -69,12 +70,14 @@ const Hero = () => {
         <Canvas className="w-full h-full">
           <Suspense fallback={<CanvasLoader/>}>
 
-            <PerspectiveCamera makeDefault position={[0, 0, 30]} />
-            <Star 
-            position={[0, -7, 0]} 
-            rotation={[0, 0, 0]} 
-            scale={isMobile ? 5 : 7} 
-            />
+            <PerspectiveCamera makeDefault position={[0, 0, 20]} />
+            <HeroCamera>
+              <Star 
+              position={[0, -10, 0]} 
+              rotation={[0, 0, 0]} 
+              scale={isMobile ? 5 : 7} 
+              />
+            </HeroCamera>
             {/* <Star 
               position={[x.positionX, x.positionY, x.positionZ]} 
               rotation={[x.rotationX, x.rotationY, x.rotationZ]} 
