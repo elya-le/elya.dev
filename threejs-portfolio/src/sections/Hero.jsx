@@ -6,47 +6,51 @@ import Star from '../components/Star.jsx';
 import { Suspense } from "react";
 import CanvasLoader from "../components/CanvasLoader";
 import { useControls, Leva } from "leva";
+import { useMediaQuery } from "react-responsive"
 
 
 const Hero = () => {
-  const x = useControls( 'Star', {
-    positionX: {
-      value: 2.5,
-      min: -10,
-      max: 10
-    },
-    positionY: {
-      value: 2.5,
-      min: -10,
-      max: 10
-    },
-    positionZ: {
-      value: 2.5,
-      min: -10,
-      max: 10
-    },
-    rotationX: {
-      value: 0,
-      min: -10,
-      max: 10
-    },
-    rotationY: {
-      value: 0,
-      min: -10,
-      max: 10
-    },
-    rotationZ: {
-      value: 0,
-      min: -10,
-      max: 10
-    },
-    scale: {
-      value: 1,
-      min: 0.1,
-      max: 10
-    }
-  }
-  )
+  // const x = useControls( 'Star', {
+  //   positionX: {
+  //     value: 2.5,
+  //     min: -10,
+  //     max: 10
+  //   },
+  //   positionY: {
+  //     value: 2.5,
+  //     min: -10,
+  //     max: 10
+  //   },
+  //   positionZ: {
+  //     value: 2.5,
+  //     min: -10,
+  //     max: 10
+  //   },
+  //   rotationX: {
+  //     value: 0,
+  //     min: -10,
+  //     max: 10
+  //   },
+  //   rotationY: {
+  //     value: 0,
+  //     min: -10,
+  //     max: 10
+  //   },
+  //   rotationZ: {
+  //     value: 0,
+  //     min: -10,
+  //     max: 10
+  //   },
+  //   scale: {
+  //     value: 1,
+  //     min: 0.1,
+  //     max: 10
+  //   }
+  // }
+  // )
+  // const isSmall = useMediaQuery({ maxWidth: 480 });
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+  // const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
   return (
     <section className="min-h-screen w-full flex flex-col relative">
       <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 c-space gap-3">
@@ -61,7 +65,7 @@ const Hero = () => {
       </div>
 
       <div className="w-full h-full absolute inset-0">
-      <Leva />
+      {/* <Leva /> */}
         <Canvas className="w-full h-full">
           <Suspense fallback={<CanvasLoader/>}>
 
@@ -69,7 +73,7 @@ const Hero = () => {
             <Star 
             position={[0, -7, 0]} 
             rotation={[0, 0, 0]} 
-            scale={[7, 7, 7]} 
+            scale={isMobile ? 5 : 7} 
             />
             {/* <Star 
               position={[x.positionX, x.positionY, x.positionZ]} 
