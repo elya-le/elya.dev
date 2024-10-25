@@ -185,7 +185,7 @@ export const myProjects = [
   },
   {
     title: 'Portfolio | November 2024',
-    desc: '',
+    desc: 'Placeholder description of my personal portfolio project, built using Three.js.',
     subdesc:
       ':)) Welcome to my portfolio - this is my first time building with Three.js and I am loving it! It combines my love for coding and 3D.',
     href: 'https://github.com/elya-le/authme-elya',
@@ -196,31 +196,50 @@ export const myProjects = [
       border: '0.2px solid #36201D',
       boxShadow: '0px 0px 60px 0px #AA3C304D',
     },
-    spotlight: '/assets/spotlight4.png',
+    spotlight: '/assets/spotlight3.png',
     tags: [
       {
         id: 1,
-        name: 'React.js',
+        name: 'Node.js',
         path: '/assets/react.svg',
       },
       {
         id: 2,
-        name: 'Three.js',
+        name: 'Express',
         path: '',
       },
       {
         id: 3,
-        name: 'Vite',
+        name: 'Sequelize',
         path: '',
       },
       {
         id: 4,
-        name: 'Blender',
+        name: 'PostgreSQL',
+        path: '',
+      },
+      {
+        id: 5,
+        name: 'React.js',
+        path: '',
+      },
+      {
+        id: 6,
+        name: 'JavaScript',
+        path: '',
+      },
+      {
+        id: 7,
+        name: 'CSS',
         path: '',
       },
     ],
   },
+
 ];
+
+
+
 
 // export const workExperiences = [
 //   {
