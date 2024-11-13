@@ -85,7 +85,7 @@ export const myProjects = [
     subdesc:
       'Our team collaboratively developed a web application through effective version control and feature integration. Each pair handled two CRUD features, including user and product management. We brainstormed project goals, created documentation, designed the database schema, and managed tasks using a Kanban board. Development was done asynchronously on feature branches, with code reviews and integration via pull requests. Features were merged into the develop branch for testing, resolving conflicts and ensuring code consistency, before final deployment to the main branch for production.',
     href: 'https://etsyclone-4ah1.onrender.com/',
-    texture: '/textures/project/project1.mp4',
+    texture: '/textures/project/project2.mp4',
     logo: '/assets/project-logo1.png',
     logoStyle: {
       backgroundColor: '#2A1816',
@@ -137,7 +137,7 @@ export const myProjects = [
     subdesc:
       'This was my first fullstack project _________',
     href: 'https://github.com/elya-le/authme-elya',
-    texture: '/textures/project/project1.mp4',
+    texture: '/textures/project/project3.mp4',
     logo: '/assets/project-logo1.png',
     logoStyle: {
       backgroundColor: '#2A1816',
@@ -189,7 +189,7 @@ export const myProjects = [
     subdesc:
       ':)) Welcome to my portfolio - this is my first time building with Three.js and I am loving it! It combines my love for coding and 3D.',
     href: 'https://github.com/elya-le/authme-elya',
-    texture: '/textures/project/project1.mp4',
+    texture: '/textures/project/project4.mp4',
     logo: '/assets/project-logo1.png',
     logoStyle: {
       backgroundColor: '#2A1816',

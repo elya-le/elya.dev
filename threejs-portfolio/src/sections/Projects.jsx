@@ -1,7 +1,7 @@
 import { useState, Suspense } from "react";
 import { myProjects } from "../constants/index.js";
 import { Canvas } from "@react-three/fiber";
-import { Center } from "@react-three/drei";
+import { Center, OrbitControls } from "@react-three/drei";
 import DemoComputer from '../components/DemoComputer.jsx';
 import CanvasLoader from "../components/CanvasLoader.jsx"; 
 
@@ -12,9 +12,9 @@ const projectCount = myProjects.length;
 const Projects = () => {
   // state to keep track of the selected project index
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
-
   // current project based on selectedProjectIndex
   const currentProject = myProjects[selectedProjectIndex];
+
 
   // navigation through projects
   const handleNavigation = (direction) => {
@@ -30,9 +30,9 @@ const Projects = () => {
   };
 
   return (
-    <section className="c-space my-20">
+    <section className="c-space my-20" id="projects"> 
       {/* header */}
-      <p className="head-text">Thing's I've built</p>
+      <p className="head-text">Projects I've built</p>
 
       {/* project grid container */}
       <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
@@ -51,7 +51,7 @@ const Projects = () => {
 
           {/* project title and description */}
           <div className="flex flex-col gap-5 text-white-600 my-5">
-            <p className="text-white text-2xl font-semibold animatedText">
+            <p className="text-white text-2xl animatedText">
               {currentProject.title}
             </p>
             <p className="animatedText">
@@ -109,14 +109,14 @@ const Projects = () => {
             <ambientLight intensity={Math.PI} />
             <directionalLight position={[10, 10, 5]} />
             <Center>
-              {/* Placeholder for 3D model, texture */}
+              {/* placeholder for 3D model, texture */}
               <Suspense fallback={<CanvasLoader />}>
                 <group scale={2} position={[0, -3, 0]} rotation={[0, -0.1, 0]}>
                   <DemoComputer texture={currentProject.texture} />
                 </group>
               </Suspense>
             </Center>
-            {/* <OrbitControls maxPolarAngle={Math.PI / 2} enableZoom={false} /> */}
+            <OrbitControls maxPolarAngle={Math.PI / 2} enableZoom={false} />
           </Canvas>
         </div>
       </div>

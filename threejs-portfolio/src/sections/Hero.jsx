@@ -8,6 +8,7 @@ import CanvasLoader from "../components/CanvasLoader";
 // import { useControls, Leva } from "leva";
 import { useMediaQuery } from "react-responsive"
 import HeroCamera from '../components/HeroCamera.jsx';
+import Cat from "../components/Cat.jsx";
 
 
 const Hero = () => {
@@ -72,11 +73,14 @@ const Hero = () => {
 
             <PerspectiveCamera makeDefault position={[0, 0, 20]} />
             <HeroCamera>
-              <Star 
+              <Cat
+              position-y={-3} scale={3}
+              />
+              {/* <Star 
               position={[0, -10, 0]} 
               rotation={[0, 0, 0]} 
               scale={isMobile ? 5 : 7} 
-              />
+              /> */}
             </HeroCamera>
             {/* <Star 
               position={[x.positionX, x.positionY, x.positionZ]} 
