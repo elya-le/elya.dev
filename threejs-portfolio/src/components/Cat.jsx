@@ -1,36 +1,43 @@
 import React, { useRef, useEffect } from 'react';
 import { useGLTF, useAnimations } from '@react-three/drei';
-import * as THREE from 'three'; // Import THREE for loop settings
+import * as THREE from 'three'; // import for loop settings
 
+// cat component to load the 3d model and play the specified animation
 const Cat = ({ animationName = 'Tailtap', ...props }) => {
+  // create a reference to the group that contains the 3d model
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF('public/assets/cat_scale_tap.glb'); 
+  
+  // load the model, materials, and animations from the specified glb file
+  const { nodes, materials, animations } = useGLTF('/public/assets/Cat_01.glb'); 
+  
+  // extract animation actions for controlling animations
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
-    // Log available nodes and animations for debugging
+    // log available nodes and animations for debugging purposes
     console.log("Nodes in model:", Object.keys(nodes));
     console.log("Available animations:", animations.map(anim => anim.name));
 
+    // check if the specified animation exists and play it in a loop
     if (actions[animationName]) {
-      // Play the selected animation in a loop
       actions[animationName]
-        .reset()
-        .fadeIn(0.5)
-        .setLoop(THREE.LoopRepeat) // Ensure looping
-        .play();
+        .reset() // reset the animation to the start
+        .fadeIn(0.5) // smoothly fade in the animation
+        .setLoop(THREE.LoopRepeat) // set the animation to loop indefinitely
+        .play(); // play the animation
     } else {
       console.error(`Animation "${animationName}" not found or node targets are missing.`);
     }
 
+    // clean up the animation when the component unmounts
     return () => {
-      // Clean up animation when component unmounts
       if (actions[animationName]) {
-        actions[animationName].stop();
+        actions[animationName].stop(); // stop the animation
       }
     };
-  }, [animationName, actions, nodes]);
+  }, [animationName, actions, nodes]); // dependencies to rerun the effect if any change
 
+  // return the 3d model group with its meshes and materials
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
@@ -39,168 +46,83 @@ const Cat = ({ animationName = 'Tailtap', ...props }) => {
           castShadow
           receiveShadow
           geometry={nodes.Collar.geometry}
-          material={materials.Gold}
-        />
-        <group name="Armature">
-          <skinnedMesh
-            name="Body"
-            geometry={nodes.Body.geometry}
-            material={materials['Black.002']}
-            skeleton={nodes.Body.skeleton}
-          />
-          <primitive object={nodes.Base} />
-          <primitive object={nodes.Tail} />
-          <primitive object={nodes.Tcon} />
-          <primitive object={nodes.neutral_bone} />
-        </group>
-        <mesh
-          name="Eye"
-          castShadow
-          receiveShadow
-          geometry={nodes.Eye.geometry}
-          material={materials.Green}
-          position={[0, 2.673, 0.443]}
-          scale={0.08}
+          material={materials.Collar}  
         />
         <mesh
           name="Brow"
           castShadow
           receiveShadow
           geometry={nodes.Brow.geometry}
-          material={materials['Black.001']}
+          material={materials.Black2}  
           position={[0, 2.879, 0.418]}
-          scale={0.08}
         />
+        <mesh
+          name="Eye"
+          castShadow
+          receiveShadow
+          geometry={nodes.Eye.geometry}
+          material={materials['Cat_Eye_Texture.002']} 
+          position={[0, 2.752, 0.443]}  
+        />
+        <mesh
+          name="Nose"  
+          castShadow
+          receiveShadow
+          geometry={nodes.Nose.geometry}  
+          material={materials.Nose} 
+          position={[0, 2.525, 0.568]}  
+          rotation={[-0.209, 0, 0]}  
+        />
+        <mesh
+          name="Tag" 
+          castShadow
+          receiveShadow
+          geometry={nodes.Tag.geometry} 
+          material={materials.Tag} 
+          position={[0, 1.82, -0.005]}  
+          rotation={[0, 0, -Math.PI / 2]} 
+        />
+        <mesh
+          name="Tag2"  
+          castShadow
+          receiveShadow
+          geometry={nodes.Tag2.geometry}  
+          material={materials['Material.001']}  
+          position={[0, 1.487, 0.454]}  
+          rotation={[Math.PI / 2, 0, 0]}  
+        />
+        <group name="Armature">
+          <skinnedMesh
+            name="Body"
+            geometry={nodes.Body.geometry}
+            material={materials.Black1} 
+            skeleton={nodes.Body.skeleton}
+          />
+          <primitive object={nodes.Base} /> 
+          <primitive object={nodes.Tail0} /> 
+          <primitive object={nodes.Tc} />  
+          <primitive object={nodes.PR} />  
+          <primitive object={nodes.RcontR} />  
+          <primitive object={nodes.PL} />  
+          <primitive object={nodes.LcontL} />  
+          <primitive object={nodes.neutral_bone} />
+        </group>
       </group>
     </group>
   );
 };
 
-useGLTF.preload('public/assets/cat_scale_tap.glb');
+// preload the glb model to optimize loading performance
+useGLTF.preload('/public/assets//Cat_01.glb');  // <------ this line has been updated
 
 export default Cat;
 
 
 
-// /*
-// Auto-generated by: https://github.com/pmndrs/gltfjsx
-// */
-
-// import React, { useEffect, useRef } from 'react'
-// import { useGLTF, useAnimations, useFBX } from '@react-three/drei'
-
-// const Cat = ({ animationName = 'Armature|Faster_Typing'}, ...props) => {  // Update the default animation name here
-//   const group = useRef()  // Create a reference to the root group of the 3D model
-  
-//   // Load the GLTF model (Typing_TailWag.glb) and extract nodes, materials, and animations
-//   const { nodes, materials, animations } = useGLTF('/models/Typing_TailWag.glb')
-
-//   // Load the FBX animation (FasterTyping.fbx) and extract the animations
-//   const { animations: idleAnimation } = useFBX('/models/animations/FasterTyping.fbx');
-
-//   // Log the loaded animation data to check the available animation names
-//   console.log(idleAnimation);  // This will log the loaded animations to the console
-
-//   // Use the loaded animation with useAnimations hook, passing the animation array
-//   const { actions } = useAnimations([idleAnimation[0]], group)
-
-//   useEffect(() => {
-//     if (actions[animationName]) {
-//       actions[animationName].reset().fadeIn(0.5).play();
-//       return () => actions[animationName].fadeOut(0.5);
-//     } else {
-//       console.error(`Animation ${animationName} is not found`);
-//     }
-//   }, [animationName, actions]);
 
 
-//   return (
-//     <group {...props} dispose={null} ref={group}>  {/* Create a 3D group for the entire cat model */}
-//       <group name="Scene">  {/* Group containing the scene (model parts) */}
-      
-//         {/* Right Eye */}
-//         <mesh
-//           name="_EyeR"
-//           castShadow 
-//           receiveShadow 
-//           geometry={nodes._EyeR.geometry} 
-//           material={materials['Material.002']} 
-//           position={[-0.359, 2.362, 0.666]} 
-//           scale={0.087}  
-//         />
-        
-//         {/* Right Brow */}
-//         <mesh
-//           name="_BrowR"
-//           castShadow  
-//           receiveShadow 
-//           geometry={nodes._BrowR.geometry} 
-//           material={nodes._BrowR.material}  
-//           position={[-0.442, 2.561, 0.604]}  
-//           scale={[0.114, 0.014, 0.014]}  
-//         />
-        
-//         {/* Collar */}
-//         <mesh
-//           name="Collar"
-//           castShadow  
-//           receiveShadow  
-//           geometry={nodes.Collar.geometry} 
-//           material={nodes.Collar.material} 
-//           position={[0, 2.064, -0.41]}  
-//           rotation={[-2.045, 0, -Math.PI]}  
-//           scale={[-0.526, -0.056, -0.475]} 
-//         />
-        
-//         {/* Left Eye */}
-//         <mesh
-//           name="_EyeL"
-//           castShadow
-//           receiveShadow
-//           geometry={nodes._EyeL.geometry}
-//           material={materials['Material.002']}
-//           position={[0.359, 2.362, 0.666]}
-//           scale={0.087}
-//         />
-
-//         {/* Left Brow */}
-//         <mesh
-//           name="_BrowL"
-//           castShadow
-//           receiveShadow
-//           geometry={nodes._BrowL.geometry}
-//           material={nodes._BrowL.material}
-//           position={[0.442, 2.561, 0.604]}
-//           scale={[0.114, 0.014, 0.014]}
-//         />
-
-//         {/* Armature (Skeleton and Bones of the model) */}
-//         <group name="Armature">
-//           {/* Body */}
-//           <skinnedMesh
-//             name="_Body"
-//             geometry={nodes._Body.geometry}
-//             material={materials['Material.001']}
-//             skeleton={nodes._Body.skeleton}
-//         />
-
-//           {/* Other parts of the body (bones and meshes) */}
-//           <primitive object={nodes.Root} />
-//           <primitive object={nodes.Tail} />
-//           <primitive object={nodes.Tail_IK} />
-//           <primitive object={nodes.PawR} />
-//           <primitive object={nodes.Paw_IKR} />
-//           <primitive object={nodes.PawL} />
-//           <primitive object={nodes.Paw_IKL} />
-//           <primitive object={nodes.neutral_bone} />
-//         </group>
-//       </group>
-//     </group>
-//   )
-// }
 
 
-// useGLTF.preload('/models/Typing_TailWag.glb')
 
-// export default Cat;
+
 
