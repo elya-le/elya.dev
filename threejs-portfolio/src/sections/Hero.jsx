@@ -25,12 +25,12 @@ const Hero = () => {
             <directionalLight position={[10, 20, 15]} intensity={3} />
 
             <Center position={[-2, 0, 0]}>
-              <Cat animationName={animationName} origin={[0, 0, -2.7]} /> {/* <------ passed `origin` prop */}
+              <Cat animationName={animationName} origin={[2, 1, -3.5]} /> {/* <------ Passed `origin` prop */}
             </Center>
 
-             {/* red marker at origin */}
+             {/* Red marker at origin */}
             <mesh position={[0, -1.5, 0]}>
-              <sphereGeometry args={[0.1, 32, 32]} /> {/* small sphere */}
+              <sphereGeometry args={[0.1, 32, 32]} /> {/* Small sphere */}
               <meshBasicMaterial color="red" />
             </mesh>
 
@@ -39,7 +39,7 @@ const Hero = () => {
               maxPolarAngle={Math.PI / 2} 
               minPolarAngle={Math.PI / 3} 
               enableZoom={true}
-              minDistance={5}      
+              minDistance={7}      
               maxDistance={8}  
               maxAzimuthAngle={Math.PI / 20} 
               minAzimuthAngle={-Math.PI / 2} 
