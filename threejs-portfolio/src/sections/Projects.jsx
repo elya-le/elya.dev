@@ -30,7 +30,7 @@ const Projects = () => {
   };
 
   return (
-    <section className="c-space my-20" id="projects"> 
+    <section className="c-space mt-10 mb-20" id="projects"> 
       {/* header */}
       <p className="head-text">Projects I've built</p>
 
