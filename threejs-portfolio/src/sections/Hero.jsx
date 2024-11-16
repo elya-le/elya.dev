@@ -6,10 +6,10 @@ import Cat from "../components/Cat.jsx";
 import './Hero.css'; 
 
 const Hero = () => {
-  const [animationName, setAnimationName] = useState("Idle"); // initial animation state
+  const [animationName, setAnimationName] = useState("Idle");
 
   const toggleAnimation = () => {
-    setAnimationName(prev => (prev === "Idle" ? "Faster" : "Idle")); // toggle between "Idle" and "Faster"
+    setAnimationName((prev) => (prev === "Idle" ? "Faster" : "Idle"));
   };
 
   return (
@@ -25,24 +25,31 @@ const Hero = () => {
             <directionalLight position={[10, 20, 15]} intensity={3} />
 
             <Center position={[-2, 0, 0]}>
-              <Cat animationName={animationName} />
+              <Cat animationName={animationName} origin={[0, 0, -2.7]} /> {/* <------ passed `origin` prop */}
             </Center>
+
+             {/* red marker at origin */}
+            <mesh position={[0, -1.5, 0]}>
+              <sphereGeometry args={[0.1, 32, 32]} /> {/* small sphere */}
+              <meshBasicMaterial color="red" />
+            </mesh>
+
 
             <OrbitControls 
               maxPolarAngle={Math.PI / 2} 
-              minPolarAngle={0} 
+              minPolarAngle={Math.PI / 3} 
               enableZoom={true}
-              minDistance={7}      
+              minDistance={5}      
               maxDistance={8}  
+              maxAzimuthAngle={Math.PI / 20} 
+              minAzimuthAngle={-Math.PI / 2} 
             />
           </Suspense>
         </Canvas>
       </div>
 
-      {/* Add toggle switch with "FASTER!!!!" text */}
       <div className="flex justify-center items-center mt-4">
         <div className="toggle-container">
-          {/* Show "FASTER!!!!" when toggle is off */}
           {animationName !== "Faster" && <span className="faster-text">FASTER!</span>}
         </div>
         <label className="toggle-switch">
