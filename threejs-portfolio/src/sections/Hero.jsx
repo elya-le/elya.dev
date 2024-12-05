@@ -1,12 +1,31 @@
+import React, { useRef, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
-import { PerspectiveCamera, OrbitControls, Center } from "@react-three/drei"; 
-import { Suspense, useState } from "react";
+import { PerspectiveCamera, OrbitControls } from "@react-three/drei"; 
+import { Suspense } from "react";
+import { RectAreaLightHelper } from "three/addons/helpers/RectAreaLightHelper.js";
 import CanvasLoader from "../components/CanvasLoader";
 import Cat from "../components/Cat.jsx";  
 import './Hero.css'; 
 
 const Hero = () => {
   const [animationName, setAnimationName] = useState("Slow");
+  const rectLightRef = useRef(); // Reference for RectAreaLight
+  const rectLightHelperRef = useRef(); // Reference for the helper
+
+  useEffect(() => {
+    // Attach helper to RectAreaLight
+    if (rectLightRef.current) {
+      const helper = new RectAreaLightHelper(rectLightRef.current);
+      rectLightHelperRef.current = helper;
+      rectLightRef.current.add(helper);
+    }
+    return () => {
+      // Cleanup helper
+      if (rectLightRef.current && rectLightHelperRef.current) {
+        rectLightRef.current.remove(rectLightHelperRef.current);
+      }
+    };
+  }, []);
 
   const toggleAnimation = () => {
     setAnimationName((prev) => (prev === "Slow" ? "Fast" : "Slow"));
@@ -21,18 +40,38 @@ const Hero = () => {
         <Canvas className="w-full h-full">
           <Suspense fallback={<CanvasLoader />}>
             <PerspectiveCamera makeDefault position={[-8, 0, 5]} />
-            <ambientLight intensity={0.5} color={"#FFA500"} />
-            <directionalLight position={[10, 20, 15]} intensity={3} />
 
-            
-            <Cat animationName={animationName} origin={[0, -2, 1]} /> {/* <------ Passed `origin` prop */}
-
-             {/* Red marker at origin */}
-            <mesh position={[0, -1.5, 0]}>
-              <sphereGeometry args={[0.1, 32, 32]} /> {/* Small sphere */}
+            {/* Point Light */}
+            <pointLight
+              position={[5, 5, 5]}
+              intensity={5}
+              decay={1}
+              distance={100}
+            />
+            {/* Red Dot for Point Light */}
+            <mesh position={[5, 5, 5]}>
+              <sphereGeometry args={[0.1, 32, 32]} />
               <meshBasicMaterial color="red" />
             </mesh>
 
+            {/* RectAreaLight for Screen Glow */}
+            <rectAreaLight
+              ref={rectLightRef}
+              position={[0, 0.1, 2.645]}
+              rotation={[.135, 0, 0]} // Adjust rotation as needed
+              width={1.45}
+              height={1.05}
+              intensity={10}
+              color={"#ADD8E6"}
+            />
+
+            <Cat animationName={animationName} origin={[0, -2, 1]} />
+
+            {/* Red marker at origin */}
+            <mesh position={[0, -1.5, 0]}>
+              <sphereGeometry args={[0.1, 32, 32]} />
+              <meshBasicMaterial color="red" />
+            </mesh>
 
             <OrbitControls 
               maxPolarAngle={Math.PI / 2} 
@@ -40,8 +79,6 @@ const Hero = () => {
               enableZoom={true}
               minDistance={5.5}      
               maxDistance={8}  
-              // maxAzimuthAngle={Math.PI / 2} 
-              // minAzimuthAngle={-Math.PI / 2} 
             />
           </Suspense>
         </Canvas>
@@ -55,7 +92,7 @@ const Hero = () => {
           <input 
             type="checkbox" 
             onChange={toggleAnimation} 
-            checked={animationName === "Faster"} 
+            checked={animationName === "Fast"} 
           />
           <span className="slider"></span>
         </label>
