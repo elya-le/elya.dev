@@ -6,10 +6,10 @@ import Cat from "../components/Cat.jsx";
 import './Hero.css'; 
 
 const Hero = () => {
-  const [animationName, setAnimationName] = useState("Idle");
+  const [animationName, setAnimationName] = useState("Slow");
 
   const toggleAnimation = () => {
-    setAnimationName((prev) => (prev === "Idle" ? "Faster" : "Idle"));
+    setAnimationName((prev) => (prev === "Slow" ? "Fast" : "Slow"));
   };
 
   return (
@@ -24,9 +24,8 @@ const Hero = () => {
             <ambientLight intensity={0.5} color={"#FFA500"} />
             <directionalLight position={[10, 20, 15]} intensity={3} />
 
-            <Center position={[-2, 0, 0]}>
-              <Cat animationName={animationName} origin={[2, 1, -3.5]} /> {/* <------ Passed `origin` prop */}
-            </Center>
+            
+            <Cat animationName={animationName} origin={[0, -2, 1]} /> {/* <------ Passed `origin` prop */}
 
              {/* Red marker at origin */}
             <mesh position={[0, -1.5, 0]}>
@@ -39,10 +38,10 @@ const Hero = () => {
               maxPolarAngle={Math.PI / 2} 
               minPolarAngle={Math.PI / 3} 
               enableZoom={true}
-              minDistance={7}      
+              minDistance={5.5}      
               maxDistance={8}  
-              maxAzimuthAngle={Math.PI / 20} 
-              minAzimuthAngle={-Math.PI / 2} 
+              // maxAzimuthAngle={Math.PI / 2} 
+              // minAzimuthAngle={-Math.PI / 2} 
             />
           </Suspense>
         </Canvas>
@@ -50,7 +49,7 @@ const Hero = () => {
 
       <div className="flex justify-center items-center mt-4">
         <div className="toggle-container">
-          {animationName !== "Faster" && <span className="faster-text">FASTER!</span>}
+          {animationName !== "Fast" && <span className="faster-text">FASTER!</span>}
         </div>
         <label className="toggle-switch">
           <input 
