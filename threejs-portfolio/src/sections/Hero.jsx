@@ -11,7 +11,7 @@ const Hero = () => {
   const [animationName, setAnimationName] = useState("Slow");
   const rectLightRef = useRef(); // Reference for RectAreaLight
   const rectLightHelperRef = useRef(); // Reference for the helper
-
+  const catRef = useRef(); // Reference for the Cat group
   useEffect(() => {
     // Attach helper to RectAreaLight
     if (rectLightRef.current) {
@@ -26,6 +26,20 @@ const Hero = () => {
       }
     };
   }, []);
+  useEffect(() => {
+    // Temporarily hide Legsa and Legsb from the light
+    if (catRef.current) {
+      catRef.current.traverse((child) => {
+        if (child.isMesh) {
+          if (child.name === "Legsa" || child.name === "Legsb") {
+            child.material.visible = false; // Hide from light
+          } else {
+            child.material.visible = true; // Ensure other meshes are visible
+          }
+        }
+      });
+    }
+  }, [catRef]);
 
   const toggleAnimation = () => {
     setAnimationName((prev) => (prev === "Slow" ? "Fast" : "Slow"));
@@ -39,15 +53,15 @@ const Hero = () => {
       >
         <Canvas className="w-full h-full">
           <Suspense fallback={<CanvasLoader />}>
-            <PerspectiveCamera makeDefault position={[-8, -1, 6]} />
+            <PerspectiveCamera makeDefault position={[-8, 1.5, 9.5]} />
 
             {/* Point Light */}
-            <pointLight
+            {/* <pointLight
               position={[5, 5, 5]}
               intensity={5}
               decay={1}
               distance={100}
-            />
+            /> */}
             {/* red Dot for Point Light */}
             <mesh position={[5, 5, 5]}>
               <sphereGeometry args={[0.1, 32, 32]} />
@@ -62,7 +76,8 @@ const Hero = () => {
               width={1.45}
               height={1.05}
               intensity={10}
-              color={"#ADD8E6"}
+              color={"#6f7df7"}
+              // color={"#ADD8E6"}
             />
 
             <Cat animationName={animationName} origin={[0, -1.5, 0]} />

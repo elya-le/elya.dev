@@ -22,6 +22,7 @@ const Cat = ({ animationName = "Slow", origin = [0, 0, 0], ...props }) => {
     } else {
       console.error(`Animation "${animationName}" not found.`);
     }
+    
 
     return () => {
       if (actions[animationName]) {
@@ -212,6 +213,198 @@ const Cat = ({ animationName = "Slow", origin = [0, 0, 0], ...props }) => {
               material={materials["Material.014"]}
               position={[0, 2.088, 1.658]}
             />
+            <mesh
+              name="K1"
+              castShadow
+              receiveShadow
+              geometry={nodes.K1.geometry}
+              material={materials['Material.023']}
+              position={[0.665, 1.551, 1.275]}
+            />
+            <mesh
+              name="K1001"
+              castShadow
+              receiveShadow
+              geometry={nodes.K1001.geometry}
+              material={materials['Material.024']}
+              position={[0.476, 1.551, 1.275]}
+            />
+            <mesh
+              name="K1002"
+              castShadow
+              receiveShadow
+              geometry={nodes.K1002.geometry}
+              material={materials['Material.025']}
+              position={[0.285, 1.551, 1.275]}
+            />
+            <mesh
+              name="K1003"
+              castShadow
+              receiveShadow
+              geometry={nodes.K1003.geometry}
+              material={materials['Material.026']}
+              position={[0.095, 1.551, 1.275]}
+            />
+            <mesh
+              name="K1004"
+              castShadow
+              receiveShadow
+              geometry={nodes.K1004.geometry}
+              material={materials['Material.027']}
+              position={[-0.095, 1.551, 1.275]}
+            />
+            <mesh
+              name="K1005"
+              castShadow
+              receiveShadow
+              geometry={nodes.K1005.geometry}
+              material={materials['Material.028']}
+              position={[-0.285, 1.551, 1.275]}
+            />
+            <mesh
+              name="K1006"
+              castShadow
+              receiveShadow
+              geometry={nodes.K1006.geometry}
+              material={materials['Material.029']}
+              position={[-0.476, 1.551, 1.275]}
+            />
+            <mesh
+              name="K1007"
+              castShadow
+              receiveShadow
+              geometry={nodes.K1007.geometry}
+              material={materials['Material.030']}
+              position={[-0.665, 1.551, 1.275]}
+            />
+            <mesh
+              name="K2"
+              castShadow
+              receiveShadow
+              geometry={nodes.K2.geometry}
+              material={materials['Material.031']}
+              position={[0.571, 1.551, 1.065]}
+            />
+            <mesh
+              name="K2001"
+              castShadow
+              receiveShadow
+              geometry={nodes.K2001.geometry}
+              material={materials['Material.032']}
+              position={[0.38, 1.551, 1.065]}
+            />
+            <mesh
+              name="K2002"
+              castShadow
+              receiveShadow
+              geometry={nodes.K2002.geometry}
+              material={materials['Material.033']}
+              position={[0.19, 1.551, 1.065]}
+            />
+            <mesh
+              name="K2003"
+              castShadow
+              receiveShadow
+              geometry={nodes.K2003.geometry}
+              material={materials['Material.034']}
+              position={[0, 1.551, 1.065]}
+            />
+            <mesh
+              name="K2004"
+              castShadow
+              receiveShadow
+              geometry={nodes.K2004.geometry}
+              material={materials['Material.035']}
+              position={[-0.19, 1.551, 1.065]}
+            />
+            <mesh
+              name="K2005"
+              castShadow
+              receiveShadow
+              geometry={nodes.K2005.geometry}
+              material={materials['Material.036']}
+              position={[-0.38, 1.551, 1.065]}
+            />
+            <mesh
+              name="K2006"
+              castShadow
+              receiveShadow
+              geometry={nodes.K2006.geometry}
+              material={materials['Material.037']}
+              position={[-0.57, 1.551, 1.065]}
+            />
+            <mesh
+              name="K3"
+              castShadow
+              receiveShadow
+              geometry={nodes.K3.geometry}
+              material={materials['Material.038']}
+              position={[0.515, 1.551, 0.855]}
+            />
+            <mesh
+              name="K3001"
+              castShadow
+              receiveShadow
+              geometry={nodes.K3001.geometry}
+              material={materials['Material.039']}
+              position={[0.285, 1.551, 0.855]}
+            />
+            <mesh
+              name="K3002"
+              castShadow
+              receiveShadow
+              geometry={nodes.K3002.geometry}
+              material={materials['Material.040']}
+              position={[0.095, 1.551, 0.855]}
+            />
+            <mesh
+              name="K3003"
+              castShadow
+              receiveShadow
+              geometry={nodes.K3003.geometry}
+              material={materials['Material.041']}
+              position={[-0.095, 1.551, 0.855]}
+            />
+            <mesh
+              name="K3004"
+              castShadow
+              receiveShadow
+              geometry={nodes.K3004.geometry}
+              material={materials['Material.042']}
+              position={[-0.285, 1.551, 0.855]}
+            />
+            <mesh
+              name="K3005"
+              castShadow
+              receiveShadow
+              geometry={nodes.K3005.geometry}
+              material={materials['Material.043']}
+              position={[-0.585, 1.551, 0.855]}
+            />
+            <mesh
+              name="K4"
+              castShadow
+              receiveShadow
+              geometry={nodes.K4.geometry}
+              material={materials['Material.044']}
+              position={[0.626, 1.551, 0.644]}
+            />
+            <mesh
+              name="K4001"
+              castShadow
+              receiveShadow
+              geometry={nodes.K4001.geometry}
+              material={materials['Material.045']}
+              position={[0, 1.551, 0.645]}
+            />
+            <mesh
+              name="K4002"
+              castShadow
+              receiveShadow
+              geometry={nodes.K4002.geometry}
+              material={materials['Material.046']}
+              position={[-0.621, 1.551, 0.643]}
+        />
           </group>
         </group>
       </group>
