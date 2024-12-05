@@ -35,11 +35,11 @@ const Hero = () => {
     <section className="w-full flex flex-col relative">
       <div 
         className="w-full" 
-        style={{ height: "800px", border: "1px solid red", marginBottom: "0" }}
+        style={{ height: "1000px", border: "1px solid red", marginBottom: "0" }}
       >
         <Canvas className="w-full h-full">
           <Suspense fallback={<CanvasLoader />}>
-            <PerspectiveCamera makeDefault position={[-8, 0, 5]} />
+            <PerspectiveCamera makeDefault position={[-8, -1, 6]} />
 
             {/* Point Light */}
             <pointLight
@@ -48,7 +48,7 @@ const Hero = () => {
               decay={1}
               distance={100}
             />
-            {/* Red Dot for Point Light */}
+            {/* red Dot for Point Light */}
             <mesh position={[5, 5, 5]}>
               <sphereGeometry args={[0.1, 32, 32]} />
               <meshBasicMaterial color="red" />
@@ -57,7 +57,7 @@ const Hero = () => {
             {/* RectAreaLight for Screen Glow */}
             <rectAreaLight
               ref={rectLightRef}
-              position={[0, 0.1, 2.645]}
+              position={[0, 0.57, 1.64]}
               rotation={[.135, 0, 0]} // Adjust rotation as needed
               width={1.45}
               height={1.05}
@@ -65,7 +65,7 @@ const Hero = () => {
               color={"#ADD8E6"}
             />
 
-            <Cat animationName={animationName} origin={[0, -2, 1]} />
+            <Cat animationName={animationName} origin={[0, -1.5, 0]} />
 
             {/* Red marker at origin */}
             <mesh position={[0, -1.5, 0]}>
