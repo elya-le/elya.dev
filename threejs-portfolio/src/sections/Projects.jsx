@@ -2,126 +2,102 @@ import { useState, Suspense } from "react";
 import { myProjects } from "../constants/index.js";
 import { Canvas } from "@react-three/fiber";
 import { Center, OrbitControls } from "@react-three/drei";
-import DemoComputer from '../components/DemoComputer.jsx';
-import CanvasLoader from "../components/CanvasLoader.jsx"; 
+import DemoComputer from "../components/DemoComputer.jsx";
+import CanvasLoader from "../components/CanvasLoader.jsx";
 
-// define the number of projects
+// Define the number of projects
 const projectCount = myProjects.length;
 
-// projects component
 const Projects = () => {
-  // state to keep track of the selected project index
+  // State to keep track of the selected project index
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
-  // current project based on selectedProjectIndex
+
+  // Get the current project based on the selected index
   const currentProject = myProjects[selectedProjectIndex];
 
-
-  // navigation through projects
+  // Function to handle navigation through projects
   const handleNavigation = (direction) => {
     setSelectedProjectIndex((prevIndex) => {
-      if (direction === 'previous') {
-        console.log('Previous Button Clicked');
+      if (direction === "previous") {
         return prevIndex === 0 ? projectCount - 1 : prevIndex - 1;
-      } else if (direction === 'next') {
-        console.log('Next Button Clicked');
+      } else if (direction === "next") {
         return prevIndex === projectCount - 1 ? 0 : prevIndex + 1;
       }
     });
   };
 
   return (
-    <section className="c-space mt-10 mb-20" id="projects"> 
-      {/* header */}
-      <p className="head-text">Projects I've built</p>
+    <section
+    className="projects-section h-screen border-4 border-green-300 bg-fixed bg-cover bg-center"
+    id="projects"
+  >
+      {/* Section Header */}
+      <p className="head-text text-center">PIB</p>
 
-      {/* project grid container */}
-      <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
-        
-        {/* project details and navigation container */}
-        <div className="flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200 rounded-xl">
-          
-          {/* spotlight image */}
-          <div className="absolute top-0 right-0">
-            <img 
-              src={currentProject.spotlight} 
-              alt="spotlight" 
-              className="w-full h-96 object-cover rounded-xl" 
-            />
+      {/* Project Grid Container */}
+      <div className="grid lg:grid-cols-1 grid-cols-1 gap-5 w-1/2 mt-6">
+        {/* Project Details */}
+        <div className="border-4 h-80 gap-5 relative p-6 shadow-lg rounded-lg bg-black-800">
+          {/* Spotlight Image */}
+
+          {/* Project Title and Description */}
+          <div className="gap-4 text-white-600">
+            <p className="text-white text-2xl font-bold">{currentProject.title}</p>
+            <p className="text-sm">{currentProject.desc}</p>
+            <p className="text-sm text-gray-400">{currentProject.subdesc}</p>
           </div>
 
-          {/* project title and description */}
-          <div className="flex flex-col gap-5 text-white-600 my-5">
-            <p className="text-white text-2xl animatedText">
-              {currentProject.title}
-            </p>
-            <p className="animatedText">
-              {currentProject.desc}
-            </p>
-            <p className="animatedText">
-              {currentProject.subdesc}
-            </p>
-          </div>
-
-          {/* tech stack and live site link */}
-          <div className="flex items-center justify-between flex-wrap gap-5">
-            <div className="flex items-center gap-3">
+          {/* Tech Stack and Live Site Link */}
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
               {currentProject.tags.map((tag, index) => (
                 <div key={index} className="tech-logo">
-                  <img src={tag.path} alt={tag.name}/>
+                  <img src={tag.path} alt={tag.name} className="w-6 h-6" />
                 </div>
               ))}
             </div>
             <a
-              className="flex items-center gap-2 cursor-pointer text-white-600"
+              className="flex items-center gap-2 text-white hover:underline"
               href={currentProject.href}
               target="_blank"
               rel="noreferrer"
-            >         
+            >
               <p>Visit Live Site</p>
-              <img 
-                src="/assets/arrow-up.png" 
-                className="w-3 h-3" 
-                alt="arrow" 
+              <img
+                src="/assets/arrow-up.png"
+                className="w-4 h-4"
+                alt="arrow"
               />
             </a>
           </div>
 
-          {/* arrow navigation buttons */}
-          <div className="flex justify-between items-center absolute bottom-5 left-0 right-0 px-5">
-            <button 
-              className="arrow-btn" 
-              onClick={() => handleNavigation('previous')}
+          {/* Navigation Buttons */}
+          <div className="flex justify-between items-center mt-4">
+            <button
+              className="arrow-btn bg-gray-700 hover:bg-gray-600 p-2 rounded-full"
+              onClick={() => handleNavigation("previous")}
             >
-              <img src="/assets/left-arrow.png" alt="left arrow" className="w-4 h-4" />
+              <img
+                src="/assets/left-arrow.png"
+                alt="left arrow"
+                className="w-4 h-4"
+              />
             </button>
-            <button 
-              className="arrow-btn" 
-              onClick={() => handleNavigation('next')}
+            <button
+              className="arrow-btn bg-gray-700 hover:bg-gray-600 p-2 rounded-full"
+              onClick={() => handleNavigation("next")}
             >
-              <img src="/assets/right-arrow.png" alt="right arrow" className="w-4 h-4" />
+              <img
+                src="/assets/right-arrow.png"
+                alt="right arrow"
+                className="w-4 h-4"
+              />
             </button>
           </div>
-        </div>
-
-        {/* three.js canvas component */}
-        <div className="border border-black-300 bg-black-200 rounded-lg h-96 md:h-full">
-          <Canvas>
-            <ambientLight intensity={Math.PI} />
-            <directionalLight position={[10, 10, 5]} />
-            <Center>
-              {/* placeholder for 3D model, texture */}
-              <Suspense fallback={<CanvasLoader />}>
-                <group scale={2} position={[0, -3, 0]} rotation={[0, -0.1, 0]}>
-                  <DemoComputer texture={currentProject.texture} />
-                </group>
-              </Suspense>
-            </Center>
-            <OrbitControls maxPolarAngle={Math.PI / 2} enableZoom={false} />
-          </Canvas>
         </div>
       </div>
     </section>
   );
-}
+};
 
 export default Projects;

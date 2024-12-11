@@ -1,43 +1,51 @@
-import React, { useRef, useEffect } from "react";
+
+
+import React, { useRef, useEffect, forwardRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 
-const Cat = ({ animationName = "Slow", origin = [0, 0, 0], ...props }) => {
-  const group = useRef();
-  const { nodes, materials, animations } = useGLTF("/public/assets/cat_15.glb");
+const Cat = forwardRef(({ animationName = "Slow", origin = [0, 0, 0], ...props }, ref) => {
+  const group = useRef(); // Local reference for the group
+  const { nodes, materials, animations } = useGLTF("/assets/cat_15.glb");
   const { actions } = useAnimations(animations, group);
 
+  // Forward the ref to the parent
   useEffect(() => {
-    console.log("Available nodes in the model:", nodes);
-
-    // Stop all animations to ensure no transition
-    Object.values(actions).forEach((action) => {
-      if (action.isRunning()) {
-        action.stop();
-      }
-    });
-
-    // Play the new animation directly
-    if (actions[animationName]) {
-      actions[animationName].reset().play(); // Reset and play without fade
-    } else {
-      console.error(`Animation "${animationName}" not found.`);
+    if (ref) {
+      ref.current = group.current;
     }
-    
+  }, [ref]);
 
-    return () => {
-      if (actions[animationName]) {
-        actions[animationName].stop(); // Stop current animation on unmount
-      }
-    };
-  }, [animationName, actions]);
+  // Handle animations
+  useEffect(() => {
+    if (actions && animationName) {
+      // Stop all running animations
+      Object.values(actions).forEach((action) => action.stop());
+      // Play the current animation
+      actions[animationName]?.reset().play();
+    }
+  }, [actions, animationName]);
+
+  // Traverse and assign layers if necessary (e.g., exclude Legsb from lighting)
+  useEffect(() => {
+    if (group.current) {
+      group.current.traverse((child) => {
+        if (child.isMesh) {
+          if (child.name === "Legsb") {
+            child.layers.set(1); // Assign Legsb to layer 1
+          } else {
+            child.layers.set(0); // Default layer
+          }
+        }
+      });
+    }
+  }, []);
 
   return (
-    <group {...props} dispose={null}>
-      {/* Outer group to set origin */}
+    <group {...props} ref={group} dispose={null}>
       <group position={origin}>
         <group ref={group}>
           <group name="Scene">
-            {/* Add all meshes here */}
+            {/* Add your meshes here */}
             <mesh
               name="Collar"
               castShadow
@@ -404,17 +412,15 @@ const Cat = ({ animationName = "Slow", origin = [0, 0, 0], ...props }) => {
               geometry={nodes.K4002.geometry}
               material={materials['Material.046']}
               position={[-0.621, 1.551, 0.643]}
-        />
+            />
           </group>
         </group>
       </group>
     </group>
   );
-};
+});
 
-// Preload model
-useGLTF.preload("/public/assets/cat_15.glb");
+// Preload the model
+useGLTF.preload("/assets/cat_15.glb");
 
 export default Cat;
-
-
