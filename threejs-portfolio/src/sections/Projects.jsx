@@ -20,6 +20,7 @@ const Projects = () => {
     <section
       className="projects-section h-screen relative z-10 bg-green-100"
       id="projects"
+      style={{ backgroundColor: "transparent" }}
     >
       {/* section header */}
       <p className="head-text text-center">Projects</p>

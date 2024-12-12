@@ -30,12 +30,12 @@ const App = () => {
         <h1
           style={{
             color: "white",
-            textAlign: "center",
+            textAlign: "left",
+            backgroundColor: "transparent",
             paddingTop: "160vh",
           }}
         >
           <Projects /> {/* include Projects section */}
-          Scroll Test Section
         </h1>
       </section>
     </>
