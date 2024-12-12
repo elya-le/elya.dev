@@ -6,102 +6,79 @@ import CanvasLoader from "../components/CanvasLoader";
 import Cat from "../components/Cat.jsx";
 import "./Hero.css";
 
-const Hero = () => {
-  const [animationName, setAnimationName] = useState("Slow"); // state to toggle between animations
-  const rectLightRef = useRef(); // reference for RectAreaLight
-  const catRef = useRef(); // reference for the Cat group
-  const cameraRef = useRef(); // reference for the camera
-  const [scrollProgress, setScrollProgress] = useState(0); // scroll progress state
+const Hero = ({ animationName }) => {
+  const rectLightRef = useRef(); // reference for rect area light
+  const catRef = useRef(); // reference for cat model
+  const cameraRef = useRef(); // reference for camera
+  const [scrollProgress, setScrollProgress] = useState(0); // state for scroll progress
 
-  // scroll tracking logic
+  // track scroll progress
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       const scrollFraction = scrollTop / docHeight;
-      setScrollProgress(scrollFraction);
+      setScrollProgress(scrollFraction); // <-- updated here
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll); // <-- updated here
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScroll); // <-- updated here
     };
   }, []);
 
   const handleWheel = (e) => {
-    // prevent OrbitControls zoom only if a modifier key is pressed (optional)
     if (e.ctrlKey || e.metaKey) {
-      e.preventDefault();
+      e.preventDefault(); // prevent zooming with ctrl or cmd
     }
   };
 
-  // toggle animation state with a debug log
-  const toggleAnimation = () => {
-    setAnimationName((prev) => {
-      const newAnimation = prev === "Slow" ? "Fast" : "Slow";
-      console.log("toggling animation:", newAnimation); // added debugging log
-      return newAnimation;
-    });
-  };
-
   return (
-    <section className="w-full h-screen flex flex-col relativ top-0 left-0 bg-black bg-opacity-80">
+    <section
+      className="w-full h-screen fixed top-0 left-0 bg-black bg-opacity-80 z-0" // hero remains fixed in the background
+      id="hero"
+    >
       <div
         className="w-full"
-        style={{ height: "100vh", border: "1px solid red", marginBottom: "0" }}
-        onWheel={handleWheel}
+        style={{ height: "100vh" }}
+        onWheel={handleWheel} // disable default zoom behavior
       >
         <Canvas
           className="w-full h-full"
           style={{ height: "100%" }}
-          onPointerDown={(e) => e.stopPropagation()}
-          onWheel={(e) => e.stopPropagation()}
+          onPointerDown={(e) => e.stopPropagation()} // prevent events from propagating
+          onWheel={(e) => e.stopPropagation()} // prevent scroll wheel interference
         >
           <Suspense fallback={<CanvasLoader />}>
             <PerspectiveCamera
               makeDefault
               ref={cameraRef}
-              position={[-8, 1.5, 9.5]} // initial position
-              onUpdate={(camera) => {
-                camera.layers.enable(0); // render objects on layer 0
-                camera.layers.enable(1); // render objects on layer 1
-              }}
+              position={[-8, 1.5, 9.5]} // initial camera position
             />
+            <CameraZoom scrollProgress={scrollProgress} cameraRef={cameraRef} /> {/* <-- updated here */}
 
-            <CameraZoom scrollProgress={scrollProgress} cameraRef={cameraRef} />
-
+            {/* rect area light */}
             <rectAreaLight
-              ref={rectLightRef}
-              position={[0, 1.57, 1.65]}
-              rotation={[0.135, 0, 0]}
-              width={1.45}
-              height={1.05}
-              intensity={20}
-              color={"#6f7df7"}
+              ref={rectLightRef} // <-- updated here
+              position={[0, 1.57, 1.65]} // <-- updated here
+              rotation={[0.135, 0, 0]} // <-- updated here
+              width={1.45} // <-- updated here
+              height={1.05} // <-- updated here
+              intensity={20} // <-- updated here
+              color={"#6f7df7"} // <-- updated here
             />
 
-            <Cat ref={catRef} animationName={animationName} origin={[0, 0, 0]} />
+            {/* cat model */}
+            <Cat ref={catRef} animationName={animationName} origin={[0, 0, 0]} /> {/* <-- updated here */}
 
+            {/* debug sphere */}
             <mesh position={[0, 0, 0]}>
               <sphereGeometry args={[0.1, 32, 32]} />
               <meshBasicMaterial color="red" />
             </mesh>
           </Suspense>
         </Canvas>
-      </div>
-
-      <div className="flex justify-center items-center">
-        <div className="toggle-container">
-          {animationName !== "Fast" && <span className="faster-text">!</span>}
-        </div>
-        <label className="toggle-switch">
-          <input
-            type="checkbox"
-            onChange={toggleAnimation}
-            checked={animationName === "Fast"}
-          />
-          <span className="slider"></span>
-        </label>
       </div>
     </section>
   );
@@ -111,13 +88,14 @@ const Hero = () => {
 const CameraZoom = ({ scrollProgress, cameraRef }) => {
   useFrame(() => {
     if (cameraRef.current) {
-      // interpolate position based on scroll progress
-      const zPosition = 6.5 - scrollProgress * 10; // move closer to the model
-      const yPosition = 4 - scrollProgress * -2; // adjust height slightly
-      const xPosition = -8 + scrollProgress * 2; // move to the back-facing view
+      const progress = Math.min(Math.max(scrollProgress, 0), 1); // clamp scroll progress between 0 and 1
 
-      cameraRef.current.position.set(xPosition, yPosition, zPosition);
-      cameraRef.current.lookAt(0, 0, 0); // focus on the center of the scene
+      const zPosition = 6.5 - progress * 10; // zoom closer to the model
+      const yPosition = 4 - progress * -2; // adjust height slightly
+      const xPosition = -8 + progress * 2; // adjust horizontal position
+
+      cameraRef.current.position.set(xPosition, yPosition, zPosition); // update camera position
+      cameraRef.current.lookAt(0, 0, 0); // ensure camera points to the center of the scene
     }
   });
 
