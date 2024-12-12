@@ -31,7 +31,7 @@ const App = () => {
           style={{
             color: "white",
             textAlign: "center",
-            paddingTop: "120vh",
+            paddingTop: "160vh",
           }}
         >
           <Projects /> {/* include Projects section */}
