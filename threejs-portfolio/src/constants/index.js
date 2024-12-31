@@ -6,11 +6,6 @@ export const navLinks = [
   },
   {
     id: 2,
-    name: 'About',
-    href: '#about',
-  },
-  {
-    id: 3,
     name: 'Contact',
     href: '#contact',
   },
@@ -28,7 +23,7 @@ export const clientReviews = [
 
 export const myProjects = [
   {
-    title: 'Banter | Communication Platform',
+    title: 'Communication Platform',
     desc: 'Banter was designed for creating and managing communities. It offers servers and channels to organize conversations, along with real time messaging features that facilitate seamless interaction between users.',
     subdesc:
       'With the intention of learning web-sockets, I knew I wanted to challenge myself by diving into a new coding implementation within a 2-week learning period. This goal was driven by my desire to expand my technical skills and deepen my understanding of real-time communication technologies. By setting a clear timeframe, I aimed to push my limits and gain practical experience in integrating web-sockets into my projects.',

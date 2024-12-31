@@ -31,7 +31,7 @@ const Navbar = ({ animationName, toggleAnimation }) => {
           {/* centered toggle */}
           <div className="flex-grow flex justify-center">
             <div className="flex items-center p-2 rounded-md shadow-md">
-              <p className="text-sm text-white mr-2">!!</p>
+              <p className="text-sm text-white mr-2">.</p>
               <label className="toggle-switch">
                 <input
                   type="checkbox"

@@ -56,27 +56,27 @@ const Hero = ({ animationName }) => {
               ref={cameraRef}
               position={[-8, 1.5, 9.5]} // initial camera position
             />
-            <CameraZoom scrollProgress={scrollProgress} cameraRef={cameraRef} /> {/* <-- updated here */}
+            <CameraZoom scrollProgress={scrollProgress} cameraRef={cameraRef} />
 
             {/* rect area light */}
             <rectAreaLight
-              ref={rectLightRef} // <-- updated here
-              position={[0, 1.57, 1.65]} // <-- updated here
-              rotation={[0.135, 0, 0]} // <-- updated here
-              width={1.45} // <-- updated here
-              height={1.05} // <-- updated here
-              intensity={20} // <-- updated here
-              color={"#6f7df7"} // <-- updated here
+              ref={rectLightRef} 
+              position={[0, 1.57, 1.65]} 
+              rotation={[0.135, 0, 0]} 
+              width={1.45} 
+              height={1.05} 
+              intensity={20} 
+              color={"#6f7df7"} 
             />
 
             {/* cat model */}
-            <Cat ref={catRef} animationName={animationName} origin={[0, 0, 0]} /> {/* <-- updated here */}
+            <Cat ref={catRef} animationName={animationName} origin={[0, 0, 0]} />
 
             {/* debug sphere */}
-            <mesh position={[0, 0, 0]}>
+            {/* <mesh position={[0, 0, 0]}>
               <sphereGeometry args={[0.1, 32, 32]} />
               <meshBasicMaterial color="red" />
-            </mesh>
+            </mesh> */}
           </Suspense>
         </Canvas>
       </div>
@@ -90,9 +90,9 @@ const CameraZoom = ({ scrollProgress, cameraRef }) => {
     if (cameraRef.current) {
       const progress = Math.min(Math.max(scrollProgress, 0), 1); // clamp scroll progress between 0 and 1
 
-      const zPosition = 6.5 - progress * 10; // zoom closer to the model
-      const yPosition = 4 - progress * -2; // adjust height slightly
-      const xPosition = -8 + progress * 2; // adjust horizontal position
+      const zPosition = 6.5 - progress * 8.5; // zoom closer to the model
+      const yPosition = 4 - progress * -4; // adjust height slightly
+      const xPosition = -8 + progress * 8; // adjust horizontal position
 
       cameraRef.current.position.set(xPosition, yPosition, zPosition); // update camera position
       cameraRef.current.lookAt(0, 0, 0); // ensure camera points to the center of the scene
