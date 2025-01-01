@@ -1,10 +1,8 @@
-// Updated on 2025-01-01: Adjusted materials to prevent light reflections on table legs and block light through the tabletop.
-
 import React, { useRef, useEffect, forwardRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import * as THREE from "three";
 
-const Cat = forwardRef(({ animationName = "Slow", origin = [0, 0, 0], ...props }, ref) => {
+const Cat = forwardRef(({ animationName = "Slow", origin = [0, 0, 0], scale = 1, ...props }, ref) => {
   const group = useRef(); // local reference for the group
   const { nodes, materials, animations } = useGLTF("/assets/cat_15.glb");
   const { actions } = useAnimations(animations, group);
@@ -19,38 +17,34 @@ const Cat = forwardRef(({ animationName = "Slow", origin = [0, 0, 0], ...props }
   // handle animations
   useEffect(() => {
     if (actions && animationName) {
-      // stop all running animations
       Object.values(actions).forEach((action) => action.stop());
-      // play the specified animation
       actions[animationName]?.reset().play();
     }
   }, [actions, animationName]);
 
-  // traverse and update materials for table legs and tabletop
+  // traverse and update materials
   useEffect(() => {
     if (group.current) {
       group.current.traverse((child) => {
         if (child.isMesh) {
-          // Configure table legs to avoid reflections
           if (child.name === "Legsa" || child.name === "Legsb") {
-            child.material.roughness = 1; // Fully rough to avoid reflections
-            child.material.metalness = 0; // Non-metallic
-            child.material.transparent = false; // Ensure no light passes through
+            child.material.roughness = 1;
+            child.material.metalness = 0;
+            child.material.transparent = false;
           }
 
-          // Configure tabletop to block light
           if (child.name === "Desk") {
-            child.castShadow = true; // Cast shadows onto the floor
-            child.receiveShadow = true; // Receive shadows from other objects
-            child.material.transparent = false; // Prevent light from passing through
+            child.castShadow = true;
+            child.receiveShadow = true;
+            child.material.transparent = false;
           }
         }
       });
     }
-  }, []); // only run once on mount
+  }, []);
 
   return (
-    <group {...props} ref={group} dispose={null}>
+    <group {...props} ref={group} dispose={null} scale={scale}>
       <group position={origin}>
         <group ref={group}>
           <group name="Scene">

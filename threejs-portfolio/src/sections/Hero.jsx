@@ -11,6 +11,64 @@ const Hero = ({ animationName }) => {
   const catRef = useRef(); // reference for cat model
   const cameraRef = useRef(); // reference for camera
   const [scrollProgress, setScrollProgress] = useState(0); // state for scroll progress
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth); // track screen width
+
+  // handle screen resize
+  useEffect(() => {
+    const handleResize = () => setScreenWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // get camera base position based on screen size
+  const getBasePosition = () => {
+    if (screenWidth > 1024) return [-4.5, 2, 5]; // fullscreen
+    if (screenWidth > 768) return [-4.5, 2, 5]; // tablet
+    return [-5.5, 2, 5]; // mobile
+  };
+
+  // get cat scale based on screen size
+  const getCatScale = () => {
+    if (screenWidth > 1024) return 1; // fullscreen
+    if (screenWidth > 768) return 1; // tablet
+    return 0.8; // mobile
+  };
+
+  // get rect area light settings based on screen size
+  const getRectLightSettings = () => {
+    if (screenWidth > 1024) {
+      return {
+        position: [-0.5, 1.57, 1.65],
+        rotation: [0.135, 0, 0],
+        width: 1.45,
+        height: 1.05,
+        intensity: 40,
+      };
+    } else if (screenWidth > 768) {
+      return {
+        position: [-0.4, 1.3, 1.5],
+        rotation: [0.1, 0, 0],
+        width: 1.2,
+        height: 0.9,
+        intensity: 30,
+      };
+    } else {
+      return {
+        position: [-0.3, 1.1, 1.3],
+        rotation: [0.1, 0, 0],
+        width: 1,
+        height: 0.8,
+        intensity: 20,
+      };
+    }
+  };
+
+  // get cat origin based on screen size
+  const getCatOrigin = () => {
+    if (screenWidth > 1024) return [-0.5, -1.2, 0]; // fullscreen
+    if (screenWidth > 768) return [-0.4, -1.0, 0]; // tablet
+    return [-1, -0.9, 0]; // mobile
+  };
 
   // track scroll progress
   useEffect(() => {
@@ -19,13 +77,11 @@ const Hero = ({ animationName }) => {
       const docHeight =
         document.documentElement.scrollHeight - window.innerHeight;
       const scrollFraction = scrollTop / docHeight;
-      setScrollProgress(scrollFraction); // <-- updated here
+      setScrollProgress(scrollFraction);
     };
 
-    window.addEventListener("scroll", handleScroll); // <-- updated here
-    return () => {
-      window.removeEventListener("scroll", handleScroll); // <-- updated here
-    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleWheel = (e) => {
@@ -34,21 +90,23 @@ const Hero = ({ animationName }) => {
     }
   };
 
+  const rectLightSettings = getRectLightSettings(); // dynamically retrieve settings
+
   return (
     <section
-      className="w-full h-screen fixed top-0 left-0 bg-black bg-opacity-50 z-0" // hero remains fixed in the background
+      className="w-full h-screen fixed top-0 left-0 bg-black bg-opacity-35 z-0"
       id="hero"
     >
       <div
         className="w-full"
         style={{ height: "100vh" }}
-        onWheel={handleWheel} // disable default zoom behavior
+        onWheel={handleWheel}
       >
         <Canvas
           className="w-full h-full"
           style={{ height: "100%" }}
-          onPointerDown={(e) => e.stopPropagation()} // prevent events from propagating
-          onWheel={(e) => e.stopPropagation()} // prevent scroll wheel interference
+          onPointerDown={(e) => e.stopPropagation()}
+          onWheel={(e) => e.stopPropagation()}
         >
           <Suspense fallback={<CanvasLoader />}>
             <PerspectiveCamera
@@ -58,33 +116,33 @@ const Hero = ({ animationName }) => {
             <CameraZoom
               scrollProgress={scrollProgress}
               cameraRef={cameraRef}
-              basePosition={[-7, 2, 7]} // pass basePosition to CameraZoom
+              basePosition={getBasePosition()} // pass basePosition dynamically
             />
             {/* rect area light */}
             <rectAreaLight
-              ref={rectLightRef} 
-              position={[-.5, 1.57, 1.65]} 
-              rotation={[0.135, 0, 0]} 
-              width={1.45} 
-              height={1.05} 
-              intensity={40} 
-              color={"#6f7df7"} 
+              ref={rectLightRef}
+              position={rectLightSettings.position}
+              rotation={rectLightSettings.rotation}
+              width={rectLightSettings.width}
+              height={rectLightSettings.height}
+              intensity={rectLightSettings.intensity}
+              color={"#6f7df7"}
             />
-            <ambientLight intensity={.1} color={"#ffffff"} />
+            <ambientLight intensity={0.1} color={"#ffffff"} />
             <directionalLight
-              position={[5, 10, 5]} // Position of the light source
-              intensity={.01} // Brightness
-              color={"#ffffff"} // Light color
-              castShadow // Enable shadows
+              position={[5, 10, 5]}
+              intensity={0.01}
+              color={"#ffffff"}
+              castShadow
             />
             {/* cat model */}
-            <Cat ref={catRef} animationName={animationName} origin={[-.5, -1.2, 0]} />
-
-            {/* debug geo origin sphere */}
-            {/* <mesh position={[0, -1.2, 0]}>
-              <sphereGeometry args={[0.1, 32, 32]} />
-              <meshBasicMaterial color="red" />
-            </mesh> */}
+            <Cat
+              ref={catRef}
+              animationName={animationName}
+              origin={[-0.5, -1.2, 0]}
+              origin={getCatOrigin()} // pass origin dynamically
+              scale={getCatScale()} // pass scale dynamically
+            />
           </Suspense>
         </Canvas>
       </div>
@@ -100,12 +158,12 @@ const CameraZoom = ({ scrollProgress, cameraRef, basePosition }) => {
 
       const [baseX, baseY, baseZ] = basePosition;
 
-      const zPosition = baseZ - progress * 8; // zoom closer to the model
+      const zPosition = baseZ - progress * 6; // zoom closer to the model
       const yPosition = baseY - progress * -4; // adjust height slightly
-      const xPosition = baseX + progress * 6.5; // adjust horizontal position
+      const xPosition = baseX + progress * 4; // adjust horizontal position
 
       cameraRef.current.position.set(xPosition, yPosition, zPosition); // update camera position
-      cameraRef.current.lookAt(-.5, 0, 0); // ensure camera points to the center of the scene
+      cameraRef.current.lookAt(-0.5, 0, 0); // ensure camera points to the center of the scene
     }
   });
 
