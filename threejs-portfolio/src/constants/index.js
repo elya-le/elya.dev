@@ -24,13 +24,10 @@ export const clientReviews = [
 export const myProjects = [
   {
     title: 'Communication App',
-    desc: 'Encurages community creation and management with servers, channels, and real-time messaging.',
-    subdesc: `
-    Goal: To expand technical skills by learning and implementing web-sockets within a 2-week period.
-    Problem: Limited experience with real-time communication technologies.
-    Solution: Developed a project leveraging web-sockets to gain hands-on experience and deepen understanding of real-time systems.
-    Result: Successfully integrated web-sockets into a functional project, achieving practical knowledge and pushing technical boundaries within the set timeframe.
-    `,
+    desc: 'Versatile for community creation and management through customizable servers, channels, and real-time messaging.',
+    subdesc: 
+    `<b>Focus:</b> Learning and implementation web-sockets/real-time communication within a 2-week timeframe.<br>
+<b>Result:</b> I developed a near pixel perfect, fully functional 3 CRUD app while expanding technical skills in understanding real-time systems.`,
     href: 'https://elya-le-banter.onrender.com',
     texture: '/textures/project/project1.mp4',
     logo: '/assets/project-logo1.png',
@@ -83,12 +80,9 @@ export const myProjects = [
   {
     title: 'E-commerce Marketplace',
     desc: 'Supports buying and selling unique, handmade, and vintage items online.',
-    subdesc: 
-    `Goal: Collaboratively develop a web application while leveraging version control and feature integration practices.
-Problem: Lack of streamlined processes for asynchronous collaboration and integration among team members.
-Solution: Utilized a Kanban board for task management, implemented feature branches for development, and conducted code reviews via pull requests to ensure consistency and resolve conflicts.
-Result: Successfully deployed a fully functional application with robust user and product management features, adhering to best practices in version control and collaborative development.
-      `,
+    subdesc: `<b>Focus:</b> Collaboratively building a web application with a team of four peers, optimizing asynchronous development through version control and feature integration.
+<b>Result:</b> Delivered a functional app within two weeks, featuring robust product management and utilizing Kanban boards, feature branches, and pull requests to ensure consistency and resolve conflicts.
+`,
     href: 'https://etsyclone-4ah1.onrender.com/',
     texture: '/textures/project/project2.mp4',
     logo: '/assets/project-logo1.png',
@@ -139,10 +133,12 @@ Result: Successfully deployed a fully functional application with robust user an
     ],
   },
   {
-    title: 'Social Media Platform',
-    desc: 'Meetpup was designed for organizing and discovering events and gatherings. It enables users to create and join local meetups, facilitating real-time communication and collaboration for planning and attending events.',
+    title: 'Social Event Platform',
+    desc: 'Streamlines event organization and discovery for dog owners',
     subdesc:
-      'This was my first fullstack project _________',
+`<b>Focus:</b> Independently developed my first full-stack social platform.<br>
+<b>Result:</b> A fully functional social platform with complete CRUD features (Create, Read, Update, Delete) that enables users to organize and join local meetups, showcasing expertise in backend and frontend integration.
+`,
     href: 'https://github.com/elya-le/authme-elya',
     texture: '/textures/project/project3.mp4',
     logo: '/assets/project-logo1.png',
@@ -151,9 +147,9 @@ Result: Successfully deployed a fully functional application with robust user an
       border: '0.2px solid #36201D',
       boxShadow: '0px 0px 60px 0px #AA3C304D',
     },
-    previewImg1: '/assets/banter1.png',
-    previewImg2: '/assets/banter2.png',
-    previewImg3: '/assets/banter3.png',
+    previewImg1: '/assets/getsy1.png',
+    previewImg2: '/assets/getsy2.png',
+    previewImg3: '/assets/getsy3.png',
     tags: [
       {
         id: 1,
@@ -193,10 +189,13 @@ Result: Successfully deployed a fully functional application with robust user an
     ],
   },
   {
-    title: 'Portfolio | November 2024',
-    desc: 'Placeholder description of my personal portfolio project, built using Three.js.',
+    title: 'Portfolio Site 2025 (Yes! This one right now)',
+    desc: '',
     subdesc:
-      ':)) Welcome to my portfolio - this is my first time building with Three.js and I am loving it! It combines my love for coding and 3D.',
+    `<b>Focus:</b> To build a personal portfolio site while combining my love for 3D design and web development. 
+Exploring Three.js, Tailwind frameworks, and Blender for the first time. <br>
+<b>Result:</b> An engaging portfolio, showcasing interactive 3D elements and modern styling. 
+    `,
     href: 'https://github.com/elya-le/authme-elya',
     texture: '/textures/project/project4.mp4',
     logo: '/assets/project-logo1.png',
@@ -205,9 +204,8 @@ Result: Successfully deployed a fully functional application with robust user an
       border: '0.2px solid #36201D',
       boxShadow: '0px 0px 60px 0px #AA3C304D',
     },
-    previewImg1: '/assets/banter1.png',
-    previewImg2: '/assets/banter2.png',
-    previewImg3: '/assets/banter3.png',
+    previewImg1: '/assets/portfolio1.png',
+    previewImg2: '/assets/portfolio2.png',
     tags: [
       {
         id: 1,

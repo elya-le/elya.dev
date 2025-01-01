@@ -18,17 +18,19 @@ const Projects = () => {
   // dynamically calculate dimensions based on screen size
   const getResponsiveDimensions = () => {
     if (screenWidth > 1024) {
-      return { height: "700px", width: "900px" }; // Fullscreen
+      return { height: "650px", width: "900px" }; // Fullscreen
     } else if (screenWidth > 768) {
       return { height: "600px", width: "800px" }; // Tablet
     } else {
-      return { height: "600px", width: "90%" }; // Mobile
+      return { height: "750px", width: "90%" }; // Mobile
     }
   };
 
   const getResponsiveImageSize = () => {
     if (screenWidth > 1024) {
-      return { height: "400px", width: "600px" }; // Fullscreen
+      return { height: "250px", width: "400px" }; // Fullscreen
+    } else if (screenWidth > 768) {
+      return { height: "200px", width: "300px" }; // Tablet
     } else {
       return { height: "200px", width: "100%" }; // Mobile
     }
@@ -106,9 +108,10 @@ const Projects = () => {
                 </div>
               ))}
           </div>
-          <div className="subdesc text-sm text-gray-400 mt-4">
-          {currentProject.subdesc}
-          </div>
+          <div
+            className="subdesc mt-6"
+            dangerouslySetInnerHTML={{ __html: currentProject.subdesc }}
+          ></div>
         </div>
 
         {/* navigation buttons */}

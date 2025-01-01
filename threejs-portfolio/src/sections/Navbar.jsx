@@ -25,7 +25,8 @@ const Navbar = ({ animationName, toggleAnimation }) => {
         <div className="flex justify-between items-center py-5 mx-auto c-space">
           {/* logo */}
           <a href="/" className="text-neutral-400 text-xl hover:text-white transition-colors">
-            &lt; Elya /&gt;
+            {/* &lt; Elya /&gt; */}
+            Elya
           </a>
 
           {/* centered toggle */}
