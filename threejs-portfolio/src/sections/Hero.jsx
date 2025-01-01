@@ -36,7 +36,7 @@ const Hero = ({ animationName }) => {
 
   return (
     <section
-      className="w-full h-screen fixed top-0 left-0 bg-black bg-opacity-80 z-0" // hero remains fixed in the background
+      className="w-full h-screen fixed top-0 left-0 bg-black bg-opacity-90 z-0" // hero remains fixed in the background
       id="hero"
     >
       <div
@@ -54,10 +54,12 @@ const Hero = ({ animationName }) => {
             <PerspectiveCamera
               makeDefault
               ref={cameraRef}
-              position={[-8, 1.5, 9.5]} // initial camera position
             />
-            <CameraZoom scrollProgress={scrollProgress} cameraRef={cameraRef} />
-
+            <CameraZoom
+              scrollProgress={scrollProgress}
+              cameraRef={cameraRef}
+              basePosition={[-5, 2, 5]} // pass basePosition to CameraZoom
+            />
             {/* rect area light */}
             <rectAreaLight
               ref={rectLightRef} 
@@ -65,15 +67,21 @@ const Hero = ({ animationName }) => {
               rotation={[0.135, 0, 0]} 
               width={1.45} 
               height={1.05} 
-              intensity={20} 
+              intensity={40} 
               color={"#6f7df7"} 
             />
-
+            <ambientLight intensity={.1} color={"#ffffff"} />
+            <directionalLight
+              position={[5, 10, 5]} // Position of the light source
+              intensity={.1} // Brightness
+              color={"#ffffff"} // Light color
+              castShadow // Enable shadows
+            />
             {/* cat model */}
-            <Cat ref={catRef} animationName={animationName} origin={[0, 0, 0]} />
+            <Cat ref={catRef} animationName={animationName} origin={[0, -1.2, 0]} />
 
-            {/* debug sphere */}
-            {/* <mesh position={[0, 0, 0]}>
+            {/* debug geo origin sphere */}
+            {/* <mesh position={[0, -1.2, 0]}>
               <sphereGeometry args={[0.1, 32, 32]} />
               <meshBasicMaterial color="red" />
             </mesh> */}
@@ -85,14 +93,16 @@ const Hero = ({ animationName }) => {
 };
 
 // component to handle camera zoom and rotation
-const CameraZoom = ({ scrollProgress, cameraRef }) => {
+const CameraZoom = ({ scrollProgress, cameraRef, basePosition }) => {
   useFrame(() => {
     if (cameraRef.current) {
       const progress = Math.min(Math.max(scrollProgress, 0), 1); // clamp scroll progress between 0 and 1
 
-      const zPosition = 6.5 - progress * 8.5; // zoom closer to the model
-      const yPosition = 4 - progress * -4; // adjust height slightly
-      const xPosition = -8 + progress * 8; // adjust horizontal position
+      const [baseX, baseY, baseZ] = basePosition;
+
+      const zPosition = baseZ - progress * 6; // zoom closer to the model
+      const yPosition = baseY - progress * -4; // adjust height slightly
+      const xPosition = baseX + progress * 5; // adjust horizontal position
 
       cameraRef.current.position.set(xPosition, yPosition, zPosition); // update camera position
       cameraRef.current.lookAt(0, 0, 0); // ensure camera points to the center of the scene

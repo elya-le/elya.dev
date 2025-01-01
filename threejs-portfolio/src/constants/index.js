@@ -23,7 +23,7 @@ export const clientReviews = [
 
 export const myProjects = [
   {
-    title: 'Communication Platform',
+    title: 'Communication App',
     desc: 'Banter was designed for creating and managing communities. It offers servers and channels to organize conversations, along with real time messaging features that facilitate seamless interaction between users.',
     subdesc:
       'With the intention of learning web-sockets, I knew I wanted to challenge myself by diving into a new coding implementation within a 2-week learning period. This goal was driven by my desire to expand my technical skills and deepen my understanding of real-time communication technologies. By setting a clear timeframe, I aimed to push my limits and gain practical experience in integrating web-sockets into my projects.',
@@ -75,7 +75,7 @@ export const myProjects = [
     ],
   },
   {
-    title: 'Getsy | E-commerce Platform',
+    title: 'E-commerce Marketplace',
     desc: 'Getsy was designed for buying and selling unique, handmade, and vintage items. It allows users to purchase and list items for its online marketplace.',
     subdesc:
       'Our team collaboratively developed a web application through effective version control and feature integration. Each pair handled two CRUD features, including user and product management. We brainstormed project goals, created documentation, designed the database schema, and managed tasks using a Kanban board. Development was done asynchronously on feature branches, with code reviews and integration via pull requests. Features were merged into the develop branch for testing, resolving conflicts and ensuring code consistency, before final deployment to the main branch for production.',
@@ -127,7 +127,7 @@ export const myProjects = [
     ],
   },
   {
-    title: 'MeetPup | Social Platform',
+    title: 'Social Media Platform',
     desc: 'Meetpup was designed for organizing and discovering events and gatherings. It enables users to create and join local meetups, facilitating real-time communication and collaboration for planning and attending events.',
     subdesc:
       'This was my first fullstack project _________',

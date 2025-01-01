@@ -1,51 +1,60 @@
-
+// Updated on 2025-01-01: Adjusted materials to prevent light reflections on table legs and block light through the tabletop.
 
 import React, { useRef, useEffect, forwardRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
+import * as THREE from "three";
 
 const Cat = forwardRef(({ animationName = "Slow", origin = [0, 0, 0], ...props }, ref) => {
-  const group = useRef(); // Local reference for the group
+  const group = useRef(); // local reference for the group
   const { nodes, materials, animations } = useGLTF("/assets/cat_15.glb");
   const { actions } = useAnimations(animations, group);
 
-  // Forward the ref to the parent
+  // forward the ref to the parent
   useEffect(() => {
     if (ref) {
-      ref.current = group.current;
+      ref.current = group.current; // link the local group ref to the forwarded ref
     }
   }, [ref]);
 
-  // Handle animations
+  // handle animations
   useEffect(() => {
     if (actions && animationName) {
-      // Stop all running animations
+      // stop all running animations
       Object.values(actions).forEach((action) => action.stop());
-      // Play the current animation
+      // play the specified animation
       actions[animationName]?.reset().play();
     }
   }, [actions, animationName]);
 
-  // Traverse and assign layers if necessary (e.g., exclude Legsb from lighting)
+  // traverse and update materials for table legs and tabletop
   useEffect(() => {
     if (group.current) {
       group.current.traverse((child) => {
         if (child.isMesh) {
-          if (child.name === "Legsb") {
-            child.layers.set(1); // Assign Legsb to layer 1
-          } else {
-            child.layers.set(0); // Default layer
+          // Configure table legs to avoid reflections
+          if (child.name === "Legsa" || child.name === "Legsb") {
+            child.material.roughness = 1; // Fully rough to avoid reflections
+            child.material.metalness = 0; // Non-metallic
+            child.material.transparent = false; // Ensure no light passes through
+          }
+
+          // Configure tabletop to block light
+          if (child.name === "Desk") {
+            child.castShadow = true; // Cast shadows onto the floor
+            child.receiveShadow = true; // Receive shadows from other objects
+            child.material.transparent = false; // Prevent light from passing through
           }
         }
       });
     }
-  }, []);
+  }, []); // only run once on mount
 
   return (
     <group {...props} ref={group} dispose={null}>
       <group position={origin}>
         <group ref={group}>
           <group name="Scene">
-            {/* Add your meshes here */}
+            {/* Collar */}
             <mesh
               name="Collar"
               castShadow
@@ -220,198 +229,6 @@ const Cat = forwardRef(({ animationName = "Slow", origin = [0, 0, 0], ...props }
               geometry={nodes.Screen001.geometry}
               material={materials["Material.014"]}
               position={[0, 2.088, 1.658]}
-            />
-            <mesh
-              name="K1"
-              castShadow
-              receiveShadow
-              geometry={nodes.K1.geometry}
-              material={materials['Material.023']}
-              position={[0.665, 1.551, 1.275]}
-            />
-            <mesh
-              name="K1001"
-              castShadow
-              receiveShadow
-              geometry={nodes.K1001.geometry}
-              material={materials['Material.024']}
-              position={[0.476, 1.551, 1.275]}
-            />
-            <mesh
-              name="K1002"
-              castShadow
-              receiveShadow
-              geometry={nodes.K1002.geometry}
-              material={materials['Material.025']}
-              position={[0.285, 1.551, 1.275]}
-            />
-            <mesh
-              name="K1003"
-              castShadow
-              receiveShadow
-              geometry={nodes.K1003.geometry}
-              material={materials['Material.026']}
-              position={[0.095, 1.551, 1.275]}
-            />
-            <mesh
-              name="K1004"
-              castShadow
-              receiveShadow
-              geometry={nodes.K1004.geometry}
-              material={materials['Material.027']}
-              position={[-0.095, 1.551, 1.275]}
-            />
-            <mesh
-              name="K1005"
-              castShadow
-              receiveShadow
-              geometry={nodes.K1005.geometry}
-              material={materials['Material.028']}
-              position={[-0.285, 1.551, 1.275]}
-            />
-            <mesh
-              name="K1006"
-              castShadow
-              receiveShadow
-              geometry={nodes.K1006.geometry}
-              material={materials['Material.029']}
-              position={[-0.476, 1.551, 1.275]}
-            />
-            <mesh
-              name="K1007"
-              castShadow
-              receiveShadow
-              geometry={nodes.K1007.geometry}
-              material={materials['Material.030']}
-              position={[-0.665, 1.551, 1.275]}
-            />
-            <mesh
-              name="K2"
-              castShadow
-              receiveShadow
-              geometry={nodes.K2.geometry}
-              material={materials['Material.031']}
-              position={[0.571, 1.551, 1.065]}
-            />
-            <mesh
-              name="K2001"
-              castShadow
-              receiveShadow
-              geometry={nodes.K2001.geometry}
-              material={materials['Material.032']}
-              position={[0.38, 1.551, 1.065]}
-            />
-            <mesh
-              name="K2002"
-              castShadow
-              receiveShadow
-              geometry={nodes.K2002.geometry}
-              material={materials['Material.033']}
-              position={[0.19, 1.551, 1.065]}
-            />
-            <mesh
-              name="K2003"
-              castShadow
-              receiveShadow
-              geometry={nodes.K2003.geometry}
-              material={materials['Material.034']}
-              position={[0, 1.551, 1.065]}
-            />
-            <mesh
-              name="K2004"
-              castShadow
-              receiveShadow
-              geometry={nodes.K2004.geometry}
-              material={materials['Material.035']}
-              position={[-0.19, 1.551, 1.065]}
-            />
-            <mesh
-              name="K2005"
-              castShadow
-              receiveShadow
-              geometry={nodes.K2005.geometry}
-              material={materials['Material.036']}
-              position={[-0.38, 1.551, 1.065]}
-            />
-            <mesh
-              name="K2006"
-              castShadow
-              receiveShadow
-              geometry={nodes.K2006.geometry}
-              material={materials['Material.037']}
-              position={[-0.57, 1.551, 1.065]}
-            />
-            <mesh
-              name="K3"
-              castShadow
-              receiveShadow
-              geometry={nodes.K3.geometry}
-              material={materials['Material.038']}
-              position={[0.515, 1.551, 0.855]}
-            />
-            <mesh
-              name="K3001"
-              castShadow
-              receiveShadow
-              geometry={nodes.K3001.geometry}
-              material={materials['Material.039']}
-              position={[0.285, 1.551, 0.855]}
-            />
-            <mesh
-              name="K3002"
-              castShadow
-              receiveShadow
-              geometry={nodes.K3002.geometry}
-              material={materials['Material.040']}
-              position={[0.095, 1.551, 0.855]}
-            />
-            <mesh
-              name="K3003"
-              castShadow
-              receiveShadow
-              geometry={nodes.K3003.geometry}
-              material={materials['Material.041']}
-              position={[-0.095, 1.551, 0.855]}
-            />
-            <mesh
-              name="K3004"
-              castShadow
-              receiveShadow
-              geometry={nodes.K3004.geometry}
-              material={materials['Material.042']}
-              position={[-0.285, 1.551, 0.855]}
-            />
-            <mesh
-              name="K3005"
-              castShadow
-              receiveShadow
-              geometry={nodes.K3005.geometry}
-              material={materials['Material.043']}
-              position={[-0.585, 1.551, 0.855]}
-            />
-            <mesh
-              name="K4"
-              castShadow
-              receiveShadow
-              geometry={nodes.K4.geometry}
-              material={materials['Material.044']}
-              position={[0.626, 1.551, 0.644]}
-            />
-            <mesh
-              name="K4001"
-              castShadow
-              receiveShadow
-              geometry={nodes.K4001.geometry}
-              material={materials['Material.045']}
-              position={[0, 1.551, 0.645]}
-            />
-            <mesh
-              name="K4002"
-              castShadow
-              receiveShadow
-              geometry={nodes.K4002.geometry}
-              material={materials['Material.046']}
-              position={[-0.621, 1.551, 0.643]}
             />
           </group>
         </group>
