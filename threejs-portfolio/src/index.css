@@ -217,9 +217,25 @@ body {
   /* border: 1px solid blue; */
   position: relative;
   z-index: 10;
-  margin-top: -30vh; 
+  margin-top: -28vh; 
   height: 500px;
   /* padding: 100px 0;  */
 }
 
+.subdesc {
+  white-space: pre-wrap; /* Preserves line breaks and wraps text as needed */
+  line-height: 1.5; /* Optional: Adjust line height for better readability */
+}
 
+/* 
+.hide-scrollbar { 
+  scrollbar-width: none;
+  -ms-overflow-style: none; 
+}
+*/
+
+/*
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; 
+}
+*/

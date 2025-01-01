@@ -24,9 +24,13 @@ export const clientReviews = [
 export const myProjects = [
   {
     title: 'Communication App',
-    desc: 'Banter was designed for creating and managing communities. It offers servers and channels to organize conversations, along with real time messaging features that facilitate seamless interaction between users.',
-    subdesc:
-      'With the intention of learning web-sockets, I knew I wanted to challenge myself by diving into a new coding implementation within a 2-week learning period. This goal was driven by my desire to expand my technical skills and deepen my understanding of real-time communication technologies. By setting a clear timeframe, I aimed to push my limits and gain practical experience in integrating web-sockets into my projects.',
+    desc: 'Encurages community creation and management with servers, channels, and real-time messaging.',
+    subdesc: `
+    Goal: To expand technical skills by learning and implementing web-sockets within a 2-week period.
+    Problem: Limited experience with real-time communication technologies.
+    Solution: Developed a project leveraging web-sockets to gain hands-on experience and deepen understanding of real-time systems.
+    Result: Successfully integrated web-sockets into a functional project, achieving practical knowledge and pushing technical boundaries within the set timeframe.
+    `,
     href: 'https://elya-le-banter.onrender.com',
     texture: '/textures/project/project1.mp4',
     logo: '/assets/project-logo1.png',
@@ -35,7 +39,9 @@ export const myProjects = [
       border: '0.2px solid #36201D',
       boxShadow: '0px 0px 60px 0px #AA3C304D',
     },
-    spotlight: '/assets/spotlight1.png',
+    previewImg1: '/assets/getsy1.png',
+    previewImg2: '/assets/getsy2.png',
+    previewImg3: '/assets/getsy3.png',
     tags: [
       {
         id: 1,
@@ -76,9 +82,13 @@ export const myProjects = [
   },
   {
     title: 'E-commerce Marketplace',
-    desc: 'Getsy was designed for buying and selling unique, handmade, and vintage items. It allows users to purchase and list items for its online marketplace.',
-    subdesc:
-      'Our team collaboratively developed a web application through effective version control and feature integration. Each pair handled two CRUD features, including user and product management. We brainstormed project goals, created documentation, designed the database schema, and managed tasks using a Kanban board. Development was done asynchronously on feature branches, with code reviews and integration via pull requests. Features were merged into the develop branch for testing, resolving conflicts and ensuring code consistency, before final deployment to the main branch for production.',
+    desc: 'Supports buying and selling unique, handmade, and vintage items online.',
+    subdesc: 
+    `Goal: Collaboratively develop a web application while leveraging version control and feature integration practices.
+Problem: Lack of streamlined processes for asynchronous collaboration and integration among team members.
+Solution: Utilized a Kanban board for task management, implemented feature branches for development, and conducted code reviews via pull requests to ensure consistency and resolve conflicts.
+Result: Successfully deployed a fully functional application with robust user and product management features, adhering to best practices in version control and collaborative development.
+      `,
     href: 'https://etsyclone-4ah1.onrender.com/',
     texture: '/textures/project/project2.mp4',
     logo: '/assets/project-logo1.png',
@@ -87,7 +97,9 @@ export const myProjects = [
       border: '0.2px solid #36201D',
       boxShadow: '0px 0px 60px 0px #AA3C304D',
     },
-    spotlight: '/assets/spotlight2.png',
+    previewImg1: '/assets/getsy1.png',
+    previewImg2: '/assets/getsy2.png',
+    previewImg3: '/assets/getsy3.png',
     tags: [
       {
         id: 1,
@@ -139,7 +151,9 @@ export const myProjects = [
       border: '0.2px solid #36201D',
       boxShadow: '0px 0px 60px 0px #AA3C304D',
     },
-    spotlight: '/assets/spotlight3.png',
+    previewImg1: '/assets/banter1.png',
+    previewImg2: '/assets/banter2.png',
+    previewImg3: '/assets/banter3.png',
     tags: [
       {
         id: 1,
@@ -191,7 +205,9 @@ export const myProjects = [
       border: '0.2px solid #36201D',
       boxShadow: '0px 0px 60px 0px #AA3C304D',
     },
-    spotlight: '/assets/spotlight3.png',
+    previewImg1: '/assets/banter1.png',
+    previewImg2: '/assets/banter2.png',
+    previewImg3: '/assets/banter3.png',
     tags: [
       {
         id: 1,
