@@ -22,7 +22,6 @@ const Hero = ({ animationName }) => {
 
   // get camera base position based on screen size
   const getBasePosition = () => {
-    if (screenWidth > 1024) return [-4.5, 2, 5]; // fullscreen
     if (screenWidth > 768) return [-4.5, 2, 5]; // tablet
     return [-5.5, 2, 5]; // mobile
   };
@@ -66,8 +65,8 @@ const Hero = ({ animationName }) => {
   // get cat origin based on screen size
   const getCatOrigin = () => {
     if (screenWidth > 1024) return [-0.5, -1.2, 0]; // fullscreen
-    if (screenWidth > 768) return [-0.4, -1.0, 0]; // tablet
-    return [-1, -0.9, 0]; // mobile
+    if (screenWidth > 768) return [-0.4, -1.6, 0.3]; // tablet
+    return [-.7, -.6, 0]; // mobile
   };
 
   // track scroll progress
@@ -117,6 +116,7 @@ const Hero = ({ animationName }) => {
               scrollProgress={scrollProgress}
               cameraRef={cameraRef}
               basePosition={getBasePosition()} // pass basePosition dynamically
+              screenWidth={screenWidth} // pass screenWidth dynamically
             />
             {/* rect area light */}
             <rectAreaLight
@@ -139,7 +139,6 @@ const Hero = ({ animationName }) => {
             <Cat
               ref={catRef}
               animationName={animationName}
-              origin={[-0.5, -1.2, 0]}
               origin={getCatOrigin()} // pass origin dynamically
               scale={getCatScale()} // pass scale dynamically
             />
@@ -151,19 +150,41 @@ const Hero = ({ animationName }) => {
 };
 
 // component to handle camera zoom and rotation
-const CameraZoom = ({ scrollProgress, cameraRef, basePosition }) => {
+const CameraZoom = ({ scrollProgress, cameraRef, basePosition, screenWidth }) => {
+  // determine end positions and look-at target dynamically based on screen width
+  const getEndPosition = () => {
+    if (screenWidth > 1024) {
+      return {
+        xEnd: 4,
+        yEnd: -4,
+        zEnd: 6,
+        lookAt: [-0.5, 0, 0], // desktop look-at target
+      };
+    } else {
+      return {
+        xEnd: 3,
+        yEnd: -4,
+        zEnd: 6,
+        lookAt: [-0.5, 0, .5], // mobile look-at target
+      };
+    }
+  };
+
+  const endPosition = getEndPosition();
+
   useFrame(() => {
     if (cameraRef.current) {
       const progress = Math.min(Math.max(scrollProgress, 0), 1); // clamp scroll progress between 0 and 1
 
       const [baseX, baseY, baseZ] = basePosition;
 
-      const zPosition = baseZ - progress * 6; // zoom closer to the model
-      const yPosition = baseY - progress * -4; // adjust height slightly
-      const xPosition = baseX + progress * 4; // adjust horizontal position
+      // dynamically calculate positions based on progress and end points
+      const zPosition = baseZ - progress * endPosition.zEnd; // zoom closer to the model
+      const yPosition = baseY - progress * endPosition.yEnd; // adjust height slightly
+      const xPosition = baseX + progress * endPosition.xEnd; // adjust horizontal position
 
       cameraRef.current.position.set(xPosition, yPosition, zPosition); // update camera position
-      cameraRef.current.lookAt(-0.5, 0, 0); // ensure camera points to the center of the scene
+      cameraRef.current.lookAt(...endPosition.lookAt); // ensure camera points to the target
     }
   });
 
