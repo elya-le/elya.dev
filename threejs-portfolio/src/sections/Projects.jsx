@@ -22,7 +22,7 @@ const Projects = () => {
     } else if (screenWidth > 768) {
       return { height: "600px", width: "800px" }; // Tablet
     } else {
-      return { height: "750px", width: "90%" }; // Mobile
+      return { height: "700px", width: "99%" }; // Mobile
     }
   };
 

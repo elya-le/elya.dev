@@ -24,7 +24,7 @@ export const clientReviews = [
 export const myProjects = [
   {
     title: 'Communication App',
-    desc: 'Versatile for community creation and management through customizable servers, channels, and real-time messaging.',
+    desc: 'Community building with real-time messaging, custom servers & channels.',
     subdesc: 
     `<b>Focus:</b> Learning and implementation web-sockets/real-time communication within a 2-week timeframe.<br>
 <b>Result:</b> I developed a near pixel perfect, fully functional 3 CRUD app while expanding technical skills in understanding real-time systems.`,
@@ -36,9 +36,8 @@ export const myProjects = [
       border: '0.2px solid #36201D',
       boxShadow: '0px 0px 60px 0px #AA3C304D',
     },
-    previewImg1: '/assets/getsy1.png',
-    previewImg2: '/assets/getsy2.png',
-    previewImg3: '/assets/getsy3.png',
+    previewImg1: '/assets/banter1.png',
+    previewImg2: '/assets/banter2.png',
     tags: [
       {
         id: 1,
@@ -134,7 +133,7 @@ export const myProjects = [
   },
   {
     title: 'Social Event Platform',
-    desc: 'Streamlines event organization and discovery for dog owners',
+    desc: 'Event organization and discovery for dog owners',
     subdesc:
 `<b>Focus:</b> Independently developed my first full-stack social platform.<br>
 <b>Result:</b> A fully functional social platform with complete CRUD features (Create, Read, Update, Delete) that enables users to organize and join local meetups, showcasing expertise in backend and frontend integration.
@@ -189,11 +188,10 @@ export const myProjects = [
     ],
   },
   {
-    title: 'Portfolio Site 2025 (Yes! This one right now)',
-    desc: '',
+    title: 'Portfolio Site 2025',
+    desc: 'Combining my love for 3D & Motion Design with Web Development',
     subdesc:
-    `<b>Focus:</b> To build a personal portfolio site while combining my love for 3D design and web development. 
-Exploring Three.js, Tailwind frameworks, and Blender for the first time. <br>
+    `<b>Focus:</b> Build this current portfolio site while learning Three.js, Tailwind frameworks, and Blender for the first time. <br>
 <b>Result:</b> An engaging portfolio, showcasing interactive 3D elements and modern styling. 
     `,
     href: 'https://github.com/elya-le/authme-elya',
