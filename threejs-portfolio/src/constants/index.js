@@ -24,10 +24,11 @@ export const clientReviews = [
 export const myProjects = [
   {
     title: 'Communication App',
-    desc: 'Community building with real-time messaging, custom servers & channels.',
+    desc: 'Online community space with real-time messaging, custom servers and channels',
     subdesc: 
-    `<b>Focus:</b> Learning and implementation web-sockets/real-time communication within a 2-week timeframe.<br>
-<b>Result:</b> I developed a near pixel perfect, fully functional 3 CRUD app while expanding technical skills in understanding real-time systems.`,
+    `<b>Focus:</b> Learning and implementing real-time communication with web sockets (within a 2-week timeframe).<br>
+<b>Result:</b> Delivered a precise, high-quality web app while expanding my technical skills, pace and proficiency in real-time communication systems.
+(3 feature CRUD)`,
     href: 'https://elya-le-banter.onrender.com',
     texture: '/textures/project/project1.mp4',
     logo: '/assets/project-logo1.png',
@@ -78,9 +79,10 @@ export const myProjects = [
   },
   {
     title: 'E-commerce Marketplace',
-    desc: 'Supports buying and selling unique, handmade, and vintage items online.',
-    subdesc: `<b>Focus:</b> Collaboratively building a web application with a team of four peers, optimizing asynchronous development through version control and feature integration.
-<b>Result:</b> Delivered a functional app within two weeks, featuring robust product management and utilizing Kanban boards, feature branches, and pull requests to ensure consistency and resolve conflicts.
+    desc: 'Buy and sell online platform for unique, handmade, and vintage items',
+    subdesc: `<b>Focus:</b> Collaboration with four peers developing a wep app - hands on experience with asynchronous development through version control and feature integration (within a 2 week timeframe).<br>
+<b>Result:</b> Delivered a rudimentary web app using agile workflows and pull requests to ensure team cohesion, maintain consistency, and efficiently resolve code merge conflicts.
+(4 feature CRUD)
 `,
     href: 'https://etsyclone-4ah1.onrender.com/',
     texture: '/textures/project/project2.mp4',
@@ -133,10 +135,11 @@ export const myProjects = [
   },
   {
     title: 'Social Event Platform',
-    desc: 'Event organization and discovery for dog owners',
+    desc: 'Connecting dog owners through event discovery, event planning, and community organization',
     subdesc:
-`<b>Focus:</b> Independently developed my first full-stack social platform.<br>
-<b>Result:</b> A fully functional social platform with complete CRUD features (Create, Read, Update, Delete) that enables users to organize and join local meetups, showcasing expertise in backend and frontend integration.
+`<b>Focus:</b> Independently built my first full-stack social platform (within a 4-week timeframe).<br>
+<b>Result:</b> A fully functional app that equips users in organizing and joining local meetups, showcasing my proficiency in backend and frontend integration.
+(2 feature CRUD)
 `,
     href: 'https://github.com/elya-le/authme-elya',
     texture: '/textures/project/project3.mp4',
@@ -189,10 +192,10 @@ export const myProjects = [
   },
   {
     title: 'Portfolio Site 2025',
-    desc: 'Combining my love for 3D & Motion Design with Web Development',
+    desc: 'Combining my love for 3D modeling, motion design and web development',
     subdesc:
-    `<b>Focus:</b> Build this current portfolio site while learning Three.js, Tailwind frameworks, and Blender for the first time. <br>
-<b>Result:</b> An engaging portfolio, showcasing interactive 3D elements and modern styling. 
+    `<b>Focus:</b> Design and build this current portfolio site while learning Three.js, Tailwind frameworks, and Blender software for the first time. <br>
+<b>Result:</b> A clean, interactive site that highlights 3D elements and innovative design techniques. 
     `,
     href: 'https://github.com/elya-le/authme-elya',
     texture: '/textures/project/project4.mp4',

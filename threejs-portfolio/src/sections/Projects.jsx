@@ -32,7 +32,7 @@ const Projects = () => {
     } else if (screenWidth > 768) {
       return { height: "200px", width: "300px" }; // Tablet
     } else {
-      return { height: "200px", width: "100%" }; // Mobile
+      return { height: "180px", width: "280px" }; // Mobile
     }
   };
 
