@@ -12,6 +12,7 @@ body {
   background: #222222;
   font-family: 'General Sans', sans-serif;
   color: #afb0b6;
+  margin: 0;
 }
 
 @layer utilities {
@@ -197,33 +198,26 @@ body {
   }
 }
 
-/* Hero Section Parallax */
 /* Hero Section */
 .hero-section {
   position: relative;
   height: 100vh;
   overflow: hidden;
-  border: 1px solid red;
 }
 
 .hero-canvas {
-
   position: sticky;
   top: 0;
   height: 100vh;
   width: 100%;
   z-index: 0; /* stays as the background */
 }
-
+/* Projects Section */
 .projects-section {
-  border: 1px solid blue;
   position: relative;
-  margin-top: 90vh; /* Push it below the Hero section */
-  z-index: 10; /* Ensure it doesn't overlap with Hero */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #222222; /* Adjust as needed */
+  background: #222222;
+  height: auto;
+  padding: 50px 20px;
 }
 
 .subdesc {

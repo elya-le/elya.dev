@@ -6,7 +6,7 @@ import CanvasLoader from "../components/CanvasLoader";
 import Cat from "../components/Cat.jsx";
 import "./Hero.css";
 
-const Hero = ({ animationName, isHeroInView }) => {
+const Hero = ({ animationName }) => {
   const rectLightRef = useRef(); // reference for rect area light
   const catRef = useRef(); // reference for cat model
   const cameraRef = useRef(); // reference for camera
@@ -45,10 +45,7 @@ const Hero = ({ animationName, isHeroInView }) => {
   };
 
   return (
-    <section
-      className="w-full h-screen bg-black bg-opacity-35"
-      style={{ display: isHeroInView ? "block" : "none" }} // hide Hero when out of view
-    >
+    <section className="w-full h-screen bg-black bg-opacity-35">
       <Canvas
         className="w-full h-full"
         style={{ height: "100%" }}
