@@ -203,9 +203,11 @@ body {
   position: relative;
   height: 100vh;
   overflow: hidden;
+  border: 1px solid red;
 }
 
 .hero-canvas {
+
   position: sticky;
   top: 0;
   height: 100vh;
@@ -214,12 +216,14 @@ body {
 }
 
 .projects-section {
-  /* border: 1px solid blue; */
+  border: 1px solid blue;
   position: relative;
-  z-index: 10;
-  margin-top: -28vh; 
-  height: 500px;
-  /* padding: 100px 0;  */
+  margin-top: 90vh; /* Push it below the Hero section */
+  z-index: 10; /* Ensure it doesn't overlap with Hero */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #222222; /* Adjust as needed */
 }
 
 .subdesc {

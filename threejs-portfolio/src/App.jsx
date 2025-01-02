@@ -1,43 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Navbar from "./sections/Navbar.jsx";
 import Hero from "./sections/Hero";
 import Projects from "./sections/Projects";
 
 const App = () => {
-  // manage animation state at the top level
-  const [animationName, setAnimationName] = useState("Slow");
+  const [animationName, setAnimationName] = useState("Slow"); // manage animation state
+  const heroRef = useRef(null); // reference for the Hero section
+  const projectsRef = useRef(null); // reference for the Projects section
+  const [isHeroComplete, setIsHeroComplete] = useState(false); // track Hero animation completion
 
-  // toggle between "Slow" and "Fast" animation
+  // toggle animation state
   const toggleAnimation = () => {
     setAnimationName((prev) => (prev === "Slow" ? "Fast" : "Slow"));
     console.log("Animation toggled to:", animationName === "Slow" ? "Fast" : "Slow");
   };
 
+  // Determine if Hero has completed its scroll animation
+  useEffect(() => {
+    const handleScroll = () => {
+      if (heroRef.current) {
+        const heroBottom = heroRef.current.getBoundingClientRect().bottom;
+        setIsHeroComplete(heroBottom <= 0); // Set to true when Hero scrolls out
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      {/* pass animation state and toggle function to Navbar and Hero */}
+      {/* Navbar with animation toggle */}
       <Navbar animationName={animationName} toggleAnimation={toggleAnimation} />
-      <Hero animationName={animationName} />
-      {/* scrollable content with higher z-index */}
-      <section
-        style={{
-          height: "200vh",
-          backgroundColor: "transparent",
-          position: "relative", // ensures z-index applies
-          zIndex: 10, // higher z-index to ensure it sits above other content
-        }}
-      >
-        <h1
-          style={{
-            color: "white",
-            textAlign: "left",
-            paddingTop: "160vh",
-          }}
-        >
-          <Projects /> {/* include Projects section */}
-      
-        </h1>
-      </section>
+
+      {/* Hero Section */}
+      <div ref={heroRef}>
+        <Hero animationName={animationName} isHeroInView={!isHeroComplete} />
+      </div>
+
+      {/* Projects Section */}
+      <div ref={projectsRef} className={`projects-section ${isHeroComplete ? "visible" : "hidden"}`}>
+        <Projects />
+      </div>
     </>
   );
 };
