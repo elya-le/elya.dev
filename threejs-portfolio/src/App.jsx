@@ -31,11 +31,11 @@ const App = () => {
           style={{
             color: "white",
             textAlign: "left",
-            backgroundColor: "transparent",
             paddingTop: "160vh",
           }}
         >
           <Projects /> {/* include Projects section */}
+      
         </h1>
       </section>
     </>

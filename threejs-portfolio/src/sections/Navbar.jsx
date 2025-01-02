@@ -26,7 +26,7 @@ const Navbar = ({ animationName, toggleAnimation }) => {
           {/* logo */}
           <a href="/" className="text-neutral-400 text-xl hover:text-white transition-colors">
             {/* &lt; Elya /&gt; */}
-            Elya
+            Elya_
           </a>
 
           {/* centered toggle */}

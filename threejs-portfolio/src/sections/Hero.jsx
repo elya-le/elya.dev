@@ -6,12 +6,12 @@ import CanvasLoader from "../components/CanvasLoader";
 import Cat from "../components/Cat.jsx";
 import "./Hero.css";
 
-const Hero = ({ animationName }) => {
+const Hero = ({ animationName, onEnterProjects }) => {
   const rectLightRef = useRef(); // reference for rect area light
   const catRef = useRef(); // reference for cat model
   const cameraRef = useRef(); // reference for camera
   const [scrollProgress, setScrollProgress] = useState(0); // state for scroll progress
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth); // track screen width
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth); // state for screen width
 
   // handle screen resize
   useEffect(() => {
@@ -62,13 +62,6 @@ const Hero = ({ animationName }) => {
     }
   };
 
-  // get cat origin based on screen size
-  const getCatOrigin = () => {
-    if (screenWidth > 1024) return [-0.5, -1.2, 0]; // fullscreen
-    if (screenWidth > 768) return [-0.4, -1.6, 0.3]; // tablet
-    return [-.7, -.6, 0]; // mobile
-  };
-
   // track scroll progress
   useEffect(() => {
     const handleScroll = () => {
@@ -77,11 +70,15 @@ const Hero = ({ animationName }) => {
         document.documentElement.scrollHeight - window.innerHeight;
       const scrollFraction = scrollTop / docHeight;
       setScrollProgress(scrollFraction);
+
+      if (scrollFraction >= 0.8 && onEnterProjects) {
+        onEnterProjects(); // Trigger transition to Projects
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [onEnterProjects]);
 
   const handleWheel = (e) => {
     if (e.ctrlKey || e.metaKey) {
@@ -108,10 +105,7 @@ const Hero = ({ animationName }) => {
           onWheel={(e) => e.stopPropagation()}
         >
           <Suspense fallback={<CanvasLoader />}>
-            <PerspectiveCamera
-              makeDefault
-              ref={cameraRef}
-            />
+            <PerspectiveCamera makeDefault ref={cameraRef} />
             <CameraZoom
               scrollProgress={scrollProgress}
               cameraRef={cameraRef}
@@ -139,7 +133,7 @@ const Hero = ({ animationName }) => {
             <Cat
               ref={catRef}
               animationName={animationName}
-              origin={getCatOrigin()} // pass origin dynamically
+              origin={[-0.5, -1.2, 0]} // static Cat position
               scale={getCatScale()} // pass scale dynamically
             />
           </Suspense>
@@ -151,7 +145,6 @@ const Hero = ({ animationName }) => {
 
 // component to handle camera zoom and rotation
 const CameraZoom = ({ scrollProgress, cameraRef, basePosition, screenWidth }) => {
-  // determine end positions and look-at target dynamically based on screen width
   const getEndPosition = () => {
     if (screenWidth > 1024) {
       return {
@@ -165,7 +158,7 @@ const CameraZoom = ({ scrollProgress, cameraRef, basePosition, screenWidth }) =>
         xEnd: 3,
         yEnd: -4,
         zEnd: 6,
-        lookAt: [-0.5, 0, .5], // mobile look-at target
+        lookAt: [-0.5, 0, 0.5], // mobile look-at target
       };
     }
   };
