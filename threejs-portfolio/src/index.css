@@ -215,9 +215,8 @@ body {
 }
 /* Projects Section */
 .projects-section {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   position: relative;
-  background: #222222;
   height: auto;
   padding: 10px 10px;
 }
@@ -227,15 +226,12 @@ body {
   line-height: 1.5; /* Optional: Adjust line height for better readability */
 }
 
-/* 
-.hide-scrollbar { 
-  scrollbar-width: none;
-  -ms-overflow-style: none; 
-}
-*/
 
-/*
-.hide-scrollbar::-webkit-scrollbar {
-  display: none; 
+.hide-scrollbar {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
 }
-*/
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}

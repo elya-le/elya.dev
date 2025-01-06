@@ -54,19 +54,19 @@ const Projects = () => {
       className="projects-section h-screen relative z-10 flex justify-center items-center"
       id="projects"
       style={{
-        backgroundColor: "transparent",
+        backgroundColor: "#161616",
       }}
     >
       {/* project grid container */}
       <div
-        className="relative p-6 shadow-lg rounded-lg bg-black bg-opacity-80 flex flex-col"
+        className="relative p-6 shadow-lg bg-black bg-opacity-80 flex flex-col"
         style={{
           height: responsiveDimensions.height,
           width: responsiveDimensions.width,
         }}
       >
         {/* project title and description */}
-        <div className="p-4 rounded-lg flex-1 w-full">
+        <div className="p-1 flex-1 w-full">
           <p className="text-white text-lg lg:text-2xl font-bold">
             {currentProject.title}
           </p>
@@ -98,7 +98,7 @@ const Projects = () => {
                   <img
                     src={currentProject[key]}
                     alt={`${currentProject.title} screenshot ${index + 1}`}
-                    className="rounded-md shadow-lg"
+                    className="shadow-lg"
                     style={{
                       height: "100%",
                       width: "100%",
@@ -112,6 +112,44 @@ const Projects = () => {
             className="subdesc mt-6"
             dangerouslySetInnerHTML={{ __html: currentProject.subdesc }}
           ></div>
+
+          {/* Add Live Link and GitHub Repo */}
+          <div className="links mt-4">
+            {/* Render Tags */}
+            <div className="tags mt-4 flex flex-wrap gap-2">
+              {currentProject.tags.map((tag) => (
+                <span
+                  key={tag.id}
+                  className="px-3 py-1 text-sm font-medium rounded-full text-white"
+                  style={{
+                    backgroundColor: tag.color, // Use the color property dynamically
+                  }}
+                >
+                  {tag.name}
+                </span>
+              ))}
+            </div>
+            {currentProject.liveLink && (
+              <a
+                href={currentProject.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline mr-4"
+              >
+                Live Link
+              </a>
+            )}
+            {currentProject.repoLink && (
+              <a
+                href={currentProject.repoLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline"
+              >
+                GitHub Repo
+              </a>
+            )}
+          </div>
         </div>
 
         {/* navigation buttons */}
@@ -134,4 +172,5 @@ const Projects = () => {
   );
 };
 
+// Move the export default statement here, outside the component
 export default Projects;
