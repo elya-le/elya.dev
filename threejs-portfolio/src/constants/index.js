@@ -1,3 +1,18 @@
+export const navLinks = [
+  {
+    id: 1,
+    name: 'Projects',
+    href: '#projects',
+  },
+  {
+    id: 2,
+    name: 'Contact',
+    href: '#contact',
+  },
+];
+
+
+
 export const myProjects = [
   {
     title: 'Communication App',
@@ -117,7 +132,7 @@ export const myProjects = [
   {
     title: 'Social Event Platform',
     desc: 'Connecting dog owners through event discovery, event planning, and community organization',
-    subdesc: 
+    subdesc:
 `<b>Focus:</b> Independently built my first full-stack social platform.
 (Within a 4-week timeframe)<br>
 <b>Result:</b> A fully functional app that equips users in organizing and joining local meetups, showcasing my proficiency in backend and frontend integration.
@@ -140,53 +155,46 @@ export const myProjects = [
         id: 1,
         name: 'Node.js',
         path: '/assets/react.svg',
-        color: '#68A063', // Node.js green
       },
       {
         id: 2,
         name: 'Express',
         path: '',
-        color: '#000000', // Express black
       },
       {
         id: 3,
         name: 'Sequelize',
         path: '',
-        color: '#52B0E7', // Sequelize blue
       },
       {
         id: 4,
         name: 'PostgreSQL',
         path: '',
-        color: '#336791', // PostgreSQL blue
       },
       {
         id: 5,
         name: 'React.js',
         path: '',
-        color: '#61DAFB', // React blue
       },
       {
         id: 6,
         name: 'JavaScript',
         path: '',
-        color: '#F7DF1E', // JavaScript yellow
       },
       {
         id: 7,
         name: 'CSS',
         path: '',
-        color: '#264de4', // CSS blue
       },
     ],
   },
   {
     title: 'Current portfolio site',
     desc: 'Combining my love for 3D modeling, motion design and web development',
-    subdesc: 
-`<b>Focus:</b> Design and build this current portfolio site while learning Three.js, Tailwind frameworks, and Blender software for the first time.<br>
-<b>Result:</b> A clean, interactive site that highlights 3D elements and innovative design techniques.
-`,
+    subdesc:
+    `<b>Focus:</b> Design and build this current portfolio site while learning Three.js, Tailwind frameworks, and Blender software for the first time. <br>
+<b>Result:</b> A clean, interactive site that highlights 3D elements and innovative design techniques. 
+    `,
     liveLink: '',
     repoLink: 'https://github.com/elya-le/Elya.dev',
     texture: '/textures/project/project4.mp4',
@@ -203,46 +211,40 @@ export const myProjects = [
         id: 1,
         name: 'Node.js',
         path: '/assets/react.svg',
-        color: '#68A063', // Node.js green
       },
       {
         id: 2,
         name: 'Express',
         path: '',
-        color: '#000000', // Express black
       },
       {
         id: 3,
         name: 'Sequelize',
         path: '',
-        color: '#52B0E7', // Sequelize blue
       },
       {
         id: 4,
         name: 'PostgreSQL',
         path: '',
-        color: '#336791', // PostgreSQL blue
       },
       {
         id: 5,
         name: 'React.js',
         path: '',
-        color: '#61DAFB', // React blue
       },
       {
         id: 6,
         name: 'JavaScript',
         path: '',
-        color: '#F7DF1E', // JavaScript yellow
       },
       {
         id: 7,
         name: 'CSS',
         path: '',
-        color: '#264de4', // CSS blue
       },
     ],
   },
+
 ];
 
 

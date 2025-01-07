@@ -87,7 +87,7 @@ const Hero = ({ animationName }) => {
 // Component to manage camera movement with scroll
 const CameraZoom = ({ scrollProgress, cameraRef, basePosition }) => {
   const [baseX, baseY, baseZ] = basePosition;
-  const xEnd = 4, yEnd = -4, zEnd = 6, lookAt = [-0.5, 0, 0];
+  const xEnd = 4, yEnd = -6, zEnd = 6, lookAt = [-0.5, 0, 0];
 
   useFrame(() => {
     if (cameraRef.current) {
