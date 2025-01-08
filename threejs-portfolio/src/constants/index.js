@@ -34,41 +34,13 @@ export const myProjects = [
     previewImg1: '/assets/banter1.png',
     previewImg2: '/assets/banter2.png',
     tags: [
-      {
-        id: 1,
-        name: 'React.js',
-        color: '#61dafb', // React blue
-      },
-      {
-        id: 2,
-        name: 'Vite',
-        color: '#646cff', // Vite purple
-      },
-      {
-        id: 3,
-        name: 'Flask',
-        color: '#000000', // Flask black
-      },
-      {
-        id: 4,
-        name: 'PostgreSQL',
-        color: '#336791', // PostgreSQL blue
-      },
-      {
-        id: 5,
-        name: 'SQLAlchemy',
-        color: '#d73351', // SQLAlchemy red
-      },
-      {
-        id: 6,
-        name: 'Gunicorn',
-        color: '#499848', // Gunicorn green
-      },
-      {
-        id: 7,
-        name: 'Socket.io',
-        color: '#010101', // Socket.io black
-      },
+      { id: 1, name: 'React.js', color: '#61dafb', textColor: '#000000' }, // React.js
+      { id: 3, name: 'Flask', color: '#000000' }, // Flask
+      { id: 4, name: 'PostgreSQL', color: '#336791' }, // PostgreSQL
+      { id: 7, name: 'Socket.io', color: '#010101' }, // Socket.io
+      { id: 5, name: 'SQLAlchemy', color: '#d73351' }, // SQLAlchemy
+      { id: 2, name: 'Vite', color: '#646cff' }, // Vite
+      { id: 6, name: 'Gunicorn', color: '#499848' }, // Gunicorn
     ],
   },
   {
@@ -92,52 +64,23 @@ export const myProjects = [
     previewImg2: '/assets/getsy2.png',
     previewImg3: '/assets/getsy3.png',
     tags: [
-      {
-        id: 1,
-        name: 'React',
-        color: '#61dafb', // React blue
-      },
-      {
-        id: 2,
-        name: 'Vite',
-        color: '#646cff', // Vite purple
-      },
-      {
-        id: 3,
-        name: 'Flask',
-        color: '#000000', // Flask black
-      },
-      {
-        id: 4,
-        name: 'PostgreSQL',
-        color: '#336791', // PostgreSQL blue
-      },
-      {
-        id: 5,
-        name: 'SQLAlchemy',
-        color: '#d73351', // SQLAlchemy red
-      },
-      {
-        id: 6,
-        name: 'Gunicorn',
-        color: '#499848', // Gunicorn green
-      },
-      {
-        id: 7,
-        name: 'Boto3',
-        color: '#e48e00', // Boto3 yellow
-      },
+      { id: 1, name: 'React', color: '#61dafb', textColor: '#000000' }, // React
+      { id: 3, name: 'Flask', color: '#000000' }, // Flask
+      { id: 4, name: 'PostgreSQL', color: '#336791' }, // PostgreSQL
+      { id: 5, name: 'SQLAlchemy', color: '#d73351' }, // SQLAlchemy
+      { id: 6, name: 'Gunicorn', color: '#499848' }, // Gunicorn
+      { id: 7, name: 'Boto3', color: '#e48e00' }, // Boto3
+      { id: 2, name: 'Vite', color: '#646cff', textColor: '#000000' }, // Vite
     ],
   },
   {
     title: 'Social Event Platform',
     desc: 'Connecting dog owners through event discovery, event planning, and community organization',
-    subdesc:
-`<b>Focus:</b> Independently built my first full-stack social platform.
+    subdesc: 
+    `<b>Focus:</b> Independently built my first full-stack social platform.
 (Within a 4-week timeframe)<br>
 <b>Result:</b> A fully functional app that equips users in organizing and joining local meetups, showcasing my proficiency in backend and frontend integration.
-(2 feature CRUD)
-`,
+(2 feature CRUD)`,
     liveLink: 'https://meetpup-elya.onrender.com/',
     repoLink: 'https://github.com/elya-le/authme-elya',
     texture: '/textures/project/project3.mp4',
@@ -151,41 +94,13 @@ export const myProjects = [
     previewImg2: '/assets/meetpup2.png',
     previewImg3: '/assets/meetpup3.png',
     tags: [
-      {
-        id: 1,
-        name: 'Node.js',
-        path: '/assets/react.svg',
-      },
-      {
-        id: 2,
-        name: 'Express',
-        path: '',
-      },
-      {
-        id: 3,
-        name: 'Sequelize',
-        path: '',
-      },
-      {
-        id: 4,
-        name: 'PostgreSQL',
-        path: '',
-      },
-      {
-        id: 5,
-        name: 'React.js',
-        path: '',
-      },
-      {
-        id: 6,
-        name: 'JavaScript',
-        path: '',
-      },
-      {
-        id: 7,
-        name: 'CSS',
-        path: '',
-      },
+      { id: 1, name: 'Node.js', color: '#43853d' }, // Node.js green
+      { id: 2, name: 'Express', color: '#787878' }, // Express gray
+      { id: 3, name: 'PostgreSQL', color: '#336791' }, // PostgreSQL blue
+      { id: 4, name: 'Sequelize', color: '#02a8ef', textColor: '#000000' }, // Sequelize blue
+      { id: 5, name: 'React.js', color: '#61dafb', textColor: '#000000' }, // React.js
+      { id: 6, name: 'JavaScript', color: '#f7df1e', textColor: '#000000' }, // JavaScript yellow
+      { id: 7, name: 'CSS', color: '#2965f1', textColor: '#000000' }, // CSS blue
     ],
   },
   {
@@ -193,8 +108,7 @@ export const myProjects = [
     desc: 'Combining my love for 3D modeling, motion design and web development',
     subdesc:
     `<b>Focus:</b> Design and build this current portfolio site while learning Three.js, Tailwind frameworks, and Blender software for the first time. <br>
-<b>Result:</b> A clean, interactive site that highlights 3D elements and innovative design techniques. 
-    `,
+<b>Result:</b> A clean, interactive site that highlights 3D elements and innovative design techniques.`,
     liveLink: '',
     repoLink: 'https://github.com/elya-le/Elya.dev',
     texture: '/textures/project/project4.mp4',
@@ -207,46 +121,17 @@ export const myProjects = [
     previewImg1: '/assets/portfolio1.png',
     previewImg2: '/assets/portfolio2.png',
     tags: [
-      {
-        id: 1,
-        name: 'Node.js',
-        path: '/assets/react.svg',
-      },
-      {
-        id: 2,
-        name: 'Express',
-        path: '',
-      },
-      {
-        id: 3,
-        name: 'Sequelize',
-        path: '',
-      },
-      {
-        id: 4,
-        name: 'PostgreSQL',
-        path: '',
-      },
-      {
-        id: 5,
-        name: 'React.js',
-        path: '',
-      },
-      {
-        id: 6,
-        name: 'JavaScript',
-        path: '',
-      },
-      {
-        id: 7,
-        name: 'CSS',
-        path: '',
-      },
+      { id: 1, name: 'Three.js', color: '#000000' }, // Three.js for 3D modeling and animations
+      { id: 2, name: 'Blender', color: '#f5792a', textColor: '#000000' }, // Blender for creating 3D assets
+      { id: 3, name: 'Vite', color: '#646cff', textColor: '#000000' }, // Vite for the build tool
+      { id: 4, name: 'React.js', color: '#58C4DC', textColor: '#000000' }, // React.js (main framework for the UI)
+      { id: 5, name: 'JavaScript', color: '#f7df1e', textColor: '#000000' }, // JavaScript as the core language
+      { id: 6, name: 'Tailwind CSS', color: '#38BDF8', textColor: '#000000' }, // Tailwind for styling
+      { id: 7, name: 'HTML', color: '#e34c26' }, // HTML for structure
+      { id: 8, name: 'CSS', color: '#2965f1' }, // CSS for basic styling adjustments
     ],
   },
-
 ];
-
 
 
 

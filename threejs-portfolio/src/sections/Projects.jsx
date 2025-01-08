@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { myProjects } from "../constants/index.js";
+import { HiArrowTurnRightUp } from "react-icons/hi2";
 
 const Projects = () => {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0); // state for current project
@@ -19,7 +20,7 @@ const Projects = () => {
   // dynamically calculate dimensions based on screen size
   const getResponsiveDimensions = () => {
     if (screenWidth > 1024) {
-      return { height: "650px", width: "900px" }; // fullscreen
+      return { height: "700px", width: "900px" }; // fullscreen
     } else if (screenWidth > 768) {
       return { height: "600px", width: "800px" }; // tablet
     } else {
@@ -75,20 +76,21 @@ const Projects = () => {
       className="projects-section h-screen relative z-10 flex justify-center items-center"
       id="projects"
       style={{
-        backgroundColor: "#161616",
+        backgroundColor: "#1A1C21",
       }}
     >
       {/* project grid container */}
       <div
-        className="relative p-6 shadow-lg bg-black bg-opacity-80 flex flex-col"
+        className="relative p-6 shadow-lg bg-opacity-80 flex flex-col"
         style={{
+          backgroundColor: "#23272F",
           height: responsiveDimensions.height,
           width: responsiveDimensions.width,
         }}
       >
         {/* project title and description */}
         <div className="p-1 flex-1 w-full">
-          <p className="text-white text-lg lg:text-2xl font-bold">
+          <p className="text-white text-lg lg:text-2xl font-medium">
             {currentProject.title}
           </p>
           <p className="text-sm">{currentProject.desc}</p>
@@ -115,7 +117,6 @@ const Projects = () => {
                     height: `${responsiveImageSize.height}px`,
                     width: `${responsiveImageSize.width}px`,
                     opacity: 1, // highlight current image
-                    // opacity: index === currentImageIndex ? 1 : 0.7, // highlight current image
                   }}
                   onClick={() =>
                     handleImageClick(
@@ -126,7 +127,6 @@ const Projects = () => {
                   <img
                     src={currentProject[key]}
                     alt={`${currentProject.title} screenshot ${index + 1}`}
-                    className="shadow-lg"
                     style={{
                       height: "100%",
                       width: "100%",
@@ -137,46 +137,51 @@ const Projects = () => {
               ))}
           </div>
 
-          <div
-            className="subdesc mt-6"
-            dangerouslySetInnerHTML={{ __html: currentProject.subdesc }}
-          ></div>
-
-          {/* add live link and github repo */}
+          {/* live link and github repo */}
           <div className="links mt-4">
-            <div className="tags mt-4 flex flex-wrap gap-2">
-              {currentProject.tags.map((tag) => (
-                <span
-                  key={tag.id}
-                  className="px-3 py-1 text-sm font-medium rounded-full text-white"
-                  style={{
-                    backgroundColor: tag.color, // use the color property dynamically
-                  }}
-                >
-                  {tag.name}
-                </span>
-              ))}
-            </div>
+            {/* {currentProject.repoLink && (
+              <a
+                href={currentProject.repoLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white underline"
+                style={{ marginRight: "16px" }}
+              >
+                Github Repo
+              </a>
+            )} */}
             {currentProject.liveLink && (
               <a
                 href={currentProject.liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-500 underline mr-4"
+                className="text-white mr-4 flex items-center"
               >
-                live link
+                Live Link <HiArrowTurnRightUp className="ml-1" />
               </a>
             )}
-            {currentProject.repoLink && (
-              <a
-                href={currentProject.repoLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 underline"
+          </div>
+
+          {/* sub-description */}
+          <div
+            className="subdesc mt-6"
+            dangerouslySetInnerHTML={{ __html: currentProject.subdesc }}
+          ></div>
+
+          {/* add tags */}
+          <div className="tags mt-4 flex flex-wrap gap-2">
+            {currentProject.tags.map((tag) => (
+              <span
+                key={tag.id}
+                className="px-3 py-1 text-sm font-medium rounded-full text-white"
+                style={{
+                  backgroundColor: tag.color, // use the color property dynamically
+                  color: tag.textColor || '#ffffff',
+                }}
               >
-                github repo
-              </a>
-            )}
+                {tag.name}
+              </span>
+            ))}
           </div>
         </div>
 
