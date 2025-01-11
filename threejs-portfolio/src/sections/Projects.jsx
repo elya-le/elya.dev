@@ -93,7 +93,7 @@ const Projects = () => {
     >
       {/* project grid container */}
       <div
-        className="relative p-6 shadow-lg bg-opacity-80 flex flex-col"
+        className="relative p-4 shadow-lg bg-opacity-80 flex flex-col"
         style={{
           backgroundColor: "#23272F",
           height: responsiveDimensions.height,
