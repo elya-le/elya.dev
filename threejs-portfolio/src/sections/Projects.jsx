@@ -84,7 +84,7 @@ const Projects = () => {
 
   return (
     <section
-      className="projects-section h-screen relative z-10 flex justify-center items-center px-4 py-4"
+      className="projects-section h-screen relative z-10 flex justify-center items-center px-4 py-2"
       id="projects"
       style={{
         backgroundColor: "#1A1C21",
@@ -93,7 +93,7 @@ const Projects = () => {
     >
       {/* project grid container */}
       <div
-        className="relative p-4 shadow-lg bg-opacity-80 flex flex-col"
+        className="relative p-3 shadow-lg bg-opacity-80 flex flex-col"
         style={{
           backgroundColor: "#23272F",
           height: responsiveDimensions.height,
@@ -177,7 +177,6 @@ const Projects = () => {
             dangerouslySetInnerHTML={{ __html: currentProject.subdesc }}
             style={{
               height: subdescHeight,
-              overflow: "hidden", // ensure content stays within the height
               border: "1px solid white",
             }}
           ></div>
