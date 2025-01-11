@@ -18,10 +18,8 @@ export const myProjects = [
     title: 'Communication App',
     desc: 'Online community space with real-time messaging, custom servers and channels',
     subdesc: 
-    `<b>Focus:</b> Learning and implementing real-time communication with web sockets.
-(Within a 2-week timeframe)<br>
-<b>Result:</b> Delivered a precise, high-quality web app while expanding my technical skills, pace and proficiency in real-time communication systems.
-(3 feature CRUD)`,
+    `<b>Focus:</b> Learning and implementing real-time communication with web sockets. (2-week timeframe)<br>
+<b>Result:</b> Delivered a precise, high-quality web app while expanding my technical skills, pace and proficiency in real-time communication systems. (3 feature CRUD)`,
     liveLink: 'https://elya-le-banter.onrender.com',
     repoLink: 'https://github.com/elya-le/Banter/',
     texture: '/textures/project/project1.mp4',
@@ -46,10 +44,8 @@ export const myProjects = [
   {
     title: 'E-commerce Marketplace',
     desc: 'Buy and sell online platform for unique, handmade, and vintage items',
-    subdesc: `<b>Focus:</b> Collaboration with four team members developing a web app - hands on experience with asynchronous development through version control and feature integration.
-(Within a 2 week timeframe)<br>
-<b>Result:</b> Delivered a rudimentary web app using agile workflows and pull requests to ensure team cohesion, maintain consistency, and efficiently resolve code merge conflicts.
-(4 feature CRUD)
+    subdesc: `<b>Focus:</b> Collaborating in a team of four, gaining experience in asynchronous development, version control, and feature integration. (2-week timeframe)<br>
+<b>Result:</b> Delivered a React web app using agile workflows and pull requests to ensure cohesion and resolve conflicts.(4 feature CRUD)
 `,
     liveLink: 'https://etsyclone-4ah1.onrender.com/',
     repoLink: 'https://github.com/TomArbaugh/Ets-E-Commerce/',
@@ -77,10 +73,8 @@ export const myProjects = [
     title: 'Social Event Platform',
     desc: 'Connecting dog owners through event discovery, event planning, and community organization',
     subdesc: 
-    `<b>Focus:</b> Independently built my first full-stack social platform.
-(Within a 4-week timeframe)<br>
-<b>Result:</b> A fully functional app that equips users in organizing and joining local meetups, showcasing my proficiency in backend and frontend integration.
-(2 feature CRUD)`,
+    `<b>Focus:</b> Independently built my first full-stack social platform. (4-week timeframe)<br>
+<b>Result:</b> A fully functional app that equips users in organizing and joining local meetups, showcasing my proficiency in backend and frontend integration. (2 feature CRUD)`,
     liveLink: 'https://meetpup-elya.onrender.com/',
     repoLink: 'https://github.com/elya-le/authme-elya',
     texture: '/textures/project/project3.mp4',

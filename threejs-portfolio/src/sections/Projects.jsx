@@ -38,10 +38,21 @@ const Projects = () => {
     }
   };
 
+  const getSubdescHeight = () => {
+    if (screenWidth > 1024) {
+      return "125px"; // height for desktop
+    } else if (screenWidth > 768) {
+      return "105px"; // height for tablet
+    } else {
+      return "150px"; // height for mobile
+    }
+  };
+
   const responsiveDimensions = getResponsiveDimensions();
   const responsiveImageSize = getResponsiveImageSize();
+  const subdescHeight = getSubdescHeight(); // get height dynamically
 
-  // Click on an image to navigate to the next image
+  // click on an image to navigate to the next image
   const handleImageClick = (direction) => {
     const totalImages = Object.keys(currentProject).filter((key) =>
       key.startsWith("previewImg")
@@ -77,6 +88,7 @@ const Projects = () => {
       id="projects"
       style={{
         backgroundColor: "#1A1C21",
+        padding: "16px", // adjust padding for testing
       }}
     >
       {/* project grid container */}
@@ -116,13 +128,12 @@ const Projects = () => {
                     marginRight: "16px", // spacing between images
                     height: `${responsiveImageSize.height}px`,
                     width: `${responsiveImageSize.width}px`,
-                    opacity: 1, // highlight current image
                   }}
                   onClick={() =>
                     handleImageClick(
                       index === currentImageIndex ? "next" : "previous"
                     )
-                  } // click moves to the next/previous image
+                  }
                 >
                   <img
                     src={currentProject[key]}
@@ -139,18 +150,16 @@ const Projects = () => {
 
           {/* live link and github repo */}
           <div className="links mt-4">
-            {/* {currentProject.repoLink && (
+            {currentProject.repoLink && currentProject.title === "Current portfolio site" ? (
               <a
                 href={currentProject.repoLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white underline"
-                style={{ marginRight: "16px" }}
+                className="text-white mr-4 inline-flex items-center border border-white rounded-full px-4 py-2 transition-colors hover:bg-white hover:text-black"
               >
-                Github Repo
+                Github <HiArrowTurnRightUp className="ml-1" />
               </a>
-            )} */}
-            {currentProject.liveLink && (
+            ) : currentProject.liveLink ? (
               <a
                 href={currentProject.liveLink}
                 target="_blank"
@@ -159,13 +168,18 @@ const Projects = () => {
               >
                 Live Link <HiArrowTurnRightUp className="ml-1" />
               </a>
-            )}
+            ) : null}
           </div>
 
           {/* sub-description */}
           <div
             className="subdesc mt-6"
             dangerouslySetInnerHTML={{ __html: currentProject.subdesc }}
+            style={{
+              height: subdescHeight,
+              overflow: "hidden", // ensure content stays within the height
+              border: "1px solid white",
+            }}
           ></div>
 
           {/* add tags */}
@@ -175,8 +189,8 @@ const Projects = () => {
                 key={tag.id}
                 className="px-3 py-1 text-sm font-medium rounded-full text-white"
                 style={{
-                  backgroundColor: tag.color, // use the color property dynamically
-                  color: tag.textColor || '#ffffff',
+                  backgroundColor: tag.color,
+                  color: tag.textColor || "#ffffff",
                 }}
               >
                 {tag.name}

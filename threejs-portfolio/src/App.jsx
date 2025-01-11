@@ -3,7 +3,7 @@ import Navbar from "./sections/Navbar.jsx";
 import Hero from "./sections/Hero";
 import Projects from "./sections/Projects";
 import About from "./sections/About";
-import Contact from "./sections/Contact";
+import Footer from "./sections/Footer.jsx";
 
 const App = () => {
   const [animationName, setAnimationName] = useState("Slow"); // manage animation state
@@ -20,7 +20,7 @@ const App = () => {
       <Hero animationName={animationName} />
       <About />
       <Projects />
-      <Contact />
+      <Footer />
     </>
   );
 };
