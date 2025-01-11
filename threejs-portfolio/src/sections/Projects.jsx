@@ -84,11 +84,11 @@ const Projects = () => {
 
   return (
     <section
-      className="projects-section h-screen relative z-10 flex justify-center items-center"
+      className="projects-section h-screen relative z-10 flex justify-center items-center px-4 py-4"
       id="projects"
       style={{
         backgroundColor: "#1A1C21",
-        padding: "16px", // adjust padding for testing
+        // padding: "16px", // adjust padding for testing
       }}
     >
       {/* project grid container */}
