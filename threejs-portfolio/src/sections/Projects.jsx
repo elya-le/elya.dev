@@ -82,21 +82,19 @@ const Projects = () => {
     setCurrentImageIndex(0); // reset the internal image index when changing projects
   };
 
-  // // added: handle warning for mobile view when clicking "Live Link"
-  // const handleLiveLinkClick = (e, link) => {
-  //   if (screenWidth <= 768) {
-  //     // mobile screen threshold
-  //     e.preventDefault(); // prevent default navigation
-  //     const userConfirmed = window.confirm(
-  //       "This project is best viewed on a desktop. Mobile experience may be limited. Proceed anyway?"
-  //     );
-  //     if (userConfirmed) {
-  //       window.open(link, "_blank"); // open the link if confirmed
-  //     }
-  //   }
-  // };
-
-
+  // added: handle warning for mobile view when clicking "Live Link"
+  const handleLiveLinkClick = (e, link) => {
+    if (screenWidth <= 768) {
+      // mobile screen threshold
+      e.preventDefault(); // prevent default navigation
+      const userConfirmed = window.confirm(
+        "This project is best viewed on a desktop. Mobile experience may be limited. Proceed anyway?"
+      );
+      if (userConfirmed) {
+        window.open(link, "_blank"); // open the link if confirmed
+      }
+    }
+  };
 
   return (
     <section
@@ -104,7 +102,6 @@ const Projects = () => {
       id="projects"
       style={{
         backgroundColor: "#1A1C21",
-        // padding: "16px", // adjust padding for testing
       }}
     >
       {/* project grid container */}
@@ -142,14 +139,9 @@ const Projects = () => {
                     display: "inline-block", // display images inline
                     verticalAlign: "top",
                     marginRight: "16px", // spacing between images
-                    height: `${responsiveImageSize.height}px`,
-                    width: `${responsiveImageSize.width}px`,
+                    height: "180px", // example height for images
+                    width: "280px", // example width for images
                   }}
-                  onClick={() =>
-                    handleImageClick(
-                      index === currentImageIndex ? "next" : "previous"
-                    )
-                  }
                 >
                   <img
                     src={currentProject[key]}
