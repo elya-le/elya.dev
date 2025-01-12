@@ -13,11 +13,11 @@ const About = () => {
   // dynamically calculate dimensions based on screen size
   const getResponsiveDimensions = () => {
     if (screenWidth > 1024) {
-      return { height: "450px", width: "100%" }; // fullscreen
+      return { height: "250px", width: "100%" }; // fullscreen
     } else if (screenWidth > 768) {
-      return { height: "450px", width: "800px" }; // tablet
+      return { height: "250px", width: "800px" }; // tablet
     } else {
-      return { height: "700px", width: "99%" }; // mobile
+      return { height: "400px", width: "99%" }; // mobile
     }
   };
 

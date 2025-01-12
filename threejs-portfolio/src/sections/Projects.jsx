@@ -16,35 +16,35 @@ const Projects = () => {
     return () => window.removeEventListener("resize", handleResize); // clean up event listener
   }, []);
 
-   // dynamically calculate padding based on screen size
-  const getResponsivePadding = () => {
-    if (screenWidth > 1024) {
-      return "40px"; // larger padding for desktop
-    } else if (screenWidth > 768) {
-      return "20px"; // medium padding for tablets
-    } else {
-      return "10px"; // smaller padding for mobile
-    }
-  };
+  //  // dynamically calculate padding based on screen size
+  // const getResponsivePadding = () => {
+  //   if (screenWidth > 1024) {
+  //     return "40px"; // larger padding for desktop
+  //   } else if (screenWidth > 768) {
+  //     return "20px"; // medium padding for tablets
+  //   } else {
+  //     return "10px"; // smaller padding for mobile
+  //   }
+  // };
 
-  const padding = getResponsivePadding(); // calculate the padding
+  // const padding = getResponsivePadding(); // calculate the padding
 
   // dynamically calculate dimensions based on screen size
   const getResponsiveDimensions = () => {
     if (screenWidth > 1024) {
-      return { height: "700px", width: "900px" }; // fullscreen
+      return { height: "730px", width: "900px" }; // fullscreen
     } else if (screenWidth > 768) {
-      return { height: "600px", width: "800px" }; // tablet
+      return { height: "740px", width: "800px" }; // tablet
     } else {
-      return { height: "730px", width: "99%" }; // mobile
+      return { height: "690px", width: "99%" }; // mobile
     }
   };
 
   const getResponsiveImageSize = () => {
     if (screenWidth > 1024) {
-      return { height: 250, width: 400 }; // fullscreen
+      return { height: 350, width: 600 }; // fullscreen
     } else if (screenWidth > 768) {
-      return { height: 200, width: 300 }; // tablet
+      return { height: 350, width: 600 }; // tablet
     } else {
       return { height: 180, width: 280 }; // mobile
     }
@@ -52,9 +52,9 @@ const Projects = () => {
 
   const getSubdescHeight = () => {
     if (screenWidth > 1024) {
-      return "125px"; // height for desktop
+      return "105px"; // height for desktop
     } else if (screenWidth > 768) {
-      return "105px"; // height for tablet
+      return "120px"; // height for tablet
     } else {
       return "195px"; // height for mobile
     }
@@ -118,7 +118,7 @@ const Projects = () => {
     >
       {/* project grid container */}
       <div
-      className="relative border shadow-lg bg-opacity-80 flex flex-col bg-[#23272F] h-[responsiveDimensions.height] w-[responsiveDimensions.width] p-2 lg:p-5 md:p-4 sm:p-2"
+      className="relative shadow-lg bg-opacity-80 flex flex-col bg-[#23272F] h-[responsiveDimensions.height] w-[responsiveDimensions.width] p-2 lg:p-5 md:p-4 sm:p-2"
         // className="relative border p-5 shadow-lg bg-opacity-80 flex flex-col"
         style={{
           backgroundColor: "#23272F",
@@ -152,8 +152,10 @@ const Projects = () => {
                     display: "inline-block", // display images inline
                     verticalAlign: "top",
                     marginRight: "16px", // spacing between images
-                    height: "180px", // example height for images
-                    width: "280px", // example width for images
+                    height: `${responsiveImageSize.height}px`, // dynamically apply height
+                    width: `${responsiveImageSize.width}px`, // dynamically apply width
+                    // height: "180px", // example height for images
+                    // width: "280px", // example width for images
                   }}
                 >
                   <img
@@ -199,16 +201,15 @@ const Projects = () => {
 
           {/* sub-description */}
           <div
-            className="subdesc mt-4"
+            className="subdesc border mt-4"
             dangerouslySetInnerHTML={{ __html: currentProject.subdesc }}
             style={{
               height: subdescHeight,
-              border: "1px solid white",
             }}
           ></div>
 
           {/* add tags */}
-          <div className="tags border mt-4 flex flex-wrap gap-2">
+          <div className="tags mt-4 flex flex-wrap gap-2">
             {currentProject.tags.map((tag) => (
               <span
                 key={tag.id}
@@ -225,7 +226,7 @@ const Projects = () => {
         </div>
 
         {/* navigation buttons for projects */}
-        <div className="flex border justify-between items-center mt-4 w-full">
+        <div className="flex justify-between items-center mt-4 w-full">
           <button
             className="arrow-btn p-2 rounded-full"
             onClick={() => handleNavigation("previous")}

@@ -59,7 +59,7 @@ export const myProjects = [
     previewImg2: '/assets/getsy2.png',
     previewImg3: '/assets/getsy3.png',
     tags: [
-      { id: 1, name: 'React', color: '#61dafb', textColor: '#000000' }, // React - highly impressive, widely used frontend framework
+      { id: 1, name: 'React.js', color: '#61dafb', textColor: '#000000' }, // React - highly impressive, widely used frontend framework
       { id: 2, name: 'Python', color: '#306998', textColor: '#ffffff' }, // Python - versatile, backend and data-oriented
       { id: 3, name: 'Redux', color: '#764ABC', textColor: '#ffffff' }, // Redux - advanced state management, pairs well with React
       { id: 4, name: 'JavaScript', color: '#F7DF1E', textColor: '#000000' }, // JavaScript - core web technology
