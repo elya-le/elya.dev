@@ -65,23 +65,18 @@ const Projects = () => {
   const subdescHeight = getSubdescHeight(); // get height dynamically
 
   // click on an image to navigate to the next image
-  const handleImageClick = (direction) => {
+  const handleImageClick = (index) => {
     const totalImages = Object.keys(currentProject).filter((key) =>
       key.startsWith("previewImg")
     ).length; // count total images
-
-    setCurrentImageIndex((prevIndex) => {
-      let newIndex;
-      if (direction === "next") {
-        newIndex = (prevIndex + 1) % totalImages; // move to the next image, loop back if at the last image
-      } else if (direction === "previous") {
-        newIndex = (prevIndex - 1 + totalImages) % totalImages; // move to the previous image, loop back if at the first image
-      }
-      const scrollPosition = newIndex * (responsiveImageSize.width + 16); // calculate scroll offset
-      carouselRef.current.scrollTo({ left: scrollPosition, behavior: "smooth" }); // smooth scroll
-      return newIndex;
-    });
+  
+    const newIndex = (index + 1) % totalImages; // calculate the next index
+    const scrollPosition = newIndex * (responsiveImageSize.width * 1.25); // scroll offset for full image and 1/4 of the next
+  
+    setCurrentImageIndex(newIndex); // update state
+    carouselRef.current.scrollTo({ left: scrollPosition, behavior: "smooth" }); // smooth scroll to the new position
   };
+  
 
   const handleNavigation = (direction) => {
     setSelectedProjectIndex((prevIndex) => {
@@ -154,9 +149,8 @@ const Projects = () => {
                     marginRight: "16px", // spacing between images
                     height: `${responsiveImageSize.height}px`, // dynamically apply height
                     width: `${responsiveImageSize.width}px`, // dynamically apply width
-                    // height: "180px", // example height for images
-                    // width: "280px", // example width for images
                   }}
+                  onClick={() => handleImageClick(index)} // handle click to scroll
                 >
                   <img
                     src={currentProject[key]}
