@@ -64,20 +64,25 @@ const Projects = () => {
   const responsiveImageSize = getResponsiveImageSize();
   const subdescHeight = getSubdescHeight(); // get height dynamically
 
-  // click on an image to navigate to the next image
-  const handleImageClick = (index, isSliver) => {
+  // click on an image to navigate and make it 100% visible
+  const handleImageClick = (index) => {
     const totalImages = Object.keys(currentProject).filter((key) =>
       key.startsWith("previewImg")
-    ).length;
-  
-    const newIndex = isSliver
-      ? (index + 1) % totalImages // move forward when sliver is clicked
-      : (index - 1 + totalImages) % totalImages; // move back when the full image is clicked
-  
-    const scrollPosition = newIndex * (responsiveImageSize.width * 1.05);
-    setCurrentImageIndex(newIndex);
-    carouselRef.current.scrollTo({ left: scrollPosition, behavior: "smooth" });
+    ).length; 
+
+    // Ensure index is within bounds
+    const newIndex = index % totalImages; 
+
+    // Calculate scroll position to make the clicked image fully visible
+    const scrollPosition = newIndex * (responsiveImageSize.width * 1.05); // Adjust multiplier as needed for spacing/margins
+    setCurrentImageIndex(newIndex); // Update the active image index  
+
+    // Smoothly scroll the carousel to the new position
+    if (carouselRef.current) {
+      carouselRef.current.scrollTo({ left: scrollPosition, behavior: "smooth" });
+    }
   };
+
 
   const handleNavigation = (direction) => {
     setSelectedProjectIndex((prevIndex) => {
