@@ -238,7 +238,7 @@ const Projects = () => {
         </div>
 
         {/* navigation buttons for projects */}
-        <div className="flex justify-between items-center mt-4 px-1 w-full">
+        <div className="flex justify-between items-center mt-4 px-1 pb-2 sm:pb-1 w-full">
           <button
             className="text-xs arrow-btn w-8 h-8 flex items-center justify-center rounded-full border border-white hover:border-gray-400 transition-colors"
             onClick={() => handleNavigation("previous")}
