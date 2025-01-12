@@ -82,6 +82,22 @@ const Projects = () => {
     setCurrentImageIndex(0); // reset the internal image index when changing projects
   };
 
+  // // added: handle warning for mobile view when clicking "Live Link"
+  // const handleLiveLinkClick = (e, link) => {
+  //   if (screenWidth <= 768) {
+  //     // mobile screen threshold
+  //     e.preventDefault(); // prevent default navigation
+  //     const userConfirmed = window.confirm(
+  //       "This project is best viewed on a desktop. Mobile experience may be limited. Proceed anyway?"
+  //     );
+  //     if (userConfirmed) {
+  //       window.open(link, "_blank"); // open the link if confirmed
+  //     }
+  //   }
+  // };
+
+
+
   return (
     <section
       className="projects-section relative z-10 flex justify-center items-center px-4 py-2"
@@ -93,7 +109,7 @@ const Projects = () => {
     >
       {/* project grid container */}
       <div
-        className="relative p-3 shadow-lg bg-opacity-80 flex flex-col"
+        className="relative p-5 shadow-lg bg-opacity-80 flex flex-col"
         style={{
           backgroundColor: "#23272F",
           height: responsiveDimensions.height,
@@ -163,17 +179,18 @@ const Projects = () => {
               <>
                 <a
                   href={currentProject.liveLink}
+                  onClick={(e) =>
+                    handleLiveLinkClick(e, currentProject.liveLink)
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white text-sm mr-4 inline-flex items-center border border-white rounded-full px-3.5 py-1.5 transition-colors hover:bg-white hover:text-black bg-[#343944]"
                 >
                   Live Link <HiArrowTurnRightUp className="ml-1" />
                 </a>
-                <span className="text-sm mt-2">(Optimized for desktop viewing)</span>
               </>
             ) : null}
           </div>
-
 
           {/* sub-description */}
           <div

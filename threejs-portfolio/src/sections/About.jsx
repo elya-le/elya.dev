@@ -40,7 +40,7 @@ const About = () => {
       >
         {/* First Container */}
         <div
-          className="flex-1 p-4"
+          className="flex-1 p-5"
           style={{
             backgroundColor: "#23272F", // specific background color for the container
           }}
@@ -52,7 +52,7 @@ const About = () => {
 
         {/* Second Container */}
         <div
-          className="flex-1 p-4"
+          className="flex-1 p-5"
           style={{
             backgroundColor: "#23272F", // specific background color for the container
           }}
