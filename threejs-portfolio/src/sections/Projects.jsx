@@ -65,17 +65,25 @@ const Projects = () => {
   const subdescHeight = getSubdescHeight(); // get height dynamically
 
   // click on an image to navigate and toggle visibility
-const handleImageClick = (index) => {
+  const handleImageClick = (index) => {
   const totalImages = Object.keys(currentProject).filter((key) =>
     key.startsWith("previewImg")
   ).length;
 
-  // If the currently fully visible image is clicked again, go back to the previous image
   if (index === currentImageIndex) {
-    const prevIndex = (index - 1 + totalImages) % totalImages; // Wrap around if necessary
-    const scrollPosition = prevIndex * (responsiveImageSize.width * 1.05);
-    setCurrentImageIndex(prevIndex);
-    carouselRef.current.scrollTo({ left: scrollPosition, behavior: "smooth" });
+    // Special case: if the first image is clicked again, scroll to the second image
+    if (index === 0) {
+      const nextIndex = (index + 1) % totalImages; // Move to the second image
+      const scrollPosition = nextIndex * (responsiveImageSize.width * 1.05);
+      setCurrentImageIndex(nextIndex);
+      carouselRef.current.scrollTo({ left: scrollPosition, behavior: "smooth" });
+    } else {
+      // Otherwise, go back to the previous image
+      const prevIndex = (index - 1 + totalImages) % totalImages; // Wrap around if necessary
+      const scrollPosition = prevIndex * (responsiveImageSize.width * 1.05);
+      setCurrentImageIndex(prevIndex);
+      carouselRef.current.scrollTo({ left: scrollPosition, behavior: "smooth" });
+    }
   } else {
     // Otherwise, scroll to make the clicked image fully visible
     const newIndex = index % totalImages;
