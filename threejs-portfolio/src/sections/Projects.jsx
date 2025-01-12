@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { myProjects } from "../constants/index.js";
 import { HiArrowTurnRightUp } from "react-icons/hi2";
+import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 
 const Projects = () => {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0); // state for current project
@@ -237,18 +238,18 @@ const Projects = () => {
         </div>
 
         {/* navigation buttons for projects */}
-        <div className="flex justify-between items-center mt-4 w-full">
+        <div className="flex justify-between items-center mt-4 px-1 w-full">
           <button
-            className="arrow-btn p-2 rounded-full"
+            className="text-xs arrow-btn w-8 h-8 flex items-center justify-center rounded-full border border-white hover:border-gray-400 transition-colors"
             onClick={() => handleNavigation("previous")}
           >
-            &lt;
+            <SlArrowLeft />
           </button>
           <button
-            className="arrow-btn p-2 rounded-full"
+            className="text-xs arrow-btn w-8 h-8 flex items-center justify-center rounded-full border border-white hover:border-gray-400 transition-colors"
             onClick={() => handleNavigation("next")}
           >
-            &gt;
+            <SlArrowRight />
           </button>
         </div>
       </div>
