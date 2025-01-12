@@ -190,7 +190,7 @@ const Projects = () => {
                 href={currentProject.repoLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white text-sm mr-4 inline-flex items-center border border-white rounded-full px-3.5 py-1.5 transition-colors hover:bg-white hover:text-black bg-[#343944]"
+                className="text-white text-sm mr-4 inline-flex items-center border border-white rounded-full px-3.5 py-1.5 transition-colors hover:bg-[#464d5c] bg-[#343944]"
               >
                 Github <HiArrowTurnRightUp className="ml-1" />
               </a>
@@ -203,7 +203,7 @@ const Projects = () => {
                   }
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white text-sm mr-4 inline-flex items-center border border-white rounded-full px-3.5 py-1.5 transition-colors hover:bg-white hover:text-black bg-[#343944]"
+                  className="text-white text-sm mr-4 inline-flex items-center border border-white rounded-full px-3.5 py-1.5 transition-colors hover:bg-[#464d5c] bg-[#343944]"
                 >
                   Live Link <HiArrowTurnRightUp className="ml-1" />
                 </a>
@@ -240,16 +240,16 @@ const Projects = () => {
         {/* navigation buttons for projects */}
         <div className="flex justify-between items-center mt-4 px-1 pb-2 sm:pb-1 w-full">
           <button
-            className="text-xs arrow-btn w-8 h-8 flex items-center justify-center rounded-full border border-white hover:border-gray-400 transition-colors"
+            className="text-xs arrow-btn w-8 h-8 flex items-center justify-center rounded-full border border-white hover:border-gray-400 transition-colors hover:bg-[#464d5c] bg-[#343944]"
             onClick={() => handleNavigation("previous")}
           >
-            <SlArrowLeft />
+            <SlArrowLeft className="text-white hover:border-gray-400 transition-colors" />
           </button>
           <button
-            className="text-xs arrow-btn w-8 h-8 flex items-center justify-center rounded-full border border-white hover:border-gray-400 transition-colors"
+            className="text-xs arrow-btn w-8 h-8 flex items-center justify-center rounded-full border border-white hover:border-gray-400 transition-colors hover:bg-[#464d5c] bg-[#343944]"
             onClick={() => handleNavigation("next")}
           >
-            <SlArrowRight />
+            <SlArrowRight className="mr-.4 hover:border-gray-400" /> 
           </button>
         </div>
       </div>
