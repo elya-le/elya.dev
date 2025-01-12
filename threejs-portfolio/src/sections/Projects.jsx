@@ -84,7 +84,7 @@ const Projects = () => {
 
   return (
     <section
-      className="projects-section h-screen relative z-10 flex justify-center items-center px-4 py-2"
+      className="projects-section relative z-10 flex justify-center items-center px-4 py-2"
       id="projects"
       style={{
         backgroundColor: "#1A1C21",
