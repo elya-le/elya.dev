@@ -64,24 +64,27 @@ const Projects = () => {
   const responsiveImageSize = getResponsiveImageSize();
   const subdescHeight = getSubdescHeight(); // get height dynamically
 
-  // click on an image to navigate and make it 100% visible
-  const handleImageClick = (index) => {
-    const totalImages = Object.keys(currentProject).filter((key) =>
-      key.startsWith("previewImg")
-    ).length; 
+  // click on an image to navigate and toggle visibility
+const handleImageClick = (index) => {
+  const totalImages = Object.keys(currentProject).filter((key) =>
+    key.startsWith("previewImg")
+  ).length;
 
-    // Ensure index is within bounds
-    const newIndex = index % totalImages; 
+  // If the currently fully visible image is clicked again, go back to the previous image
+  if (index === currentImageIndex) {
+    const prevIndex = (index - 1 + totalImages) % totalImages; // Wrap around if necessary
+    const scrollPosition = prevIndex * (responsiveImageSize.width * 1.05);
+    setCurrentImageIndex(prevIndex);
+    carouselRef.current.scrollTo({ left: scrollPosition, behavior: "smooth" });
+  } else {
+    // Otherwise, scroll to make the clicked image fully visible
+    const newIndex = index % totalImages;
+    const scrollPosition = newIndex * (responsiveImageSize.width * 1.05);
+    setCurrentImageIndex(newIndex);
+    carouselRef.current.scrollTo({ left: scrollPosition, behavior: "smooth" });
+  }
+};
 
-    // Calculate scroll position to make the clicked image fully visible
-    const scrollPosition = newIndex * (responsiveImageSize.width * 1.05); // Adjust multiplier as needed for spacing/margins
-    setCurrentImageIndex(newIndex); // Update the active image index  
-
-    // Smoothly scroll the carousel to the new position
-    if (carouselRef.current) {
-      carouselRef.current.scrollTo({ left: scrollPosition, behavior: "smooth" });
-    }
-  };
 
 
   const handleNavigation = (direction) => {
@@ -156,7 +159,7 @@ const Projects = () => {
                     height: `${responsiveImageSize.height}px`, // dynamically apply height
                     width: `${responsiveImageSize.width}px`, // dynamically apply width
                   }}
-                  onClick={() => handleImageClick(index)} // handle click to scroll
+                  onClick={() => handleImageClick(index)} // attach click handler
                 >
                   <img
                     src={currentProject[key]}
