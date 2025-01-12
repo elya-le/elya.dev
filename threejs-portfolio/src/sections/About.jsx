@@ -60,7 +60,7 @@ const About = () => {
           <p className="text-lg">
             Full-Stack Developer with a background in UI/UX, motion design, and
             3D art. <br /> <br />
-            Driven by my beliefs in autonomy, equity, and empowerment, I strive to build technology that fosters inclusion and uplifts communities with every new skill I develop.
+            With every new skill I develop and driven by my beliefs in autonomy, equity, and empowerment, I strive to build technology that fosters inclusion and uplifts communities. 
           </p>
         </div>
       </div>

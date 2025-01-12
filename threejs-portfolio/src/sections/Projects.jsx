@@ -53,7 +53,7 @@ const Projects = () => {
 
   const getSubdescHeight = () => {
     if (screenWidth > 1024) {
-      return "105px"; // height for desktop
+      return "115px"; // height for desktop
     } else if (screenWidth > 768) {
       return "120px"; // height for tablet
     } else {
@@ -240,16 +240,18 @@ const Projects = () => {
         {/* navigation buttons for projects */}
         <div className="flex justify-between items-center mt-4 px-1 pb-2 sm:pb-1 w-full">
           <button
-            className="text-xs arrow-btn w-8 h-8 flex items-center justify-center rounded-full border border-white hover:border-gray-400 transition-colors hover:bg-[#464d5c] bg-[#343944]"
+            className="text-sm flex items-center gap-2 px-4 py-2 border border-white hover:border-gray-400 transition-colors hover:bg-[#464d5c] bg-[#343944] text-white"
             onClick={() => handleNavigation("previous")}
           >
-            <SlArrowLeft className="text-white hover:border-gray-400 transition-colors" />
+            <SlArrowLeft className="text-white transition-colors" />
+            Previous Project
           </button>
           <button
-            className="text-xs arrow-btn w-8 h-8 flex items-center justify-center rounded-full border border-white hover:border-gray-400 transition-colors hover:bg-[#464d5c] bg-[#343944]"
+            className="text-sm flex items-center gap-2 px-4 py-2 border border-white hover:border-gray-400 transition-colors hover:bg-[#464d5c] bg-[#343944] text-white"
             onClick={() => handleNavigation("next")}
           >
-            <SlArrowRight className="mr-.4 hover:border-gray-400" /> 
+            Next Project
+            <SlArrowRight className="text-white transition-colors" />
           </button>
         </div>
       </div>

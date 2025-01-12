@@ -18,8 +18,8 @@ export const myProjects = [
     title: 'Communication App',
     desc: 'Online community space with real-time messaging, custom servers and channels',
     subdesc: 
-    `<span class="font-semibold">Focus:</span> Learning and implementing real-time communication with web sockets. (2-week timeframe)<br>
-<span class="font-semibold">Result:</span> Delivered a precise, high-quality web app while expanding my technical skills, pace and proficiency in real-time communication systems. (3 feature CRUD)`,
+    `<span class="font-semibold">Focus:</span> Learning and implementing real-time communication with web sockets. (2-week build deadline)<br>
+<span class="font-semibold">Result:</span> Delivered a precise, high-quality web app while expanding my technical skills, and proficiency in real-time communication systems. (3 feature CRUD)`,
     liveLink: 'https://elya-le-banter.onrender.com',
     repoLink: 'https://github.com/elya-le/Banter/',
     texture: '/textures/project/project1.mp4',
@@ -43,8 +43,8 @@ export const myProjects = [
   {
     title: 'E-commerce Marketplace',
     desc: 'Buy and sell online platform for unique, handmade, and vintage items',
-    subdesc: `<span class="font-semibold">Focus:</span> Team collaboration, asynchronous development, version control, and feature integration. (2-week timeframe)<br>
-<span class="font-semibold">Result:</span> Delivered a React web app using agile workflows and pull requests to ensure cohesion and resolve conflicts. (4 feature CRUD)
+    subdesc: `<span class="font-semibold">Focus:</span> Team collaboration, asynchronous development, version control, and feature integration. (2-week build deadline)<br>
+<span class="font-semibold">Result:</span> Delivered a React web app using agile workflows and pull requests to ensure cohesion and conflict resolution. (4 feature CRUD)
 `,
     liveLink: 'https://etsyclone-4ah1.onrender.com/',
     repoLink: 'https://github.com/TomArbaugh/Ets-E-Commerce/',
@@ -72,7 +72,7 @@ export const myProjects = [
     title: 'Social Event Platform',
     desc: 'Connecting dog owners through event discovery, planning, and community organization',
     subdesc: 
-    `<span class="font-semibold">Focus:</span> Independently built my first full-stack social platform. (4-week timeframe)<br>
+    `<span class="font-semibold">Focus:</span> Independently built my first full-stack social platform. (4-week build deadline)<br>
 <span class="font-semibold">Result:</span> A fully functional app that equips users in organizing and joining local meetups, showcasing my proficiency in backend and frontend integration. (2 feature CRUD)`,
     liveLink: 'https://meetpup-elya.onrender.com/',
     repoLink: 'https://github.com/elya-le/authme-elya',
@@ -99,7 +99,7 @@ export const myProjects = [
     title: 'Current portfolio site',
     desc: 'Combining my love for 3D modeling, motion design and web development',
     subdesc:
-    `<span class="font-semibold">Focus:</span> Design and build this current portfolio site while learning Three.js, Tailwind frameworks, and Blender software for the first time. <br>
+    `<span class="font-semibold">Focus:</span> Challenged myself to learn Three.js, Tailwind frameworks, and Blender software to design and build Elya.dev.  <br>
 <span class="font-semibold">Result:</span> A clean, interactive site that highlights 3D elements and innovative design techniques.`,
     liveLink: '',
     repoLink: 'https://github.com/elya-le/Elya.dev',
