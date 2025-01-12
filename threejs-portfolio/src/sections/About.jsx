@@ -13,7 +13,7 @@ const About = () => {
   // dynamically calculate dimensions based on screen size
   const getResponsiveDimensions = () => {
     if (screenWidth > 1024) {
-      return { height: "450px", width: "900px" }; // fullscreen
+      return { height: "450px", width: "100%" }; // fullscreen
     } else if (screenWidth > 768) {
       return { height: "450px", width: "800px" }; // tablet
     } else {
@@ -32,7 +32,7 @@ const About = () => {
       }}
     >
       <div
-        className="max-w-4xl w-full flex flex-col lg:flex-row gap-8"
+        className="max-w-4xl w-full flex flex-col lg:flex-row gap-4"
         style={{
           height: responsiveDimensions.height,
           width: responsiveDimensions.width,

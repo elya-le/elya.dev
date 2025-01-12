@@ -44,7 +44,7 @@ const Projects = () => {
     } else if (screenWidth > 768) {
       return "105px"; // height for tablet
     } else {
-      return "150px"; // height for mobile
+      return "215px"; // height for mobile
     }
   };
 
@@ -155,25 +155,29 @@ const Projects = () => {
                 href={currentProject.repoLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white mr-4 inline-flex items-center border border-white rounded-full px-4 py-2 transition-colors hover:bg-white hover:text-black"
+                className="text-white text-sm mr-4 inline-flex items-center border border-white rounded-full px-3.5 py-1.5 transition-colors hover:bg-white hover:text-black bg-[#343944]"
               >
                 Github <HiArrowTurnRightUp className="ml-1" />
               </a>
             ) : currentProject.liveLink ? (
-              <a
-                href={currentProject.liveLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white mr-4 inline-flex items-center border border-white rounded-full px-4 py-2 transition-colors hover:bg-white hover:text-black"
-              >
-                Live Link <HiArrowTurnRightUp className="ml-1" />
-              </a>
+              <>
+                <a
+                  href={currentProject.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-sm mr-4 inline-flex items-center border border-white rounded-full px-3.5 py-1.5 transition-colors hover:bg-white hover:text-black bg-[#343944]"
+                >
+                  Live Link <HiArrowTurnRightUp className="ml-1" />
+                </a>
+                <span className="text-sm mt-2">(Optimized for desktop viewing)</span>
+              </>
             ) : null}
           </div>
 
+
           {/* sub-description */}
           <div
-            className="subdesc mt-6"
+            className="subdesc mt-4"
             dangerouslySetInnerHTML={{ __html: currentProject.subdesc }}
             style={{
               height: subdescHeight,
