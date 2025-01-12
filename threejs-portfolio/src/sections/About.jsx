@@ -17,7 +17,7 @@ const About = () => {
     } else if (screenWidth > 768) {
       return { height: "250px", width: "800px" }; // tablet
     } else {
-      return { height: "280px", width: "99%" }; // mobile
+      return { height: "340px", width: "99%" }; // mobile
     }
   };
 

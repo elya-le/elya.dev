@@ -123,7 +123,7 @@ const Projects = () => {
 
   return (
     <section
-      className="projects-section relative z-10 flex justify-center items-center px-4 py-2"
+      className="projects-section relative z-10 flex justify-center items-center px-4 py-2 pb-5"
       id="projects"
       style={{
         backgroundColor: "#1A1C21",
@@ -131,7 +131,7 @@ const Projects = () => {
     >
       {/* project grid container */}
       <div
-      className="relative shadow-lg bg-opacity-80 flex flex-col bg-[#23272F] h-[responsiveDimensions.height] w-[responsiveDimensions.width] p-2 lg:p-5 md:p-4 sm:p-2"
+      className="relative shadow-lg bg-opacity-80 flex flex-col bg-[#23272F] h-[responsiveDimensions.height] w-[responsiveDimensions.width] p-2 lg:p-5 md:p-4 sm:px-2 sm:py-4"
         // className="relative border p-5 shadow-lg bg-opacity-80 flex flex-col"
         style={{
           backgroundColor: "#23272F",
