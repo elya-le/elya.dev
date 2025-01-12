@@ -59,17 +59,8 @@ const About = () => {
         >
           <p className="text-lg">
             Full-Stack Developer with a background in UI/UX, motion design, and
-            3D art. <br />
-            While I’m still working towards aligning my projects with my core
-            interests... <br />
-            my drive to learn new languages and frameworks is rooted in my
-            beliefs of <br />
-            autonomy, equity, empowerment, and protecting the rights of all
-            individuals— <br />
-            especially those whose voices are often underrepresented. <br />
-            <br />
-            With each skill I develop, I strive to build technology that fosters
-            inclusion and uplifts communities.
+            3D art. <br /> <br />
+            Driven by my beliefs in autonomy, equity, and empowerment, I strive to build technology that fosters inclusion and uplifts communities with every new skill I develop.
           </p>
         </div>
       </div>
