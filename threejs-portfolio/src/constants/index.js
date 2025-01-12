@@ -44,7 +44,7 @@ export const myProjects = [
   {
     title: 'E-commerce Marketplace',
     desc: 'Buy and sell online platform for unique, handmade, and vintage items',
-    subdesc: `<span class="font-semibold">Focus:</span> Team of four collaboration, gaining experience in asynchronous development, version control, and feature integration. (2-week timeframe)<br>
+    subdesc: `<span class="font-semibold">Focus:</span> Team collaboration, asynchronous development, version control, and feature integration. (2-week timeframe)<br>
 <span class="font-semibold">Result:</span> Delivered a React web app using agile workflows and pull requests to ensure cohesion and resolve conflicts.(4 feature CRUD)
 `,
     liveLink: 'https://etsyclone-4ah1.onrender.com/',
@@ -71,7 +71,7 @@ export const myProjects = [
   },
   {
     title: 'Social Event Platform',
-    desc: 'Connecting dog owners through event discovery, event planning, and community organization',
+    desc: 'Connecting dog owners through event discovery, planning, and community organization',
     subdesc: 
     `<span class="font-semibold">Focus:</span> Independently built my first full-stack social platform. (4-week timeframe)<br>
 <span class="font-semibold">Result:</span> A fully functional app that equips users in organizing and joining local meetups, showcasing my proficiency in backend and frontend integration. (2 feature CRUD)`,

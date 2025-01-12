@@ -6,7 +6,6 @@ const Projects = () => {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0); // state for current project
   const [screenWidth, setScreenWidth] = useState(window.innerWidth); // state to track screen width
   const [currentImageIndex, setCurrentImageIndex] = useState(0); // state for internal image carousel
-
   const currentProject = myProjects[selectedProjectIndex]; // get current project data
   const carouselRef = useRef(null); // reference for the internal image carousel
 
@@ -17,6 +16,19 @@ const Projects = () => {
     return () => window.removeEventListener("resize", handleResize); // clean up event listener
   }, []);
 
+   // dynamically calculate padding based on screen size
+  const getResponsivePadding = () => {
+    if (screenWidth > 1024) {
+      return "40px"; // larger padding for desktop
+    } else if (screenWidth > 768) {
+      return "20px"; // medium padding for tablets
+    } else {
+      return "10px"; // smaller padding for mobile
+    }
+  };
+
+  const padding = getResponsivePadding(); // calculate the padding
+
   // dynamically calculate dimensions based on screen size
   const getResponsiveDimensions = () => {
     if (screenWidth > 1024) {
@@ -24,7 +36,7 @@ const Projects = () => {
     } else if (screenWidth > 768) {
       return { height: "600px", width: "800px" }; // tablet
     } else {
-      return { height: "700px", width: "99%" }; // mobile
+      return { height: "780px", width: "99%" }; // mobile
     }
   };
 
@@ -88,7 +100,7 @@ const Projects = () => {
       // mobile screen threshold
       e.preventDefault(); // prevent default navigation
       const userConfirmed = window.confirm(
-        "This project is best viewed on a desktop. Mobile experience may be limited. Proceed anyway?"
+        "This project is best viewed on a desktop. Mobile experience will be limited. Proceed anyway?"
       );
       if (userConfirmed) {
         window.open(link, "_blank"); // open the link if confirmed
@@ -106,7 +118,8 @@ const Projects = () => {
     >
       {/* project grid container */}
       <div
-        className="relative p-5 shadow-lg bg-opacity-80 flex flex-col"
+       className="relative border shadow-lg bg-opacity-80 flex flex-col bg-[#23272F] h-[responsiveDimensions.height] w-[responsiveDimensions.width] p-2 lg:p-5 md:p-4 sm:p-2"
+        // className="relative border p-5 shadow-lg bg-opacity-80 flex flex-col"
         style={{
           backgroundColor: "#23272F",
           height: responsiveDimensions.height,
@@ -195,7 +208,7 @@ const Projects = () => {
           ></div>
 
           {/* add tags */}
-          <div className="tags mt-4 flex flex-wrap gap-2">
+          <div className="tags border mt-4 flex flex-wrap gap-2">
             {currentProject.tags.map((tag) => (
               <span
                 key={tag.id}
@@ -212,7 +225,7 @@ const Projects = () => {
         </div>
 
         {/* navigation buttons for projects */}
-        <div className="flex justify-between items-center mt-4 w-full">
+        <div className="flex border justify-between items-center mt-4 w-full">
           <button
             className="arrow-btn p-2 rounded-full"
             onClick={() => handleNavigation("previous")}
