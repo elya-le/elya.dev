@@ -32,7 +32,7 @@ const Projects = () => {
   // dynamically calculate dimensions based on screen size
   const getResponsiveDimensions = () => {
     if (screenWidth > 1024) {
-      return { height: "730px", width: "900px" }; // fullscreen
+      return { height: "730px", width: "896px" }; // fullscreen
     } else if (screenWidth > 768) {
       return { height: "740px", width: "800px" }; // tablet
     } else {
@@ -65,18 +65,19 @@ const Projects = () => {
   const subdescHeight = getSubdescHeight(); // get height dynamically
 
   // click on an image to navigate to the next image
-  const handleImageClick = (index) => {
+  const handleImageClick = (index, isSliver) => {
     const totalImages = Object.keys(currentProject).filter((key) =>
       key.startsWith("previewImg")
-    ).length; // count total images
+    ).length;
   
-    const newIndex = (index + 1) % totalImages; // calculate the next index
-    const scrollPosition = newIndex * (responsiveImageSize.width * 1.25); // scroll offset for full image and 1/4 of the next
+    const newIndex = isSliver
+      ? (index + 1) % totalImages // move forward when sliver is clicked
+      : (index - 1 + totalImages) % totalImages; // move back when the full image is clicked
   
-    setCurrentImageIndex(newIndex); // update state
-    carouselRef.current.scrollTo({ left: scrollPosition, behavior: "smooth" }); // smooth scroll to the new position
+    const scrollPosition = newIndex * (responsiveImageSize.width * 1.05);
+    setCurrentImageIndex(newIndex);
+    carouselRef.current.scrollTo({ left: scrollPosition, behavior: "smooth" });
   };
-  
 
   const handleNavigation = (direction) => {
     setSelectedProjectIndex((prevIndex) => {
@@ -195,7 +196,7 @@ const Projects = () => {
 
           {/* sub-description */}
           <div
-            className="subdesc border mt-4"
+            className="subdesc mt-4"
             dangerouslySetInnerHTML={{ __html: currentProject.subdesc }}
             style={{
               height: subdescHeight,

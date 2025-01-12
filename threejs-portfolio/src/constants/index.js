@@ -44,7 +44,7 @@ export const myProjects = [
     title: 'E-commerce Marketplace',
     desc: 'Buy and sell online platform for unique, handmade, and vintage items',
     subdesc: `<span class="font-semibold">Focus:</span> Team collaboration, asynchronous development, version control, and feature integration. (2-week timeframe)<br>
-<span class="font-semibold">Result:</span> Delivered a React web app using agile workflows and pull requests to ensure cohesion and resolve conflicts.(4 feature CRUD)
+<span class="font-semibold">Result:</span> Delivered a React web app using agile workflows and pull requests to ensure cohesion and resolve conflicts. (4 feature CRUD)
 `,
     liveLink: 'https://etsyclone-4ah1.onrender.com/',
     repoLink: 'https://github.com/TomArbaugh/Ets-E-Commerce/',
