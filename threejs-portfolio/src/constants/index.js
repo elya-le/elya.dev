@@ -37,7 +37,6 @@ export const myProjects = [
       { id: 4, name: 'PostgreSQL', color: '#336791' }, // PostgreSQL
       { id: 7, name: 'Socket.io', color: '#010101' }, // Socket.io
       { id: 5, name: 'SQLAlchemy', color: '#d73351' }, // SQLAlchemy
-      { id: 2, name: 'Vite', color: '#646cff' }, // Vite
       { id: 6, name: 'Gunicorn', color: '#499848' }, // Gunicorn
     ],
   },
@@ -60,13 +59,13 @@ export const myProjects = [
     previewImg2: '/assets/getsy2.png',
     previewImg3: '/assets/getsy3.png',
     tags: [
-      { id: 1, name: 'React', color: '#61dafb', textColor: '#000000' }, // React
-      { id: 3, name: 'Flask', color: '#000000' }, // Flask
-      { id: 4, name: 'PostgreSQL', color: '#336791' }, // PostgreSQL
-      { id: 5, name: 'SQLAlchemy', color: '#d73351' }, // SQLAlchemy
-      { id: 6, name: 'Gunicorn', color: '#499848' }, // Gunicorn
-      { id: 7, name: 'Boto3', color: '#e48e00' }, // Boto3
-      { id: 2, name: 'Vite', color: '#646cff', textColor: '#000000' }, // Vite
+      { id: 1, name: 'React', color: '#61dafb', textColor: '#000000' }, // React - highly impressive, widely used frontend framework
+      { id: 2, name: 'Python', color: '#306998', textColor: '#ffffff' }, // Python - versatile, backend and data-oriented
+      { id: 3, name: 'Redux', color: '#764ABC', textColor: '#ffffff' }, // Redux - advanced state management, pairs well with React
+      { id: 4, name: 'JavaScript', color: '#F7DF1E', textColor: '#000000' }, // JavaScript - core web technology
+      { id: 5, name: 'Flask', color: '#000000', textColor: '#ffffff' }, // Flask - lightweight backend framework
+      { id: 6, name: 'HTML5', color: '#e34c26', textColor: '#ffffff' }, // HTML5 - foundational but less "impressive"
+      { id: 7, name: 'CSS3', color: '#2965f1', textColor: '#ffffff' }, // CSS3 - essential, but less technically complex
     ],
   },
   {
@@ -94,7 +93,6 @@ export const myProjects = [
       { id: 4, name: 'Sequelize', color: '#02a8ef', textColor: '#000000' }, // Sequelize blue
       { id: 5, name: 'React.js', color: '#61dafb', textColor: '#000000' }, // React.js
       { id: 6, name: 'JavaScript', color: '#f7df1e', textColor: '#000000' }, // JavaScript yellow
-      { id: 7, name: 'CSS', color: '#2965f1', textColor: '#000000' }, // CSS blue
     ],
   },
   {
@@ -121,8 +119,6 @@ export const myProjects = [
       { id: 4, name: 'React.js', color: '#58C4DC', textColor: '#000000' }, // React.js (main framework for the UI)
       { id: 5, name: 'JavaScript', color: '#f7df1e', textColor: '#000000' }, // JavaScript as the core language
       { id: 6, name: 'Tailwind CSS', color: '#38BDF8', textColor: '#000000' }, // Tailwind for styling
-      { id: 7, name: 'HTML', color: '#e34c26' }, // HTML for structure
-      { id: 8, name: 'CSS', color: '#2965f1' }, // CSS for basic styling adjustments
     ],
   },
 ];

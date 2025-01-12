@@ -36,7 +36,7 @@ const Projects = () => {
     } else if (screenWidth > 768) {
       return { height: "600px", width: "800px" }; // tablet
     } else {
-      return { height: "780px", width: "99%" }; // mobile
+      return { height: "730px", width: "99%" }; // mobile
     }
   };
 
@@ -56,7 +56,7 @@ const Projects = () => {
     } else if (screenWidth > 768) {
       return "105px"; // height for tablet
     } else {
-      return "215px"; // height for mobile
+      return "195px"; // height for mobile
     }
   };
 
@@ -118,7 +118,7 @@ const Projects = () => {
     >
       {/* project grid container */}
       <div
-       className="relative border shadow-lg bg-opacity-80 flex flex-col bg-[#23272F] h-[responsiveDimensions.height] w-[responsiveDimensions.width] p-2 lg:p-5 md:p-4 sm:p-2"
+      className="relative border shadow-lg bg-opacity-80 flex flex-col bg-[#23272F] h-[responsiveDimensions.height] w-[responsiveDimensions.width] p-2 lg:p-5 md:p-4 sm:p-2"
         // className="relative border p-5 shadow-lg bg-opacity-80 flex flex-col"
         style={{
           backgroundColor: "#23272F",
