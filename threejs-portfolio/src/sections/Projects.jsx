@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { myProjects } from "../constants/index.js";
-import { MdArrowOutward } from "react-icons/md";
+import { GoArrowUpRight, GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { HiArrowTurnRightUp } from "react-icons/hi2";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 
@@ -191,9 +191,9 @@ const Projects = () => {
                 href={currentProject.repoLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white text-sm mr-4 inline-flex items-center border border-white rounded-full px-3.5 py-1.5 transition-colors hover:bg-[#464d5c] bg-[#343944]"
+                className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-3 py-1.5 transition-colors hover:bg-[#464d5c] bg-[#343944]"
               >
-                Github <MdArrowOutward />
+                Github <GoArrowUpRight className="text-lg font-thin ml-1"/>
               </a>
             ) : currentProject.liveLink ? (
               <>
@@ -206,7 +206,7 @@ const Projects = () => {
                   rel="noopener noreferrer"
                   className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-3 py-1.5 transition-colors hover:bg-[#464d5c] bg-[#343944]"
                 >
-                  Live Link <MdArrowOutward className="text-lg font-thin ml-1"/>
+                  Live Link <GoArrowUpRight className="text-lg font-thin ml-1"/>
                 </a>
               </>
             ) : null}
@@ -242,10 +242,10 @@ const Projects = () => {
         <div className="flex justify-between items-center px-1 pb-2 w-full">
           {/* previous button */}
           <button
-            className="text-sm flex items-center "
+            className="text-lg flex items-center "
             onClick={() => handleNavigation("previous")}
           >
-            <SlArrowLeft className="text-white transition-colors" />
+            <GoArrowLeft className="ml-1 text-white transition-colors" />
             {/* Prev */}
           </button>
          {/* slider counter as dots */}
@@ -261,11 +261,11 @@ const Projects = () => {
           </div>
           {/* next button */}
           <button
-            className="text-sm flex items-center "
+            className="text-lg flex items-center "
             // className="text-sm flex items-center rounded-full gap-2 px-2 py-2 border border-white hover:border-gray-400 transition-colors hover:bg-[#464d5c] bg-[#343944] text-white"
             onClick={() => handleNavigation("next")}
           >
-            <SlArrowRight className="text-grey transition-colors" />
+            <GoArrowRight className="mr-1 text-grey transition-colors" />
             {/* Next */}
           </button>
         </div>
