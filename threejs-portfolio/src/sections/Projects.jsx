@@ -34,11 +34,11 @@ const Projects = () => {
   // dynamically calculate dimensions based on screen size
   const getResponsiveDimensions = () => {
     if (screenWidth > 1024) {
-      return { height: "740px", width: "896px" }; // fullscreen
+      return { height: "770px", width: "896px" }; // fullscreen
     } else if (screenWidth > 768) {
-      return { height: "720px", width: "800px" }; // tablet
+      return { height: "750px", width: "800px" }; // tablet
     } else {
-      return { height: "670px", width: "99%" }; // mobile
+      return { height: "680px", width: "99%" }; // mobile
     }
   };
 
@@ -48,7 +48,7 @@ const Projects = () => {
     } else if (screenWidth > 768) {
       return { height: 350, width: 600 }; // tablet
     } else {
-      return { height: 180, width: 280 }; // mobile
+      return { height: 220, width: 280 }; // mobile
     }
   };
 
@@ -124,154 +124,161 @@ const Projects = () => {
 
   return (
     <section
-      className="projects-section relative z-10 flex justify-center items-center px-4 py-2 pb-5"
+      className="projects-section relative z-10 flex flex-col justify-center items-center px-4 py-2 pb-5"
       id="projects"
       style={{
         backgroundColor: "#191B00",
       }}
     >
-      {/* project grid container */}
+      {/* Header Section for "Selected Projects" */}
       <div
-      className="relative shadow-lg bg-opacity-80 flex flex-col bg-[#23272F] h-[responsiveDimensions.height] w-[responsiveDimensions.width] p-2 lg:p-5 md:p-4 sm:px-2 sm:py-4"
-        // className="relative border p-5 shadow-lg bg-opacity-80 flex flex-col"
-        style={{
-          backgroundColor: "#262900",
-          height: responsiveDimensions.height,
-          width: responsiveDimensions.width,
-        }}
-      >
-        
-        <div className="p-1 flex-1 w-full">
+      style={{
+        height: responsiveDimensions.height,
+        width: responsiveDimensions.width,
+      }}>
+        <div className="border w-full text-left mb-1">
+          <p className="text-white text-xl font-thin">Selected Projects</p>
+        </div>
+        {/* project grid container */}
+        <div
+        className="relative bg-opacity-80 flex flex-col justify-center bg-[#23272F] h-[responsiveDimensions.height] w-[responsiveDimensions.width] p-2 lg:p-5 md:p-4 sm:px-2 sm:py-4"
+          // className="relative border p-5 shadow-lg bg-opacity-80 flex flex-col"
+          style={{
+            backgroundColor: "#262900",
+          }}
+        >
+          <div className="p-1 flex-1 w-full">
 
-          {/* internal image carousel */}
-          <div
-            ref={carouselRef}
-            className="mt-4 whitespace-nowrap overflow-x-auto hide-scrollbar"
-            style={{
-              overflowX: "scroll", // enable horizontal scrolling
-              overflowY: "hidden",
-              cursor: "pointer",
-            }}
-          >
-            {Object.keys(currentProject)
-              .filter((key) => key.startsWith("previewImg"))
-              .map((key, index) => (
-                <div
-                  key={index}
-                  style={{
-                    display: "inline-block", // display images inline
-                    verticalAlign: "top",
-                    marginRight: "16px", // spacing between images
-                    height: `${responsiveImageSize.height}px`, // dynamically apply height
-                    width: `${responsiveImageSize.width}px`, // dynamically apply width
-                  }}
-                  onClick={() => handleImageClick(index)} // attach click handler
-                >
-                  <img
-                    src={currentProject[key]}
-                    alt={`${currentProject.title} screenshot ${index + 1}`}
+            {/* internal image carousel */}
+            <div
+              ref={carouselRef}
+              className="whitespace-nowrap overflow-x-auto hide-scrollbar"
+              style={{
+                overflowX: "scroll", // enable horizontal scrolling
+                overflowY: "hidden",
+                cursor: "pointer",
+              }}
+            >
+              {Object.keys(currentProject)
+                .filter((key) => key.startsWith("previewImg"))
+                .map((key, index) => (
+                  <div
+                    key={index}
                     style={{
-                      height: "100%",
-                      width: "100%",
-                      objectFit: "cover", // maintain image aspect ratio
+                      display: "inline-block", // display images inline
+                      verticalAlign: "top",
+                      marginRight: "16px", // spacing between images
+                      height: `${responsiveImageSize.height}px`, // dynamically apply height
+                      width: `${responsiveImageSize.width}px`, // dynamically apply width
                     }}
-                  />
-                </div>
-              ))}
-          </div>
-          {/* project title and description */}
-          <p className="mt-4 text-white text-lg lg:text-2xl font-medium">
-            {currentProject.title}
-          </p>
-          <p className="t font-thin">
-            {currentProject.desc}
-          </p>
+                    onClick={() => handleImageClick(index)} // attach click handler
+                  >
+                    <img
+                      src={currentProject[key]}
+                      alt={`${currentProject.title} screenshot ${index + 1}`}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover", // maintain image aspect ratio
+                      }}
+                    />
+                  </div>
+                ))}
+            </div>
+            {/* project title and description */}
+            <p className="mt-4 text-white text-lg lg:text-2xl font-medium">
+              {currentProject.title}
+            </p>
+            <p className="t font-thin">
+              {currentProject.desc}
+            </p>
 
-          {/* live link and github repo */}
-          <div className="links mt-4">
-            {currentProject.repoLink && currentProject.title === "Current portfolio site" ? (
-              <a
-                href={currentProject.repoLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-3 py-1.5 transition-colors hover:bg-[#464d5c] bg-[#4C5200]"
-              >
-                Github <GoArrowUpRight className="text-lg font-thin ml-1"/>
-              </a>
-            ) : currentProject.liveLink ? (
-              <>
+            {/* live link and github repo */}
+            <div className="links mt-4">
+              {currentProject.repoLink && currentProject.title === "Current portfolio site" ? (
                 <a
-                  href={currentProject.liveLink}
-                  onClick={(e) =>
-                    handleLiveLinkClick(e, currentProject.liveLink)
-                  }
+                  href={currentProject.repoLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-3 py-1.5 transition-colors hover:bg-[#464d5c] bg-[#4C5200]"
                 >
-                  Live Link <GoArrowUpRight className="text-lg font-thin ml-1"/>
+                  Github <GoArrowUpRight className="text-lg font-thin ml-1"/>
                 </a>
-              </>
-            ) : null}
+              ) : currentProject.liveLink ? (
+                <>
+                  <a
+                    href={currentProject.liveLink}
+                    onClick={(e) =>
+                      handleLiveLinkClick(e, currentProject.liveLink)
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-3 py-1.5 transition-colors hover:bg-[#464d5c] bg-[#4C5200]"
+                  >
+                    Live Link <GoArrowUpRight className="text-lg font-thin ml-1"/>
+                  </a>
+                </>
+              ) : null}
+            </div>
+
+            {/* sub-description */}
+            <div
+              className="subdesc mt-4"
+              dangerouslySetInnerHTML={{ __html: currentProject.subdesc }}
+              style={{
+                height: subdescHeight,
+              }}
+            ></div>
+
+            {/* add tags */}
+            <div className="tags mt-4 flex flex-wrap gap-2">
+              {currentProject.tags.map((tag) => (
+                <span
+                  key={tag.id}
+                  className="px-3 py-1 text-sm font-thin rounded-full text-white"
+                  style={{
+                    backgroundColor: tag.color,
+                    color: tag.textColor || "#ffffff",
+                  }}
+                >
+                  {tag.name}
+                </span>
+              ))}
+            </div>
           </div>
 
-          {/* sub-description */}
-          <div
-            className="subdesc mt-4"
-            dangerouslySetInnerHTML={{ __html: currentProject.subdesc }}
-            style={{
-              height: subdescHeight,
-            }}
-          ></div>
-
-          {/* add tags */}
-          <div className="tags mt-4 flex flex-wrap gap-2">
-            {currentProject.tags.map((tag) => (
-              <span
-                key={tag.id}
-                className="px-3 py-1 text-sm font-thin rounded-full text-white"
-                style={{
-                  backgroundColor: tag.color,
-                  color: tag.textColor || "#ffffff",
-                }}
-              >
-                {tag.name}
-              </span>
-            ))}
+          {/* navigation buttons for projects */}
+          <div className="flex justify-between items-center px-1 pb-2 w-full">
+            {/* previous button */}
+            <button
+              className="text-lg flex items-center "
+              onClick={() => handleNavigation("previous")}
+            >
+              <GoArrowLeft className="ml-1 text-white transition-colors" />
+              {/* Prev */}
+            </button>
+           {/* slider counter as dots */}
+            <div className="flex gap-2">
+              {myProjects.map((_, index) => (
+                <span
+                  key={index}
+                  className={`w-2 h-2 rounded-full border ${
+                    // index === selectedProjectIndex ? "bg-gray-500 border-gray-500" : "border-gray-500"
+                    index === selectedProjectIndex ? "bg-white border-white" : "border-white"
+                  }`}
+                ></span>
+              ))}
+            </div>
+            {/* next button */}
+            <button
+              className="text-lg flex items-center "
+              // className="text-sm flex items-center rounded-full gap-2 px-2 py-2 border border-white hover:border-gray-400 transition-colors hover:bg-[#464d5c] bg-[#343944] text-white"
+              onClick={() => handleNavigation("next")}
+            >
+              <GoArrowRight className="mr-1 text-grey transition-colors" />
+              {/* Next */}
+            </button>
           </div>
-        </div>
-
-        {/* navigation buttons for projects */}
-        <div className="flex justify-between items-center px-1 pb-2 w-full">
-          {/* previous button */}
-          <button
-            className="text-lg flex items-center "
-            onClick={() => handleNavigation("previous")}
-          >
-            <GoArrowLeft className="ml-1 text-white transition-colors" />
-            {/* Prev */}
-          </button>
-         {/* slider counter as dots */}
-          <div className="flex gap-2">
-            {myProjects.map((_, index) => (
-              <span
-                key={index}
-                className={`w-2 h-2 rounded-full border ${
-                  // index === selectedProjectIndex ? "bg-gray-500 border-gray-500" : "border-gray-500"
-                  index === selectedProjectIndex ? "bg-white border-white" : "border-white"
-                }`}
-              ></span>
-            ))}
-          </div>
-          {/* next button */}
-          <button
-            className="text-lg flex items-center "
-            // className="text-sm flex items-center rounded-full gap-2 px-2 py-2 border border-white hover:border-gray-400 transition-colors hover:bg-[#464d5c] bg-[#343944] text-white"
-            onClick={() => handleNavigation("next")}
-          >
-            <GoArrowRight className="mr-1 text-grey transition-colors" />
-            {/* Next */}
-          </button>
         </div>
       </div>
     </section>

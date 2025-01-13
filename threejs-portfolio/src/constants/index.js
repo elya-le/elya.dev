@@ -59,7 +59,7 @@ Result: <span class="font-thin"> Delivered a React web app using agile workflows
     title: 'Social Event Platform',
     desc: 'Connecting dog owners through event discovery, planning & community organization',
     subdesc: 
-    `Focus:<span class="font-thin"> Independently built my first full-stack social platform. (4-week build deadline)</span><br>
+    `Focus:<span class="font-thin"> First independent full-stack social platform. (4-week build deadline)</span><br>
 Result:<span class="font-thin"> A fully functional app that equips users in organizing and joining local meetups, showcasing my proficiency in backend and frontend integration. (2 feature CRUD)</span>`,
     liveLink: 'https://meetpup-elya.onrender.com/',
     repoLink: 'https://github.com/elya-le/authme-elya',
