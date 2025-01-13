@@ -44,7 +44,7 @@ const Projects = () => {
 
   const getResponsiveImageSize = () => {
     if (screenWidth > 1024) {
-      return { height: 350, width: 600 }; // fullscreen
+      return { height: 320, width: 390 }; // fullscreen
     } else if (screenWidth > 768) {
       return { height: 350, width: 600 }; // tablet
     } else {
@@ -167,7 +167,7 @@ const Projects = () => {
                     style={{
                       display: "inline-block", // display images inline
                       verticalAlign: "top",
-                      marginRight: "16px", // spacing between images
+                      marginRight: "24px", // spacing between images
                       height: `${responsiveImageSize.height}px`, // dynamically apply height
                       width: `${responsiveImageSize.width}px`, // dynamically apply width
                     }}
@@ -179,7 +179,7 @@ const Projects = () => {
                       style={{
                         height: "100%",
                         width: "100%",
-                        objectFit: "cover", // maintain image aspect ratio
+                        objectFit: "contain", // maintain image aspect ratio
                       }}
                     />
                   </div>

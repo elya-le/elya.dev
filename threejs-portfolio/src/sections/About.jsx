@@ -2,12 +2,26 @@ import React, { useState, useEffect } from "react";
 
 const About = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth); // state to track screen width
+  const [marginTop, setMarginTop] = useState(0); // dynamic margin-top to control overlap
 
   // update screen width on resize
   useEffect(() => {
     const handleResize = () => setScreenWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize); // clean up event listener
+  }, []);
+
+  // track scroll and dynamically adjust margin-top
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY; // current scroll position
+      const maxOverlap = window.innerHeight * 0.25; // 1/4 of the hero section height
+      const newMarginTop = Math.min(scrollTop, maxOverlap); // gradually reduce margin-top
+      setMarginTop(-newMarginTop); // set a negative margin to create overlap
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll); // cleanup on unmount
   }, []);
 
   // dynamically calculate dimensions based on screen size
@@ -26,9 +40,9 @@ const About = () => {
   return (
     <section
       id="about"
-      className="border about-section relative z-20 w-full text-white flex justify-center items-center bg-transparent px-4 py-2 -mt-[5vh]"
+      className="border about-section relative z-20 w-full text-white flex justify-center items-center bg-transparent px-4 py-2 pb-10 mb-10"
       style={{
-       // backgroundColor: "#191B00", // unified background color
+        marginTop: `${marginTop}px`, // dynamic margin-top for overlap
       }}
     >
       <div
@@ -69,3 +83,4 @@ const About = () => {
 };
 
 export default About;
+

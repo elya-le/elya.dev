@@ -23,8 +23,10 @@ Result: <span class="font-thin"> Delivered a precise, high-quality web app while
     liveLink: 'https://elya-le-banter.onrender.com',
     repoLink: 'https://github.com/elya-le/Banter/',
     texture: '/textures/project/project1.mp4',
-    previewImg1: '/assets/banter1.png',
-    previewImg2: '/assets/banter2.png',
+    // previewImg1: '/assets/Banter1.png',
+    previewImg2: '/assets/Banter2.png',
+    previewImg3: '/assets/Banter3.png',
+    previewImg4: '/assets/Banter4.png',
     tags: [
       { id: 1, name: 'React.js', color: '#393D00', }, // React.js
       { id: 3, name: 'Flask', color: '#393D00' }, // Flask

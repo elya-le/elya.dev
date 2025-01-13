@@ -26,19 +26,23 @@ const Hero = ({ animationName, toggleAnimation }) => {
     const handleScroll = () => {
       const scrollTop = window.scrollY; // current scroll position
       const docHeight = document.documentElement.scrollHeight - window.innerHeight; // total scrollable height
-      const scrollFraction = Math.min(scrollTop / docHeight, 1); // normalize scroll value to a range of [0, 1]
-      setScrollProgress(scrollFraction);
+      
+      // Adjust the scroll fraction to amplify the effect of scrolling
+      const scrollFactor = 3; // Decrease this value to require less scrolling
+      const adjustedScrollFraction = Math.min((scrollTop / docHeight) * scrollFactor, 1); // clamp to [0, 1]
+  
+      setScrollProgress(adjustedScrollFraction);
     };
-
+  
     window.addEventListener("scroll", handleScroll); // add scroll listener
     return () => window.removeEventListener("scroll", handleScroll); // cleanup listener on unmount
   }, []);
 
   // determine the base position of the camera based on screen width
-  const getBasePosition = () => (screenWidth > 768 ? [-4.5, 2, 5] : [-5.5, 2, 5]);  // [ x, y, z ]
+  const getBasePosition = () => (screenWidth > 768 ? [-4, 2, 5] : [-5, 3, 6]);  // [ x, y, z ]
 
   // determine the scale of the cat model based on screen width
-  const getCatScale = () => (screenWidth > 1024 ? 1 : screenWidth > 768 ? 1 : 0.8);
+  const getCatScale = () => (screenWidth > 1024 ? 1 : screenWidth > 768 ? 1 : 0.9);
 
   // settings for the rectangle area light based on screen width
     const rectLightSettings = screenWidth > 768 
@@ -61,9 +65,9 @@ const Hero = ({ animationName, toggleAnimation }) => {
   console.log("Toggle Animation Function:", toggleAnimation); // verify the toggle function is working
 
   return (
-    <section className="border relative w-full h-[80vh] sm:h-[90vh] bg-black bg-opacity-35 flex items-center justify-center z-10">
+    <section className="relative w-full h-[80vh] sm:h-[99vh] bg-black bg-opacity-35 flex items-center justify-center z-10">
       {/* toggle overlay */}
-      <div className="absolute z-50 bottom-20 left-1/2 transform -translate-x-1/2 bg-transparent p-2">
+      <div className="absolute z-30 bottom-20 left-1/4 transform -translate-x-1/2 bg-transparent p-2">
         <label className="toggle-switch flex items-center">
           <span className="text-white text-sm mr-2">Animation:</span>
           <input
