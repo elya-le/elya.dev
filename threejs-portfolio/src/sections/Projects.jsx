@@ -33,11 +33,11 @@ const Projects = () => {
   // dynamically calculate dimensions based on screen size
   const getResponsiveDimensions = () => {
     if (screenWidth > 1024) {
-      return { height: "730px", width: "896px" }; // fullscreen
+      return { height: "740px", width: "896px" }; // fullscreen
     } else if (screenWidth > 768) {
-      return { height: "740px", width: "800px" }; // tablet
+      return { height: "720px", width: "800px" }; // tablet
     } else {
-      return { height: "690px", width: "99%" }; // mobile
+      return { height: "670px", width: "99%" }; // mobile
     }
   };
 
@@ -238,20 +238,34 @@ const Projects = () => {
         </div>
 
         {/* navigation buttons for projects */}
-        <div className="flex justify-between items-center mt-4 px-1 pb-2 sm:pb-1 w-full">
+        <div className="flex justify-between items-center px-1 pb-2 w-full">
+          {/* previous button */}
           <button
-            className="text-sm flex items-center gap-2 px-4 py-2 border border-white hover:border-gray-400 transition-colors hover:bg-[#464d5c] bg-[#343944] text-white"
+            className="text-sm flex items-center "
             onClick={() => handleNavigation("previous")}
           >
             <SlArrowLeft className="text-white transition-colors" />
-            Previous Project
+            {/* Prev */}
           </button>
+         {/* slider counter as dots */}
+          <div className="flex gap-2">
+            {myProjects.map((_, index) => (
+              <span
+                key={index}
+                className={`w-2 h-2 rounded-full border ${
+                  index === selectedProjectIndex ? "bg-gray-500 border-gray-500" : "border-gray-500"
+                }`}
+              ></span>
+            ))}
+          </div>
+          {/* next button */}
           <button
-            className="text-sm flex items-center gap-2 px-4 py-2 border border-white hover:border-gray-400 transition-colors hover:bg-[#464d5c] bg-[#343944] text-white"
+            className="text-sm flex items-center "
+            // className="text-sm flex items-center rounded-full gap-2 px-2 py-2 border border-white hover:border-gray-400 transition-colors hover:bg-[#464d5c] bg-[#343944] text-white"
             onClick={() => handleNavigation("next")}
           >
-            Next Project
-            <SlArrowRight className="text-white transition-colors" />
+            <SlArrowRight className="text-grey transition-colors" />
+            {/* Next */}
           </button>
         </div>
       </div>
