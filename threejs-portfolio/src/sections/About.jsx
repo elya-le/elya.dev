@@ -40,7 +40,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="about-section relative z-20 w-full text-white flex justify-center items-center bg-transparent px-4 py-2 pb-10 mb-10"
+      className="about-section relative z-20 w-full text-white flex justify-center items-center bg-transparent px-4 py-2 pb-2 sm:pb-10 mb-10"
       style={{
         marginTop: `${marginTop}px`, // dynamic margin-top for overlap
       }}

@@ -119,26 +119,39 @@ const Hero = ({ animationName, toggleAnimation }) => {
 };
 
 // component to manage camera movement with scroll
-const CameraZoom = ({ scrollProgress, cameraRef, basePosition }) => {
+const CameraZoom = ({ scrollProgress, cameraRef, basePosition, screenWidth }) => {
   const [baseX, baseY, baseZ] = basePosition;
-  const xEnd = 3.5,
-    yEnd = -4,
-    zEnd = 6,
-    lookAt = [-0.5, 0, 0];
+
+  // set different end positions for desktop vs. mobile
+  const xEnd = screenWidth > 768 ? 4 : 3.5; 
+  const yEnd = screenWidth > 768 ? -6 : -4; 
+  const zEnd = screenWidth > 768 ? 8 : 6;
+
+  // define distinct lookAt points for start and end of scroll
+  const startLookAt = [-0.5, 0, 0]; // Initial camera look-at point
+  const endLookAt = screenWidth > 768 
+    ? [0, 0, 0] // final look-at point for desktop
+    : [-0.5, 3, 0]; // final look-at point for mobile
 
   useFrame(() => {
     if (cameraRef.current) {
-      const progress = Math.min(Math.max(scrollProgress, 0), 1); // clamp between 0 and 1
-      const xPos = baseX + progress * xEnd;
-      const yPos = baseY - progress * yEnd;
-      const zPos = baseZ - progress * zEnd;
+      const progress = Math.min(Math.max(scrollProgress, 0), 1); // Clamp progress to [0, 1]
 
-      cameraRef.current.position.set(xPos, yPos, zPos);
-      cameraRef.current.lookAt(...lookAt);
+      // interpolate camera position based on scroll progress
+      const xPos = baseX + progress * xEnd; 
+      const yPos = baseY - progress * yEnd; 
+      const zPos = baseZ - progress * zEnd; 
+
+      // Interpolate `lookAt` position
+      const currentLookAt = startLookAt.map(
+        (start, index) => start + progress * (endLookAt[index] - start)
+      );
+
+      cameraRef.current.position.set(xPos, yPos, zPos); // Update camera position
+      cameraRef.current.lookAt(...currentLookAt); // Update camera look-at point
     }
   });
 
   return null;
 };
-
 export default Hero;

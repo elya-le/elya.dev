@@ -231,7 +231,7 @@ const Projects = () => {
             ></div>
 
             {/* add tags */}
-            <div className="tags mt-4 flex flex-wrap gap-2">
+            <div className="tags my-4 flex flex-wrap gap-2">
               {currentProject.tags.map((tag) => (
                 <span
                   key={tag.id}
@@ -248,7 +248,7 @@ const Projects = () => {
           </div>
 
           {/* navigation buttons for projects */}
-          <div className="flex justify-between items-center px-1 pb-2 w-full">
+          <div className="flex justify-between items-center px-1 pb-1 w-full">
             {/* previous button */}
             <button
               className="text-lg flex items-center "
