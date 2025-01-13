@@ -28,7 +28,7 @@ const About = () => {
       id="about"
       className="about-section w-full text-white flex justify-center items-center px-4 py-2"
       style={{
-        backgroundColor: "#1A1C21", // unified background color
+        backgroundColor: "#191B00", // unified background color
       }}
     >
       <div
@@ -42,7 +42,7 @@ const About = () => {
         <div
           className="flex-1 p-5"
           style={{
-            backgroundColor: "#23272F", // specific background color for the container
+            backgroundColor: "#262900", // specific background color for the container
           }}
         >
           <p className="text-lg">
@@ -54,10 +54,10 @@ const About = () => {
         <div
           className="flex-1 p-5"
           style={{
-            backgroundColor: "#23272F", // specific background color for the container
+            backgroundColor: "#262900", // specific background color for the container
           }}
         >
-          <p className="text-lg">
+          <p className="text-lg font-thin">
             Full-Stack Developer with a background in UI/UX, motion design, and
             3D art. <br /> <br />
             With every new skill I develop and driven by my beliefs in autonomy, equity, and empowerment, I strive to build technology that fosters inclusion and uplifts communities. 

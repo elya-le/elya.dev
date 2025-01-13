@@ -58,7 +58,7 @@ const Projects = () => {
     } else if (screenWidth > 768) {
       return "120px"; // height for tablet
     } else {
-      return "195px"; // height for mobile
+      return "135px"; // height for mobile
     }
   };
 
@@ -127,7 +127,7 @@ const Projects = () => {
       className="projects-section relative z-10 flex justify-center items-center px-4 py-2 pb-5"
       id="projects"
       style={{
-        backgroundColor: "#1A1C21",
+        backgroundColor: "#191B00",
       }}
     >
       {/* project grid container */}
@@ -135,17 +135,13 @@ const Projects = () => {
       className="relative shadow-lg bg-opacity-80 flex flex-col bg-[#23272F] h-[responsiveDimensions.height] w-[responsiveDimensions.width] p-2 lg:p-5 md:p-4 sm:px-2 sm:py-4"
         // className="relative border p-5 shadow-lg bg-opacity-80 flex flex-col"
         style={{
-          backgroundColor: "#23272F",
+          backgroundColor: "#262900",
           height: responsiveDimensions.height,
           width: responsiveDimensions.width,
         }}
       >
-        {/* project title and description */}
+        
         <div className="p-1 flex-1 w-full">
-          <p className="text-white text-lg lg:text-2xl font-medium">
-            {currentProject.title}
-          </p>
-          <p className="text-sm">{currentProject.desc}</p>
 
           {/* internal image carousel */}
           <div
@@ -183,6 +179,13 @@ const Projects = () => {
                 </div>
               ))}
           </div>
+          {/* project title and description */}
+          <p className="mt-4 text-white text-lg lg:text-2xl font-medium">
+            {currentProject.title}
+          </p>
+          <p className="t font-thin">
+            {currentProject.desc}
+          </p>
 
           {/* live link and github repo */}
           <div className="links mt-4">
@@ -191,7 +194,7 @@ const Projects = () => {
                 href={currentProject.repoLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-3 py-1.5 transition-colors hover:bg-[#464d5c] bg-[#343944]"
+                className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-3 py-1.5 transition-colors hover:bg-[#464d5c] bg-[#4C5200]"
               >
                 Github <GoArrowUpRight className="text-lg font-thin ml-1"/>
               </a>
@@ -204,7 +207,7 @@ const Projects = () => {
                   }
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-3 py-1.5 transition-colors hover:bg-[#464d5c] bg-[#343944]"
+                  className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-3 py-1.5 transition-colors hover:bg-[#464d5c] bg-[#4C5200]"
                 >
                   Live Link <GoArrowUpRight className="text-lg font-thin ml-1"/>
                 </a>
@@ -226,7 +229,7 @@ const Projects = () => {
             {currentProject.tags.map((tag) => (
               <span
                 key={tag.id}
-                className="px-3 py-1 text-sm font-medium rounded-full text-white"
+                className="px-3 py-1 text-sm font-thin rounded-full text-white"
                 style={{
                   backgroundColor: tag.color,
                   color: tag.textColor || "#ffffff",
@@ -254,7 +257,8 @@ const Projects = () => {
               <span
                 key={index}
                 className={`w-2 h-2 rounded-full border ${
-                  index === selectedProjectIndex ? "bg-gray-500 border-gray-500" : "border-gray-500"
+                  // index === selectedProjectIndex ? "bg-gray-500 border-gray-500" : "border-gray-500"
+                  index === selectedProjectIndex ? "bg-white border-white" : "border-white"
                 }`}
               ></span>
             ))}

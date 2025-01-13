@@ -16,109 +16,82 @@ export const navLinks = [
 export const myProjects = [
   {
     title: 'Communication App',
-    desc: 'Online community space with real-time messaging, custom servers and channels',
+    desc: 'Online community space with real-time messaging, custom servers & channels',
     subdesc: 
-    `<span class="font-semibold">Focus:</span> Learning and implementing real-time communication with web sockets. (2-week build deadline)<br>
-<span class="font-semibold">Result:</span> Delivered a precise, high-quality web app while expanding my technical skills, and proficiency in real-time communication systems. (3 feature CRUD)`,
+    `Focus: <span class="font-thin">Learning and implementing real-time communication with web sockets. (2-week build deadline)</span><br>
+Result: <span class="font-thin"> Delivered a precise, high-quality web app while expanding my technical skills, and proficiency in real-time communication systems. (3 feature CRUD)</span>`,
     liveLink: 'https://elya-le-banter.onrender.com',
     repoLink: 'https://github.com/elya-le/Banter/',
     texture: '/textures/project/project1.mp4',
-    logo: '/assets/project-logo1.png',
-    logoStyle: {
-      backgroundColor: '#2A1816',
-      border: '0.2px solid #36201D',
-      boxShadow: '0px 0px 60px 0px #AA3C304D',
-    },
     previewImg1: '/assets/banter1.png',
     previewImg2: '/assets/banter2.png',
     tags: [
-      { id: 1, name: 'React.js', color: '#61dafb', textColor: '#000000' }, // React.js
-      { id: 3, name: 'Flask', color: '#000000' }, // Flask
-      { id: 4, name: 'PostgreSQL', color: '#336791' }, // PostgreSQL
-      { id: 7, name: 'Socket.io', color: '#010101' }, // Socket.io
-      { id: 5, name: 'SQLAlchemy', color: '#d73351' }, // SQLAlchemy
-      { id: 6, name: 'Gunicorn', color: '#499848' }, // Gunicorn
+      { id: 1, name: 'React.js', color: '#393D00', }, // React.js
+      { id: 3, name: 'Flask', color: '#393D00' }, // Flask
+      { id: 4, name: 'PostgreSQL', color: '#393D00' }, // PostgreSQL
+      { id: 7, name: 'Socket.io', color: '#393D00' }, // Socket.io
+      { id: 5, name: 'SQLAlchemy', color: '#393D00' }, // SQLAlchemy
+      { id: 6, name: 'Gunicorn', color: '#393D00' }, // Gunicorn
     ],
   },
   {
     title: 'E-commerce Marketplace',
-    desc: 'Buy and sell online platform for unique, handmade, and vintage items',
-    subdesc: `<span class="font-semibold">Focus:</span> Team collaboration, asynchronous development, version control, and feature integration. (2-week build deadline)<br>
-<span class="font-semibold">Result:</span> Delivered a React web app using agile workflows and pull requests to ensure cohesion and conflict resolution. (4 feature CRUD)
+    desc: 'Buy and sell online platform for unique, handmade & vintage items',
+    subdesc: `Focus: <span class="font-thin"> Team collaboration, asynchronous development, version control, and feature integration. (2-week build deadline)</span><br>
+Result: <span class="font-thin"> Delivered a React web app using agile workflows and pull requests to ensure cohesion and conflict resolution. (4 feature CRUD)</span>
 `,
     liveLink: 'https://etsyclone-4ah1.onrender.com/',
     repoLink: 'https://github.com/TomArbaugh/Ets-E-Commerce/',
-    texture: '/textures/project/project2.mp4',
-    logo: '/assets/project-logo1.png',
-    logoStyle: {
-      backgroundColor: '#2A1816',
-      border: '0.2px solid #36201D',
-      boxShadow: '0px 0px 60px 0px #AA3C304D',
-    },
     previewImg1: '/assets/getsy1.png',
     previewImg2: '/assets/getsy2.png',
     previewImg3: '/assets/getsy3.png',
     tags: [
-      { id: 1, name: 'React.js', color: '#61dafb', textColor: '#000000' }, // React - highly impressive, widely used frontend framework
-      { id: 2, name: 'Python', color: '#306998', textColor: '#ffffff' }, // Python - versatile, backend and data-oriented
-      { id: 3, name: 'Redux', color: '#764ABC', textColor: '#ffffff' }, // Redux - advanced state management, pairs well with React
-      { id: 4, name: 'JavaScript', color: '#F7DF1E', textColor: '#000000' }, // JavaScript - core web technology
-      { id: 5, name: 'Flask', color: '#000000', textColor: '#ffffff' }, // Flask - lightweight backend framework
-      { id: 6, name: 'HTML5', color: '#e34c26', textColor: '#ffffff' }, // HTML5 - foundational but less "impressive"
-      { id: 7, name: 'CSS3', color: '#2965f1', textColor: '#ffffff' }, // CSS3 - essential, but less technically complex
+      { id: 1, name: 'React.js', color: '#393D00', }, // React - highly impressive, widely used frontend framework
+      { id: 2, name: 'Python', color: '#393D00', }, // Python - versatile, backend and data-oriented
+      { id: 3, name: 'Redux', color: '#393D00', }, // Redux - advanced state management, pairs well with React
+      { id: 4, name: 'JavaScript', color: '#393D00', }, // JavaScript - core web technology
+      { id: 5, name: 'Flask', color: '#393D00', }, // Flask - lightweight backend framework
+      { id: 6, name: 'HTML5', color: '#393D00', }, // HTML5 - foundational but less "impressive"
+      { id: 7, name: 'CSS3', color: '#393D00', }, // CSS3 - essential, but less technically complex
     ],
   },
   {
     title: 'Social Event Platform',
-    desc: 'Connecting dog owners through event discovery, planning, and community organization',
+    desc: 'Connecting dog owners through event discovery, planning & community organization',
     subdesc: 
-    `<span class="font-semibold">Focus:</span> Independently built my first full-stack social platform. (4-week build deadline)<br>
-<span class="font-semibold">Result:</span> A fully functional app that equips users in organizing and joining local meetups, showcasing my proficiency in backend and frontend integration. (2 feature CRUD)`,
+    `Focus:<span class="font-thin"> Independently built my first full-stack social platform. (4-week build deadline)</span><br>
+Result:<span class="font-thin"> A fully functional app that equips users in organizing and joining local meetups, showcasing my proficiency in backend and frontend integration. (2 feature CRUD)</span>`,
     liveLink: 'https://meetpup-elya.onrender.com/',
     repoLink: 'https://github.com/elya-le/authme-elya',
-    texture: '/textures/project/project3.mp4',
-    logo: '/assets/project-logo1.png',
-    logoStyle: {
-      backgroundColor: '#2A1816',
-      border: '0.2px solid #36201D',
-      boxShadow: '0px 0px 60px 0px #AA3C304D',
-    },
     previewImg1: '/assets/meetpup4.png',
     previewImg2: '/assets/meetpup2.png',
     previewImg3: '/assets/meetpup3.png',
     tags: [
-      { id: 1, name: 'Node.js', color: '#43853d' }, // Node.js green
-      { id: 2, name: 'Express', color: '#787878' }, // Express gray
-      { id: 3, name: 'PostgreSQL', color: '#336791' }, // PostgreSQL blue
-      { id: 4, name: 'Sequelize', color: '#02a8ef', textColor: '#000000' }, // Sequelize blue
-      { id: 5, name: 'React.js', color: '#61dafb', textColor: '#000000' }, // React.js
-      { id: 6, name: 'JavaScript', color: '#f7df1e', textColor: '#000000' }, // JavaScript yellow
+      { id: 1, name: 'Node.js', color: '#393D00' }, // Node.js green
+      { id: 2, name: 'Express', color: '#393D00' }, // Express gray
+      { id: 3, name: 'PostgreSQL', color: '#393D00' }, // PostgreSQL blue
+      { id: 4, name: 'Sequelize', color: '#393D00', }, // Sequelize blue
+      { id: 5, name: 'React.js', color: '#393D00', }, // React.js
+      { id: 6, name: 'JavaScript', color: '#393D00', }, // JavaScript yellow
     ],
   },
   {
     title: 'Current portfolio site',
-    desc: 'Combining my love for 3D modeling, motion design and web development',
+    desc: 'Combining my love for 3D modeling, motion design & web development',
     subdesc:
-    `<span class="font-semibold">Focus:</span> Challenged myself to learn Three.js, Tailwind frameworks, and Blender software to design and build Elya.dev.  <br>
-<span class="font-semibold">Result:</span> A clean, interactive site that highlights 3D elements and innovative design techniques.`,
+    `Focus:<span class="font-thin"> Challenge myself to learn Three.js, Tailwind and Blender to design and build Elya.dev.  <br>
+Result:<span class="font-thin"> A clean, interactive site that highlights 3D elements and innovative design techniques.`,
     liveLink: '',
     repoLink: 'https://github.com/elya-le/Elya.dev',
-    texture: '/textures/project/project4.mp4',
-    logo: '/assets/project-logo1.png',
-    logoStyle: {
-      backgroundColor: '#2A1816',
-      border: '0.2px solid #36201D',
-      boxShadow: '0px 0px 60px 0px #AA3C304D',
-    },
     previewImg1: '/assets/portfolio1.png',
     previewImg2: '/assets/portfolio2.png',
     tags: [
-      { id: 1, name: 'Three.js', color: '#000000' }, // Three.js for 3D modeling and animations
-      { id: 2, name: 'Blender', color: '#f5792a', textColor: '#000000' }, // Blender for creating 3D assets
-      { id: 3, name: 'Vite', color: '#646cff', textColor: '#000000' }, // Vite for the build tool
-      { id: 4, name: 'React.js', color: '#58C4DC', textColor: '#000000' }, // React.js (main framework for the UI)
-      { id: 5, name: 'JavaScript', color: '#f7df1e', textColor: '#000000' }, // JavaScript as the core language
-      { id: 6, name: 'Tailwind CSS', color: '#38BDF8', textColor: '#000000' }, // Tailwind for styling
+      { id: 1, name: 'Three.js', color: '#393D00' }, // Three.js for 3D modeling and animations
+      { id: 2, name: 'Blender', color: '#393D00', }, // Blender for creating 3D assets
+      { id: 3, name: 'Vite', color: '#393D00', }, // Vite for the build tool
+      { id: 4, name: 'React.js', color: '#393D00', }, // React.js (main framework for the UI)
+      { id: 5, name: 'JavaScript', color: '#393D00', }, // JavaScript as the core language
+      { id: 6, name: 'Tailwind CSS', color: '#393D00', }, // Tailwind for styling
     ],
   },
 ];

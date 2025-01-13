@@ -2,14 +2,14 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div style={{ backgroundColor: "##1a1c21" }}> {/* Margin background container */}
+    <div style={{ backgroundColor: "#191B00" }}> {/* Margin background container */}
       <footer
         className="text-white py-4 text-center"
         style={{
-          backgroundColor: "#16181D", // Footer background color
+          backgroundColor: "#191B00", // Footer background color
         }}
       >
-        <p className="text-sm">
+        <p className="text-sm font-thin">
           © {new Date().getFullYear()}{" "}
           <a href="https://www.elya.dev" className="underline">
             Elya.Dev

@@ -4,6 +4,8 @@ import Hero from "./sections/Hero";
 import Projects from "./sections/Projects";
 import About from "./sections/About";
 import Footer from "./sections/Footer.jsx";
+import "./index.css"; // Import your global CSS file
+
 
 const App = () => {
   const [animationName, setAnimationName] = useState("Slow"); // manage animation state

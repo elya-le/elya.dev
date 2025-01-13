@@ -59,7 +59,7 @@ const Hero = ({ animationName }) => {
             cameraRef={cameraRef}
             basePosition={getBasePosition()}
           />
-          <color attach="background" args={["#1a1c21"]} />
+          <color attach="background" args={["#191B00"]} />
           {/* Lighting */}
           <rectAreaLight
             ref={rectLightRef}
