@@ -1,56 +1,69 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { PerspectiveCamera } from "@react-three/drei";
-import { Suspense } from "react";
-import CanvasLoader from "../components/CanvasLoader";
-import Cat from "../components/Cat.jsx";
-import "./Hero.css";
+import { Canvas, useFrame } from "@react-three/fiber"; // fiber for 3d rendering
+import { PerspectiveCamera } from "@react-three/drei"; // drei for easier 3d setups
+import { Suspense } from "react"; // react suspense for lazy loading
+import CanvasLoader from "../components/CanvasLoader"; // component to display a loader while 3d elements are loading
+import Cat from "../components/Cat.jsx"; // custom 3d cat model component
+import "./Hero.css"; // import specific styles for hero component
 
+// hero component to render the 3d scene and toggle animation
 const Hero = ({ animationName, toggleAnimation }) => {
-  const rectLightRef = useRef();
-  const catRef = useRef();
-  const cameraRef = useRef();
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const rectLightRef = useRef(); // reference for the rectangle area light
+  const catRef = useRef(); 
+  const cameraRef = useRef(); // reference for the perspectivecamera
+  const [scrollProgress, setScrollProgress] = useState(0); // track the user's scroll progress
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth); // track the current screen width
 
-  // Handle screen resize
+  // handle screen resizing and update the state
   useEffect(() => {
     const handleResize = () => setScreenWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize); // add resize listener
+    return () => window.removeEventListener("resize", handleResize); // cleanup listener on unmount
   }, []);
 
-  // Update scroll progress
+  // track scroll progress to adjust the camera's position
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollFraction = Math.min(scrollTop / docHeight, 1);
+      const scrollTop = window.scrollY; // current scroll position
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight; // total scrollable height
+      const scrollFraction = Math.min(scrollTop / docHeight, 1); // normalize scroll value to a range of [0, 1]
       setScrollProgress(scrollFraction);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll); // add scroll listener
+    return () => window.removeEventListener("scroll", handleScroll); // cleanup listener on unmount
   }, []);
 
-  const getBasePosition = () => (screenWidth > 768 ? [-4.5, 2, 5] : [-5.5, 2, 5]);
+  // determine the base position of the camera based on screen width
+  const getBasePosition = () => (screenWidth > 768 ? [-4.5, 2, 5] : [-5.5, 2, 5]);  // [ x, y, z ]
+
+  // determine the scale of the cat model based on screen width
   const getCatScale = () => (screenWidth > 1024 ? 1 : screenWidth > 768 ? 1 : 0.8);
 
-  const rectLightSettings = {
-    position: [-0.4, 1.3, 1.5],
-    rotation: [0.1, 0, 0],
-    width: 1.2,
-    height: 0.9,
-    intensity: 30,
-  };
+  // settings for the rectangle area light based on screen width
+    const rectLightSettings = screenWidth > 768 
+    ? {
+        position: [-0.4, 1.4, 1.6], // light's position for larger screens
+        rotation: [0.1, 0, 0], // light's rotation
+        width: 1.2, // light's width
+        height: 0.9, // light's height
+        intensity: 30, // brightness of the light
+      }
+    : {
+        position: [-0.3, 1.2, 1.4], // light's position for smaller screens
+        rotation: [0.1, 0, 0], // light's rotation
+        width: 1.0, // light's width
+        height: 0.7, // light's height
+        intensity: 20, // brightness of the light
+      };
 
-  console.log("Animation Name:", animationName);
-  console.log("Toggle Animation Function:", toggleAnimation);
+  console.log("Animation Name:", animationName); // log the current animation state
+  console.log("Toggle Animation Function:", toggleAnimation); // verify the toggle function is working
 
   return (
-    <section className="relative w-full h-screen bg-black bg-opacity-35 flex items-center justify-center">
-      {/* Toggle Overlay */}
-      <div className="absolute z-50 bottom-4 center-4 bg-transparent p-4 rounded-md">
+    <section className="border relative w-full h-[80vh] sm:h-[90vh] bg-black bg-opacity-35 flex items-center justify-center z-10">
+      {/* toggle overlay */}
+      <div className="absolute z-50 bottom-20 left-1/2 transform -translate-x-1/2 bg-transparent p-2">
         <label className="toggle-switch flex items-center">
           <span className="text-white text-sm mr-2">Animation:</span>
           <input
@@ -63,7 +76,7 @@ const Hero = ({ animationName, toggleAnimation }) => {
         </label>
       </div>
 
-      {/* Canvas */}
+      {/* canvas */}
       <Canvas
         className="w-full h-full"
         style={{ height: "100%" }}
@@ -85,7 +98,7 @@ const Hero = ({ animationName, toggleAnimation }) => {
             width={rectLightSettings.width}
             height={rectLightSettings.height}
             intensity={rectLightSettings.intensity}
-            color={"#6f7df7"}
+            color={"#6F74F7"}
           />
           <ambientLight intensity={0.1} color={"#ffffff"} />
           <directionalLight position={[5, 10, 5]} intensity={0.01} color={"#ffffff"} castShadow />
@@ -101,8 +114,7 @@ const Hero = ({ animationName, toggleAnimation }) => {
   );
 };
 
-
-// Component to manage camera movement with scroll
+// component to manage camera movement with scroll
 const CameraZoom = ({ scrollProgress, cameraRef, basePosition }) => {
   const [baseX, baseY, baseZ] = basePosition;
   const xEnd = 4,

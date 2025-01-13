@@ -26,9 +26,9 @@ const About = () => {
   return (
     <section
       id="about"
-      className="about-section w-full text-white flex justify-center items-center px-4 py-2"
+      className="border about-section relative z-20 w-full text-white flex justify-center items-center bg-transparent px-4 py-2 -mt-[5vh]"
       style={{
-        backgroundColor: "#191B00", // unified background color
+       // backgroundColor: "#191B00", // unified background color
       }}
     >
       <div
