@@ -6,26 +6,26 @@ import CanvasLoader from "../components/CanvasLoader";
 import Cat from "../components/Cat.jsx";
 import "./Hero.css";
 
-const Hero = ({ animationName }) => {
-  const rectLightRef = useRef(); // reference for rect area light
-  const catRef = useRef(); // reference for cat model
-  const cameraRef = useRef(); // reference for camera
-  const [scrollProgress, setScrollProgress] = useState(0); // track scroll progress
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth); // track screen width
+const Hero = ({ animationName, toggleAnimation }) => {
+  const rectLightRef = useRef();
+  const catRef = useRef();
+  const cameraRef = useRef();
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
-  // handle screen resize
+  // Handle screen resize
   useEffect(() => {
     const handleResize = () => setScreenWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // update scroll progress for camera movement
+  // Update scroll progress
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollFraction = Math.min(scrollTop / docHeight, 1); // clamp to [0, 1]
+      const scrollFraction = Math.min(scrollTop / docHeight, 1);
       setScrollProgress(scrollFraction);
     };
 
@@ -33,8 +33,8 @@ const Hero = ({ animationName }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const getBasePosition = () => (screenWidth > 768 ? [-4.5, 2, 5] : [-5.5, 2, 5]); // tablet/mobile
-  const getCatScale = () => (screenWidth > 1024 ? 1 : screenWidth > 768 ? 1 : 0.8); // fullscreen/tablet/mobile
+  const getBasePosition = () => (screenWidth > 768 ? [-4.5, 2, 5] : [-5.5, 2, 5]);
+  const getCatScale = () => (screenWidth > 1024 ? 1 : screenWidth > 768 ? 1 : 0.8);
 
   const rectLightSettings = {
     position: [-0.4, 1.3, 1.5],
@@ -44,8 +44,26 @@ const Hero = ({ animationName }) => {
     intensity: 30,
   };
 
+  console.log("Animation Name:", animationName);
+  console.log("Toggle Animation Function:", toggleAnimation);
+
   return (
-    <section className="w-full h-screen bg-black bg-opacity-35">
+    <section className="relative w-full h-screen bg-black bg-opacity-35 flex items-center justify-center">
+      {/* Toggle Overlay */}
+      <div className="absolute z-50 bottom-4 center-4 bg-transparent p-4 rounded-md">
+        <label className="toggle-switch flex items-center">
+          <span className="text-white text-sm mr-2">Animation:</span>
+          <input
+            type="checkbox"
+            checked={animationName === "Fast"}
+            onChange={toggleAnimation}
+            className="hidden"
+          />
+          <span className="slider"></span>
+        </label>
+      </div>
+
+      {/* Canvas */}
       <Canvas
         className="w-full h-full"
         style={{ height: "100%" }}
@@ -60,7 +78,6 @@ const Hero = ({ animationName }) => {
             basePosition={getBasePosition()}
           />
           <color attach="background" args={["#191B00"]} />
-          {/* Lighting */}
           <rectAreaLight
             ref={rectLightRef}
             position={rectLightSettings.position}
@@ -72,7 +89,6 @@ const Hero = ({ animationName }) => {
           />
           <ambientLight intensity={0.1} color={"#ffffff"} />
           <directionalLight position={[5, 10, 5]} intensity={0.01} color={"#ffffff"} castShadow />
-          {/* Cat Model */}
           <Cat
             ref={catRef}
             animationName={animationName}
@@ -85,10 +101,14 @@ const Hero = ({ animationName }) => {
   );
 };
 
+
 // Component to manage camera movement with scroll
 const CameraZoom = ({ scrollProgress, cameraRef, basePosition }) => {
   const [baseX, baseY, baseZ] = basePosition;
-  const xEnd = 4, yEnd = -6, zEnd = 6, lookAt = [-0.5, 0, 0];
+  const xEnd = 4,
+    yEnd = -6,
+    zEnd = 6,
+    lookAt = [-0.5, 0, 0];
 
   useFrame(() => {
     if (cameraRef.current) {

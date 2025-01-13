@@ -136,7 +136,7 @@ const Projects = () => {
         height: responsiveDimensions.height,
         width: responsiveDimensions.width,
       }}>
-        <div className="border w-full text-left mb-1">
+        <div className="w-full text-left mb-2 pl-6">
           <p className="text-white text-xl font-thin">Selected Projects</p>
         </div>
         {/* project grid container */}

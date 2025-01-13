@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { navLinks } from "../constants/index.js";
 
 const NavItems = ({ onClick = () => {} }) => (
@@ -14,35 +14,45 @@ const NavItems = ({ onClick = () => {} }) => (
 );
 
 const Navbar = ({ animationName, toggleAnimation }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // state for menu
+  const [isVisible, setIsVisible] = useState(true); // state for navbar visibility
+  const [lastScrollPos, setLastScrollPos] = useState(0); // state for last scroll position
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+
+      // Hide navbar when scrolling down, show when scrolling up
+      if (currentScrollPos > lastScrollPos && currentScrollPos > 0) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+
+      setLastScrollPos(currentScrollPos); // Update last scroll position
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll); // Cleanup on unmount
+  }, [lastScrollPos]);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-grey/100">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 bg-grey/100 transition-transform duration-300 ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center py-5 mx-auto c-space">
           {/* logo */}
-          <a href="/" className="text-neutral-400 text-xl hover:text-white transition-colors">
-            {/* &lt; Elya /&gt; */}
+          <a href="/" className="text-white text-xl hover:text-white transition-colors">
             Elya_
           </a>
 
           {/* centered toggle */}
-          <div className="flex-grow flex justify-center">
-            <div className="flex items-center p-2 rounded-md shadow-md">
-              <p className="text-sm text-white mr-2"> {/* Placeholder */}</p>
-              <label className="toggle-switch">
-                <input
-                  type="checkbox"
-                  checked={animationName === "Fast"} // reflects "Fast" animation state
-                  onChange={toggleAnimation} // toggles the state on change
-                />
-                <span className="slider"></span>
-              </label>
-            </div>
-          </div>
 
           {/* navigation */}
           <nav className="sm:flex hidden">
