@@ -124,11 +124,11 @@ const Projects = () => {
 
   return (
     <section
-      className="projects-section relative z-10 flex flex-col justify-center items-center px-4 py-2 pb-5"
+      className="projects-section relative z-10 flex flex-col justify-center items-center bg-transparent px-4 py-2 pb-5"
       id="projects"
-      style={{
-        backgroundColor: "#191B00",
-      }}
+      // style={{
+      //   backgroundColor: "#191B00",
+      // }}
     >
       {/* Header Section for "Selected Projects" */}
       <div
@@ -136,9 +136,9 @@ const Projects = () => {
         height: responsiveDimensions.height,
         width: responsiveDimensions.width,
       }}>
-        <div className="w-full text-left mb-2 pl-6">
-          <p className="text-white text-xl font-thin">Selected Projects</p>
-        </div>
+      <div className="w-full text-left mb-2 pl-3 sm:pl-6 sm:mb-4">
+        <p className="text-white text-lg sm:text-xl font-thin">Selected Projects</p>
+      </div>
         {/* project grid container */}
         <div
         className="relative bg-opacity-80 flex flex-col justify-center bg-[#23272F] h-[responsiveDimensions.height] w-[responsiveDimensions.width] p-2 lg:p-5 md:p-4 sm:px-2 sm:py-4"
@@ -167,7 +167,7 @@ const Projects = () => {
                     style={{
                       display: "inline-block", // display images inline
                       verticalAlign: "top",
-                      marginRight: "24px", // spacing between images
+                      marginRight: "10px", // spacing between images
                       height: `${responsiveImageSize.height}px`, // dynamically apply height
                       width: `${responsiveImageSize.width}px`, // dynamically apply width
                     }}
@@ -200,7 +200,7 @@ const Projects = () => {
                   href={currentProject.repoLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-3 py-1.5 transition-colors hover:bg-[#464d5c] bg-[#4C5200]"
+                  className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-3 py-1.5 transition-colors hover:bg-[#5F6600] bg-[#4C5200]"
                 >
                   Github <GoArrowUpRight className="text-lg font-thin ml-1"/>
                 </a>
@@ -213,7 +213,7 @@ const Projects = () => {
                     }
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-3 py-1.5 transition-colors hover:bg-[#464d5c] bg-[#4C5200]"
+                    className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-3 py-1.5 transition-colors hover:bg-[#5F6600] bg-[#4C5200]"
                   >
                     Live Link <GoArrowUpRight className="text-lg font-thin ml-1"/>
                   </a>

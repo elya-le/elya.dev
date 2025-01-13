@@ -15,7 +15,7 @@ const About = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY; // current scroll position
-      const maxOverlap = window.innerHeight * 0.25; // 1/4 of the hero section height
+      const maxOverlap = window.innerHeight * 0.42; // 1/4 of the hero section height
       const newMarginTop = Math.min(scrollTop, maxOverlap); // gradually reduce margin-top
       setMarginTop(-newMarginTop); // set a negative margin to create overlap
     };
@@ -40,7 +40,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="border about-section relative z-20 w-full text-white flex justify-center items-center bg-transparent px-4 py-2 pb-10 mb-10"
+      className="about-section relative z-20 w-full text-white flex justify-center items-center bg-transparent px-4 py-2 pb-10 mb-10"
       style={{
         marginTop: `${marginTop}px`, // dynamic margin-top for overlap
       }}
