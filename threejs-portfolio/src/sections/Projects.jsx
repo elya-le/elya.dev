@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { myProjects } from "../constants/index.js";
 import { GoArrowUpRight, GoArrowLeft, GoArrowRight } from "react-icons/go";
-import { HiArrowTurnRightUp } from "react-icons/hi2";
-import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 
 const Projects = () => {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0); // state for current project
@@ -17,19 +15,6 @@ const Projects = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize); // clean up event listener
   }, []);
-
-  //  // dynamically calculate padding based on screen size
-  // const getResponsivePadding = () => {
-  //   if (screenWidth > 1024) {
-  //     return "40px"; // larger padding for desktop
-  //   } else if (screenWidth > 768) {
-  //     return "20px"; // medium padding for tablets
-  //   } else {
-  //     return "10px"; // smaller padding for mobile
-  //   }
-  // };
-
-  // const padding = getResponsivePadding(); // calculate the padding
 
   // dynamically calculate dimensions based on screen size
   const getResponsiveDimensions = () => {

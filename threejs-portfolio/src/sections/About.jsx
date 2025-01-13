@@ -27,11 +27,11 @@ const About = () => {
   // dynamically calculate dimensions based on screen size
   const getResponsiveDimensions = () => {
     if (screenWidth > 1024) {
-      return { height: "250px", width: "100%" }; // fullscreen
+      return { height: "240px", width: "896px" }; // fullscreen
     } else if (screenWidth > 768) {
-      return { height: "250px", width: "800px" }; // tablet
+      return { height: "240px", width: "800px" }; // tablet
     } else {
-      return { height: "340px", width: "99%" }; // mobile
+      return { height: "260px", width: "99%" }; // mobile
     }
   };
 
@@ -40,47 +40,32 @@ const About = () => {
   return (
     <section
       id="about"
-      className="about-section relative z-20 w-full text-white flex justify-center items-center bg-transparent px-4 py-2 pb-2 sm:pb-10 mb-10"
+      className="about-section relative z-10 flex justify-center items-center bg-transparent px-4 py-2 pb-2 sm:pb-10 mb-10"
       style={{
         marginTop: `${marginTop}px`, // dynamic margin-top for overlap
       }}
     >
       <div
-        className="max-w-4xl w-full flex flex-col lg:flex-row gap-4"
+        className="flex justify-center mx-auto"
         style={{
-          height: responsiveDimensions.height,
           width: responsiveDimensions.width,
+          height: responsiveDimensions.height,
         }}
       >
-        {/* First Container */}
-        <div
-          className="flex-1 p-5"
-          style={{
-            backgroundColor: "#262900", // specific background color for the container
-          }}
-        >
-          <p className="text-lg">
-            {/* Placeholder text */}
-          </p>
-        </div>
-
-        {/* Second Container */}
-        <div
-          className="flex-1 p-5"
-          style={{
-            backgroundColor: "#262900", // specific background color for the container
-          }}
-        >
+        {/* first container */}
+        <div className="p-5 bg-[#262900] w-full lg:w-[440px] lg:mr-auto md:w-[440px] md:mr-auto">
           <p className="text-lg font-thin">
-            Full-Stack Developer with a background in UI/UX, motion design, and
-            3D art. <br /> <br />
-            With every new skill I develop and driven by my beliefs in autonomy, equity, and empowerment, I strive to build technology that fosters inclusion and uplifts communities. 
+            Full-Stack Developer with a background in UI/UX, motion design, and 3D art. <br /> <br />
+            With every new skill I develop and driven by my beliefs in autonomy, equity, and empowerment, I strive to build technology that fosters inclusion and uplifts communities.
           </p>
         </div>
+        {/* second container */}
+        {/* Add other containers here if needed */}
       </div>
     </section>
   );
 };
 
 export default About;
+
 

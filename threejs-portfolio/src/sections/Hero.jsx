@@ -28,7 +28,7 @@ const Hero = ({ animationName, toggleAnimation }) => {
       const docHeight = document.documentElement.scrollHeight - window.innerHeight; // total scrollable height
       
       // Adjust the scroll fraction to amplify the effect of scrolling
-      const scrollFactor = 4; // Decrease this value to require less scrolling
+      const scrollFactor = 5; // decrease this value to require less scrolling
       const adjustedScrollFraction = Math.min((scrollTop / docHeight) * scrollFactor, 1); // clamp to [0, 1]
   
       setScrollProgress(adjustedScrollFraction);
@@ -65,11 +65,20 @@ const Hero = ({ animationName, toggleAnimation }) => {
   console.log("Toggle Animation Function:", toggleAnimation); // verify the toggle function is working
 
   return (
-    <section className="border relative w-full h-[80vh] sm:h-[130vh] bg-black bg-opacity-35 flex items-center justify-center z-10">
+    <section className="relative w-full h-[80vh] sm:h-[130vh] bg-black bg-opacity-35 flex items-center justify-center z-10">
       {/* toggle overlay */}
-      <div className="absolute z-30 bottom-[20%] right-[25%] transform -translate-x-1/2 bg-transparent p-2">
+      <div
+        className={`absolute z-50 transform -translate-x-1/2 bg-transparent p-2 transition-all duration-300 pointer-events-auto`}
+        style={{
+          bottom: screenWidth > 768 
+            ? `${300 - scrollProgress * 240}px` // Desktop: interpolate from 100px to 50px
+            : `${0 + scrollProgress * 60}px`, // Mobile: interpolate from 80px to 40px
+          right: screenWidth > 768 
+            ? `${460 - scrollProgress * 60}px` // Desktop: interpolate from 150px to 120px
+            : `${-30 + scrollProgress * 20}px`, // Mobile: interpolate from 100px to 80px
+        }}
+      >
         <label className="toggle-switch flex items-center">
-          <span className="text-white text-sm mr-2">Animation:</span>
           <input
             type="checkbox"
             checked={animationName === "Fast"}
