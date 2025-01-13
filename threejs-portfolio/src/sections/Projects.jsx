@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { myProjects } from "../constants/index.js";
+import { MdArrowOutward } from "react-icons/md";
 import { HiArrowTurnRightUp } from "react-icons/hi2";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 
@@ -192,7 +193,7 @@ const Projects = () => {
                 rel="noopener noreferrer"
                 className="text-white text-sm mr-4 inline-flex items-center border border-white rounded-full px-3.5 py-1.5 transition-colors hover:bg-[#464d5c] bg-[#343944]"
               >
-                Github <HiArrowTurnRightUp className="ml-1" />
+                Github <MdArrowOutward />
               </a>
             ) : currentProject.liveLink ? (
               <>
@@ -203,9 +204,9 @@ const Projects = () => {
                   }
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white text-sm mr-4 inline-flex items-center border border-white rounded-full px-3.5 py-1.5 transition-colors hover:bg-[#464d5c] bg-[#343944]"
+                  className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-3 py-1.5 transition-colors hover:bg-[#464d5c] bg-[#343944]"
                 >
-                  Live Link <HiArrowTurnRightUp className="ml-1" />
+                  Live Link <MdArrowOutward className="text-lg font-thin ml-1"/>
                 </a>
               </>
             ) : null}
