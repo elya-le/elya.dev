@@ -9,14 +9,14 @@ import "./Hero.css"; // import specific styles for hero component
 // hero component to render the 3d scene and toggle animation
 const Hero = ({ animationName, toggleAnimation }) => {
   const rectLightRef = useRef(); // reference for the rectangle area light
-  const catRef = useRef(); 
+  const catRef = useRef(); // reference for the cat model
   const cameraRef = useRef(); // reference for the perspectivecamera
   const [scrollProgress, setScrollProgress] = useState(0); // track the user's scroll progress
   const [screenWidth, setScreenWidth] = useState(window.innerWidth); // track the current screen width
 
   // handle screen resizing and update the state
   useEffect(() => {
-    const handleResize = () => setScreenWidth(window.innerWidth);
+    const handleResize = () => setScreenWidth(window.innerWidth); // update screen width
     window.addEventListener("resize", handleResize); // add resize listener
     return () => window.removeEventListener("resize", handleResize); // cleanup listener on unmount
   }, []);
@@ -27,11 +27,11 @@ const Hero = ({ animationName, toggleAnimation }) => {
       const scrollTop = window.scrollY; // current scroll position
       const docHeight = document.documentElement.scrollHeight - window.innerHeight; // total scrollable height
       
-      // Adjust the scroll fraction to amplify the effect of scrolling
-      const scrollFactor = 5; // decrease this value to require less scrolling
+      // adjust the scroll fraction to amplify the effect of scrolling
+      const scrollFactor = 4.6; // decrease this value to require less scrolling
       const adjustedScrollFraction = Math.min((scrollTop / docHeight) * scrollFactor, 1); // clamp to [0, 1]
   
-      setScrollProgress(adjustedScrollFraction);
+      setScrollProgress(adjustedScrollFraction); // update scroll progress
     };
   
     window.addEventListener("scroll", handleScroll); // add scroll listener
@@ -39,13 +39,13 @@ const Hero = ({ animationName, toggleAnimation }) => {
   }, []);
 
   // determine the base position of the camera based on screen width
-  const getBasePosition = () => (screenWidth > 768 ? [-4, 2, 5] : [-5, 3, 6]);  // [ x, y, z ]
+  const getBasePosition = () => (screenWidth > 768 ? [-4, 3, 5] : [-5, 4, 6]); // [x, y, z]
 
   // determine the scale of the cat model based on screen width
-  const getCatScale = () => (screenWidth > 1024 ? 1 : screenWidth > 768 ? 1 : 0.9);
+  const getCatScale = () => (screenWidth > 1024 ? 1 : screenWidth > 768 ? 1 : 1.5);
 
   // settings for the rectangle area light based on screen width
-    const rectLightSettings = screenWidth > 768 
+  const rectLightSettings = screenWidth > 768 
     ? {
         position: [-0.4, 1.4, 1.6], // light's position for larger screens
         rotation: [0.1, 0, 0], // light's rotation
@@ -54,28 +54,29 @@ const Hero = ({ animationName, toggleAnimation }) => {
         intensity: 30, // brightness of the light
       }
     : {
-        position: [-0.3, 1.2, 1.4], // light's position for smaller screens
+        position: [-0.532, 1.862, 2.428], // light's position for smaller screens
         rotation: [0.1, 0, 0], // light's rotation
         width: 1.0, // light's width
         height: 0.7, // light's height
         intensity: 20, // brightness of the light
       };
 
-  console.log("Animation Name:", animationName); // log the current animation state
-  console.log("Toggle Animation Function:", toggleAnimation); // verify the toggle function is working
+  // log debugging information
+  console.log("screen width:", screenWidth);
+  console.log("scroll progress:", scrollProgress);
 
   return (
-    <section className="relative w-full h-[80vh] sm:h-[130vh] bg-black bg-opacity-35 flex items-center justify-center z-10">
+    <section className="relative w-full h-[60vh] sm:h-[130vh] bg-black bg-opacity-35 flex items-center justify-center z-10">
       {/* toggle overlay */}
       <div
         className={`absolute z-50 transform -translate-x-1/2 bg-transparent p-2 transition-all duration-300 pointer-events-auto`}
         style={{
           bottom: screenWidth > 768 
-            ? `${300 - scrollProgress * 240}px` // Desktop: interpolate from 100px to 50px
-            : `${0 + scrollProgress * 60}px`, // Mobile: interpolate from 80px to 40px
+            ? `${300 - scrollProgress * 240}px` // desktop: interpolate from 300px to 60px
+            : `${0 + scrollProgress * 130}px`, // mobile: interpolate from 0px to 130px
           right: screenWidth > 768 
-            ? `${460 - scrollProgress * 60}px` // Desktop: interpolate from 150px to 120px
-            : `${-30 + scrollProgress * 20}px`, // Mobile: interpolate from 100px to 80px
+            ? `${460 - scrollProgress * 60}px` // desktop: interpolate from 460px to 400px
+            : `${-30 + scrollProgress * 20}px`, // mobile: interpolate from -30px to -10px
         }}
       >
         <label className="toggle-switch flex items-center">
@@ -102,6 +103,7 @@ const Hero = ({ animationName, toggleAnimation }) => {
             scrollProgress={scrollProgress}
             cameraRef={cameraRef}
             basePosition={getBasePosition()}
+            screenWidth={screenWidth} // pass screen width to camera zoom
           />
           <color attach="background" args={["#191B00"]} />
           <rectAreaLight
@@ -132,35 +134,38 @@ const CameraZoom = ({ scrollProgress, cameraRef, basePosition, screenWidth }) =>
   const [baseX, baseY, baseZ] = basePosition;
 
   // set different end positions for desktop vs. mobile
-  const xEnd = screenWidth > 768 ? 4 : 3.5; 
-  const yEnd = screenWidth > 768 ? -6 : -4; 
-  const zEnd = screenWidth > 768 ? 8 : 6;
+  const xEnd = screenWidth > 768 ? 4 : 3; 
+  const yEnd = screenWidth > 768 ? -6 : -6; 
+  const zEnd = screenWidth > 768 ? 6 : 8;
 
   // define distinct lookAt points for start and end of scroll
-  const startLookAt = [-0.5, 0, 0]; // Initial camera look-at point
-  const endLookAt = screenWidth > 768 
-    ? [0, 0, 0] // final look-at point for desktop
-    : [-0.5, 3, 0]; // final look-at point for mobile
+  const startLookAt = screenWidth > 768 ? [-0.5, 0, .5] : [-0.5, 1, .5]; // initial look-at point
+  const endLookAt = screenWidth > 768 ? [0, 0, 1] : [-1, 3, -1]; // final look-at point for mobile
 
   useFrame(() => {
     if (cameraRef.current) {
-      const progress = Math.min(Math.max(scrollProgress, 0), 1); // Clamp progress to [0, 1]
+      const progress = Math.min(Math.max(scrollProgress, 0), 1); // clamp progress to [0, 1]
 
       // interpolate camera position based on scroll progress
       const xPos = baseX + progress * xEnd; 
       const yPos = baseY - progress * yEnd; 
       const zPos = baseZ - progress * zEnd; 
 
-      // Interpolate `lookAt` position
+      // interpolate `lookAt` position
       const currentLookAt = startLookAt.map(
         (start, index) => start + progress * (endLookAt[index] - start)
       );
 
-      cameraRef.current.position.set(xPos, yPos, zPos); // Update camera position
-      cameraRef.current.lookAt(...currentLookAt); // Update camera look-at point
+      // debugging logs
+      console.log("camera position:", { xPos, yPos, zPos });
+      console.log("look-at point:", currentLookAt);
+
+      cameraRef.current.position.set(xPos, yPos, zPos); // update camera position
+      cameraRef.current.lookAt(...currentLookAt); // update camera look-at point
     }
   });
 
   return null;
 };
+
 export default Hero;

@@ -53,7 +53,7 @@ const About = () => {
         }}
       >
         {/* first container */}
-        <div className="p-5 bg-[#262900] w-full lg:w-[440px] lg:mr-auto md:w-[440px] md:mr-auto">
+        <div className="p-5 bg-[#262900] w-full lg:w-[415px] lg:mr-auto md:w-[440px] md:mr-auto">
           <p className="text-lg font-thin">
             Full-Stack Developer with a background in UI/UX, motion design, and 3D art. <br /> <br />
             With every new skill I develop and driven by my beliefs in autonomy, equity, and empowerment, I strive to build technology that fosters inclusion and uplifts communities.
