@@ -45,18 +45,18 @@ const ContactForm = () => {
       if (result.result === 'success') {
         setStatus('Message sent successfully!');
         setFormData({ name: '', email: '', message: '' });
-            } else {
+      } else {
         setStatus('Failed to send — Try via&nbsp;<a href="mailto:elyaj.le@gmail.com" style="text-decoration: underline;">direct email link</a>');
-            }
-          } catch (error) {
-            console.error('Error submitting form:', error);
-            setStatus('Failed to send — Try via&nbsp;<a href="mailto:elyaj.le@gmail.com" style="text-decoration: underline;"> direct email link</a>');
-          }
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setStatus('Failed to send — Try via&nbsp;<a href="mailto:elyaj.le@gmail.com" style="text-decoration: underline;"> direct email link</a>');
+    }
   };
 
   return (
     <section 
-      className="border flex flex-col items-center justify-center bg-[#191B00] p-4"
+      className="flex flex-col items-center justify-center bg-[#191B00] p-4"
       id="contact"
       >
       <div
@@ -70,15 +70,15 @@ const ContactForm = () => {
 
         <div className="w-full flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
           <div className="w-full sm:w-1/2 bg-[#262900] p-6">
-          <img
-            src="./public/assets/Elya_PhotonDesk2019.jpg"
-            alt="Elya Photon Desk 2019"
-            style={{
-              width: '100%', // or any specific width
-              height: '300px', // or any specific height
-              objectFit: 'cover', // 'cover', 'contain', 'fill', 'none', 'scale-down'
-            }}
-          />
+            <img
+              src="/assets/Elya_PhotonDesk2019.jpg"
+              alt="Elya Photon Desk 2019"
+              style={{
+                width: '100%', // or any specific width
+                height: '300px', // or any specific height
+                objectFit: 'cover', // 'cover', 'contain', 'fill', 'none', 'scale-down'
+              }}
+            />
           </div>
           <div className="w-full sm:w-1/2 bg-[#262900] p-6">
             <h2 className="text-2xl font-bold mb-6 text-left"></h2>
@@ -90,7 +90,7 @@ const ContactForm = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="mt-1 block w-full px-3 py-2 focus:outline-none focus:ring-white focus:border-white sm:text-sm peer bg-[#2C2F03] border border-white border-opacity-10 placeholder-white placeholder-opacity-30"
+                  className="mt-1 block w-full px-3 py-2 focus:outline-none focus:ring-white focus:border-white sm:text-sm peer bg-[#2C2F03] border border-white border-opacity-10 focus:border-opacity-100 placeholder-white placeholder-opacity-30"
                   placeholder="Name"
                   style={{ borderRadius: '0px', color: 'white' }}
                   required
@@ -103,7 +103,7 @@ const ContactForm = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="mt-1 block w-full px-3 py-2 focus:outline-none focus:ring-white focus:border-white sm:text-sm peer bg-[#2C2F03] border border-white border-opacity-10 placeholder-white placeholder-opacity-30"
+                  className="mt-1 block w-full px-3 py-2 focus:outline-none focus:ring-white focus:border-white sm:text-sm peer bg-[#2C2F03] border border-white border-opacity-10 focus:border-opacity-100 placeholder-white placeholder-opacity-30"
                   placeholder="Email"
                   style={{ borderRadius: '0px', color: 'white' }}
                   required
@@ -116,7 +116,7 @@ const ContactForm = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows="4"
-                  className="mt-1 block w-full px-3 py-2 focus:outline-none focus:ring-white focus:border-white sm:text-sm peer bg-[#2C2F03] border border-white border-opacity-10 placeholder-white placeholder-opacity-30"
+                  className="mt-1 block w-full px-3 py-2 focus:outline-none focus:ring-white focus:border-white sm:text-sm peer bg-[#2C2F03] border border-white border-opacity-10 focus:border-opacity-100 placeholder-white placeholder-opacity-30"
                   placeholder="Message"
                   style={{ borderRadius: '0px', color: 'white' }}
                   required
