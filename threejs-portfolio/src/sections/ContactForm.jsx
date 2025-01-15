@@ -14,11 +14,11 @@ const ContactForm = () => {
 
   const getResponsiveSectionDimensions = () => {
     if (screenWidth > 1024) {
-      return { height: "770px", width: "900px" }; // fullscreen
+      return { height: "400px", width: "900px" }; // fullscreen
     } else if (screenWidth > 768) {
-      return { height: "750px", width: "800px" }; // tablet
+      return { height: "400px", width: "800px" }; // tablet
     } else {
-      return { height: "680px", width: "99%" }; // mobile
+      return { height: "755px", width: "99%" }; // mobile
     }
   };
 
@@ -45,18 +45,18 @@ const ContactForm = () => {
       if (result.result === 'success') {
         setStatus('Message sent successfully!');
         setFormData({ name: '', email: '', message: '' });
-      } else {
-        setStatus('Failed to send message.');
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setStatus('Failed to send message.');
-    }
+            } else {
+        setStatus('Failed to send — Try via&nbsp;<a href="mailto:elyaj.le@gmail.com" style="text-decoration: underline;">direct email link</a>');
+            }
+          } catch (error) {
+            console.error('Error submitting form:', error);
+            setStatus('Failed to send — Try via&nbsp;<a href="mailto:elyaj.le@gmail.com" style="text-decoration: underline;"> direct email link</a>');
+          }
   };
 
   return (
     <section 
-      className="flex flex-col items-center justify-center bg-[#191B00] p-4"
+      className="border flex flex-col items-center justify-center bg-[#191B00] p-4"
       id="contact"
       >
       <div
@@ -80,7 +80,7 @@ const ContactForm = () => {
             }}
           />
           </div>
-          <div className="w-full sm:w-1/2 max-w-lg bg-[#262900] p-6">
+          <div className="w-full sm:w-1/2 bg-[#262900] p-6">
             <h2 className="text-2xl font-bold mb-6 text-left"></h2>
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="relative">
@@ -124,7 +124,13 @@ const ContactForm = () => {
               </div>
               <div className="flex justify-between items-center">
                 <div className="flex-1 flex items-center">
-                  {status && <p className="inline-flex items-center text-white text-left" style={{ alignSelf: 'center' }}>{status}</p>}
+                  {status && (
+                    <p
+                      className={`inline-flex items-center text-white text-left ${screenWidth <= 768 ? 'text-xs' : ''}`}
+                      style={{ alignSelf: 'center' }}
+                      dangerouslySetInnerHTML={{ __html: status }}
+                    ></p>
+                  )}
                 </div>
                 <div className="">
                   <button
