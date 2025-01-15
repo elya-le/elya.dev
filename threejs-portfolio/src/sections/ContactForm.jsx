@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 const ContactForm = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState('');
 
   useEffect(() => {
     const handleResize = () => setScreenWidth(window.innerWidth);
@@ -20,6 +22,36 @@ const ContactForm = () => {
   };
 
   const responsiveSectionDimensions = getResponsiveSectionDimensions();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+    try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwHwz7g5DvXlIFFzHYQ0qLgEyDgoBQspyVBXgtbm3oQRyeBWT5OPFqDu_HfGSYXUZtU/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+      console.log('Response from server:', result);
+      if (result.result === 'success') {
+        setStatus('Message sent successfully!');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setStatus('Failed to send message.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setStatus('Failed to send message.');
+    }
+  };
 
   return (
     <section 
@@ -41,25 +73,28 @@ const ContactForm = () => {
           </div>
           <div className="w-full sm:w-1/2 max-w-lg bg-[#262900] p-6">
             <h2 className="text-2xl font-bold mb-6 text-left"></h2>
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="relative">
                 <input
                   type="text"
                   id="name"
                   name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   className="mt-1 block w-full px-3 py-2 focus:outline-none focus:ring-white focus:border-white sm:text-sm peer bg-[#2C2F03] border border-white border-opacity-10 placeholder-white placeholder-opacity-30"
                   placeholder="Name"
                   style={{ borderRadius: '0px', color: 'white' }}
                   required
                 />
-
               </div>
               <div className="relative">
                 <input
                   type="email"
                   id="email"
                   name="email"
-                  className="mt-1 block w-full px-3 py-2 focus:outline-none focus:ring-white focus:border-white sm:text-sm peer bg-[#2C2F03] border border-white border-opacity-10  placeholder-white placeholder-opacity-30"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="mt-1 block w-full px-3 py-2 focus:outline-none focus:ring-white focus:border-white sm:text-sm peer bg-[#2C2F03] border border-white border-opacity-10 placeholder-white placeholder-opacity-30"
                   placeholder="Email"
                   style={{ borderRadius: '0px', color: 'white' }}
                   required
@@ -69,8 +104,10 @@ const ContactForm = () => {
                 <textarea
                   id="message"
                   name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   rows="4"
-                  className="mt-1 block w-full px-3 py-2 focus:outline-none focus:ring-white focus:border-white sm:text-sm peer bg-[#2C2F03] border border-white border-opacity-10  placeholder-white placeholder-opacity-30"
+                  className="mt-1 block w-full px-3 py-2 focus:outline-none focus:ring-white focus:border-white sm:text-sm peer bg-[#2C2F03] border border-white border-opacity-10 placeholder-white placeholder-opacity-30"
                   placeholder="Message"
                   style={{ borderRadius: '0px', color: 'white' }}
                   required
@@ -79,16 +116,16 @@ const ContactForm = () => {
               <div className="text-right">
                 <button
                   type="submit"
-                  className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-4 py-1.5 transition-colors bg-[#4C5200] hover:bg-[#5F6600] "
+                  className="text-white text-sm inline-flex items-center border border-white border-opacity-50 rounded-full pl-4 pr-4 py-1.5 transition-colors bg-[#4C5200] hover:bg-[#5F6600]"
                 >
                   Send
                 </button>
               </div>
             </form>
+            {status && <p className="mt-4 text-white">{status}</p>}
           </div>
         </div>
       </div>
-
     </section>
   );
 };
