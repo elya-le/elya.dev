@@ -3,6 +3,7 @@ import Navbar from "./sections/Navbar.jsx";
 import Hero from "./sections/Hero";
 import Projects from "./sections/Projects";
 import About from "./sections/About";
+import Contact from "./sections/ContactForm.jsx";
 import Footer from "./sections/Footer.jsx";
 import "./index.css"; // Import your global CSS file
 
@@ -22,6 +23,7 @@ const App = () => {
       <Hero animationName={animationName} toggleAnimation={toggleAnimation} />
       <About />
       <Projects />
+      <Contact />
       <Footer />
     </>
   );

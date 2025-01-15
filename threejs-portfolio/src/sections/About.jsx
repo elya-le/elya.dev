@@ -24,6 +24,7 @@ const About = () => {
     return () => window.removeEventListener("scroll", handleScroll); // cleanup on unmount
   }, []);
 
+
   // dynamically calculate dimensions based on screen size
   const getResponsiveDimensions = () => {
     if (screenWidth > 1024) {
@@ -66,6 +67,5 @@ const About = () => {
   );
 };
 
+
 export default About;
-
-

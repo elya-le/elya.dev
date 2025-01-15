@@ -19,7 +19,7 @@ const Projects = () => {
   // dynamically calculate dimensions based on screen size
   const getResponsiveDimensions = () => {
     if (screenWidth > 1024) {
-      return { height: "770px", width: "896px" }; // fullscreen
+      return { height: "770px", width: "900px" }; // fullscreen
     } else if (screenWidth > 768) {
       return { height: "750px", width: "800px" }; // tablet
     } else {
@@ -121,12 +121,12 @@ const Projects = () => {
         height: responsiveDimensions.height,
         width: responsiveDimensions.width,
       }}>
-      <div className="w-full text-left mb-2 pl-3 sm:pl-6 sm:mb-4">
-        <p className="text-white text-lg sm:text-xl font-thin">Selected Projects</p>
-      </div>
+        <div className="w-full text-left mb-2 pl-3 sm:pl-6 sm:mb-4">
+          <p className="text-white text-lg sm:text-xl font-thin">Selected Projects</p>
+        </div>
         {/* project grid container */}
         <div
-        className="relative bg-opacity-80 flex flex-col justify-center bg-[#23272F] h-[responsiveDimensions.height] w-[responsiveDimensions.width] p-2 lg:p-5 md:p-4 sm:px-2 sm:py-4"
+        className="relative bg-opacity-80 flex flex-col justify-center bg-[#191B00] h-[responsiveDimensions.height] w-[responsiveDimensions.width] p-2 lg:p-5 md:p-4 sm:px-2 sm:py-4"
           // className="relative border p-5 shadow-lg bg-opacity-80 flex flex-col"
           style={{
             backgroundColor: "#262900",
