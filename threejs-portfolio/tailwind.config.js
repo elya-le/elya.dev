@@ -27,6 +27,13 @@ export default {
       backgroundImage: {
         terminal: "url('/assets/terminal.png')",
       },
+      screens: {
+        'sm': '700px', // Change the 'sm' breakpoint to 500px
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      },
     },
   },
   plugins: [],

@@ -4,6 +4,7 @@ import Hero from "./sections/Hero";
 import Projects from "./sections/Projects";
 import About from "./sections/About";
 import Contact from "./sections/ContactForm.jsx";
+import OtherProjects from "./sections/OtherProjects"; 
 import Footer from "./sections/Footer.jsx";
 import "./index.css"; // Import your global CSS file
 
@@ -24,6 +25,7 @@ const App = () => {
       <About />
       <Projects />
       <Contact />
+      <OtherProjects />
       <Footer />
     </>
   );

@@ -9,9 +9,12 @@ export const navLinks = [
     name: 'Contact',
     href: '#contact',
   },
+  {
+    id: 3,
+    name: 'Non-Code Projects',
+    href: '#non-code-projects',
+  },
 ];
-
-
 
 export const myProjects = [
   {
@@ -23,7 +26,6 @@ Result: <span class="font-thin"> Delivered a precise, high-quality web app while
     liveLink: 'https://elya-le-banter.onrender.com',
     repoLink: 'https://github.com/elya-le/Banter/',
     texture: '/textures/project/project1.mp4',
-    // previewImg1: '/assets/Banter1.png',
     previewImg2: '/assets/Banter2.png',
     previewImg3: '/assets/Banter3.png',
     previewImg4: '/assets/Banter4.png',
@@ -79,7 +81,7 @@ Result:<span class="font-thin"> A fully functional app that equips users in orga
   },
   {
     title: 'Current Portfolio Site',
-    desc: 'Combining my love for 3D modeling, motion design & web development',
+    desc: 'Combining my love for 3D modeling, motion design and web development',
     subdesc:
     `Focus:<span class="font-thin"> Challenge myself to learn Three.js, Tailwind and Blender to design and build Elya.dev.<br><br>
 Result:<span class="font-thin"> A clean, interactive site that highlights 3D elements and innovative design techniques.`,
@@ -98,6 +100,40 @@ Result:<span class="font-thin"> A clean, interactive site that highlights 3D ele
   },
 ];
 
+export const otherProjects = [
+  {
+    title: 'Weather App',
+    desc: 'A simple weather forecasting app using OpenWeatherMap API',
+    subdesc: 
+    `Focus: <span class="font-thin">Learning API integration and data visualization. (1-week build deadline)</span><br><br>
+Result: <span class="font-thin"> Delivered a functional weather app that fetches and displays weather data based on user input.</span>`,
+    liveLink: 'https://example.com/weather-app',
+    repoLink: 'https://github.com/username/weather-app',
+    previewImg1: '/assets/weather1.png',
+    previewImg2: '/assets/weather2.png',
+    tags: [
+      { id: 1, name: 'JavaScript', color: '#393D00', }, // JavaScript
+      { id: 2, name: 'HTML5', color: '#393D00', }, // HTML5
+      { id: 3, name: 'CSS3', color: '#393D00', }, // CSS3
+    ],
+  },
+  {
+    title: 'To-Do List App',
+    desc: 'A simple to-do list app to manage daily tasks',
+    subdesc: 
+    `Focus: <span class="font-thin">Learning CRUD operations and local storage. (1-week build deadline)</span><br><br>
+Result: <span class="font-thin"> Delivered a to-do list app that allows users to add, edit, and delete tasks, with data persistence using local storage.</span>`,
+    liveLink: 'https://example.com/todo-app',
+    repoLink: 'https://github.com/username/todo-app',
+    previewImg1: '/assets/todo1.png',
+    previewImg2: '/assets/todo2.png',
+    tags: [
+      { id: 1, name: 'JavaScript', color: '#393D00', }, // JavaScript
+      { id: 2, name: 'HTML5', color: '#393D00', }, // HTML5
+      { id: 3, name: 'CSS3', color: '#393D00', }, // CSS3
+    ],
+  },
+];
 
 
 // export const workExperiences = [

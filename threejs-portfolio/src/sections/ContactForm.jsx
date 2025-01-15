@@ -126,7 +126,7 @@ const ContactForm = () => {
                 <div className="flex-1 flex items-center">
                   {status && (
                     <p
-                      className={`inline-flex items-center text-white text-left ${screenWidth <= 768 ? 'text-xs' : ''}`}
+                      className={`inline-flex items-center text-white text-left ${screenWidth > 1024 ? '' : screenWidth > 768 ? 'text-sm' : 'text-xs'}`}
                       style={{ alignSelf: 'center' }}
                       dangerouslySetInnerHTML={{ __html: status }}
                     ></p>
