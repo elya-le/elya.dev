@@ -9,7 +9,7 @@ const ContactForm = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const getResponsiveDimensions = () => {
+  const getResponsiveSectionDimensions = () => {
     if (screenWidth > 1024) {
       return { height: "770px", width: "900px" }; // fullscreen
     } else if (screenWidth > 768) {
@@ -19,7 +19,7 @@ const ContactForm = () => {
     }
   };
 
-  const responsiveDimensions = getResponsiveDimensions();
+  const responsiveSectionDimensions = getResponsiveSectionDimensions();
 
   return (
     <section 
@@ -28,8 +28,8 @@ const ContactForm = () => {
       >
       <div
       style={{
-        height: responsiveDimensions.height,
-        width: responsiveDimensions.width,
+        height: responsiveSectionDimensions.height,
+        width: responsiveSectionDimensions.width,
       }}>
         <div className="w-full text-left mb-2 pl-3 sm:pl-6 sm:mb-4">
           <p className="text-white text-lg sm:text-xl font-thin">Lets build together</p>
@@ -47,9 +47,9 @@ const ContactForm = () => {
                   type="text"
                   id="name"
                   name="name"
-                  className="mt-1 block w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm peer"
+                  className="mt-1 block w-full px-3 py-2 focus:outline-none focus:ring-white focus:border-white sm:text-sm peer bg-[#2C2F03] border border-white border-opacity-10 placeholder-white placeholder-opacity-30"
                   placeholder="Name"
-                  style={{ color: 'black', '::placeholder': { color: 'grey' } }}
+                  style={{ borderRadius: '0px', color: 'white' }}
                   required
                 />
 
@@ -59,9 +59,9 @@ const ContactForm = () => {
                   type="email"
                   id="email"
                   name="email"
-                  className="mt-1 block w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm peer"
+                  className="mt-1 block w-full px-3 py-2 focus:outline-none focus:ring-white focus:border-white sm:text-sm peer bg-[#2C2F03] border border-white border-opacity-10  placeholder-white placeholder-opacity-30"
                   placeholder="Email"
-                  style={{ color: 'black', '::placeholder': { color: 'grey' } }}
+                  style={{ borderRadius: '0px', color: 'white' }}
                   required
                 />
               </div>
@@ -70,16 +70,16 @@ const ContactForm = () => {
                   id="message"
                   name="message"
                   rows="4"
-                  className="mt-1 block w-full px-3 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm peer"
+                  className="mt-1 block w-full px-3 py-2 focus:outline-none focus:ring-white focus:border-white sm:text-sm peer bg-[#2C2F03] border border-white border-opacity-10  placeholder-white placeholder-opacity-30"
                   placeholder="Message"
-                  style={{ color: 'black', '::placeholder': { color: 'grey' } }}
+                  style={{ borderRadius: '0px', color: 'white' }}
                   required
                 ></textarea>
               </div>
-              <div className="text-left">
+              <div className="text-right">
                 <button
                   type="submit"
-                  className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-3 py-1.5 transition-colors hover:bg-[#5F6600] bg-[#4C5200]"
+                  className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-4 py-1.5 transition-colors bg-[#4C5200] hover:bg-[#5F6600] "
                 >
                   Send
                 </button>

@@ -17,7 +17,7 @@ const Projects = () => {
   }, []);
 
   // dynamically calculate dimensions based on screen size
-  const getResponsiveDimensions = () => {
+  const getResponsiveSectionDimensions = () => {
     if (screenWidth > 1024) {
       return { height: "770px", width: "900px" }; // fullscreen
     } else if (screenWidth > 768) {
@@ -37,19 +37,18 @@ const Projects = () => {
     }
   };
 
-  const getSubdescHeight = () => {
+  const getResponsiveSubdescHeight = () => {
     if (screenWidth > 1024) {
-      return "115px"; // height for desktop
+      return "145px"; // height for desktop
     } else if (screenWidth > 768) {
       return "120px"; // height for tablet
     } else {
       return "135px"; // height for mobile
     }
   };
-
-  const responsiveDimensions = getResponsiveDimensions();
+  const responsiveSectionDimensions = getResponsiveSectionDimensions();
   const responsiveImageSize = getResponsiveImageSize();
-  const subdescHeight = getSubdescHeight(); // get height dynamically
+  const subdescHeight = getResponsiveSubdescHeight(); // get height dynamically
 
   // click on an image to navigate and toggle visibility
   const handleImageClick = (index) => {
@@ -118,8 +117,8 @@ const Projects = () => {
       {/* Header Section for "Selected Projects" */}
       <div
       style={{
-        height: responsiveDimensions.height,
-        width: responsiveDimensions.width,
+        height: responsiveSectionDimensions.height,
+        width: responsiveSectionDimensions.width,
       }}>
         <div className="w-full text-left mb-2 pl-3 sm:pl-6 sm:mb-4">
           <p className="text-white text-lg sm:text-xl font-thin">Selected Projects</p>
@@ -137,7 +136,7 @@ const Projects = () => {
             {/* internal image carousel */}
             <div
               ref={carouselRef}
-              className="whitespace-nowrap overflow-x-auto hide-scrollbar"
+              className="border whitespace-nowrap overflow-x-auto hide-scrollbar"
               style={{
                 overflowX: "scroll", // enable horizontal scrolling
                 overflowY: "hidden",
@@ -165,73 +164,72 @@ const Projects = () => {
                         height: "100%",
                         width: "100%",
                         objectFit: "contain", // maintain image aspect ratio
-                      }}
-                    />
+                        }}
+                      />
                   </div>
                 ))}
-            </div>
-            {/* project title and description */}
-            <p className="mt-4 text-white text-lg lg:text-2xl font-medium">
-              {currentProject.title}
-            </p>
-            <p className="t font-thin">
-              {currentProject.desc}
-            </p>
-
-            {/* live link and github repo */}
-            <div className="links mt-4">
-              {currentProject.repoLink && currentProject.title === "Current portfolio site" ? (
-                <a
-                  href={currentProject.repoLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-3 py-1.5 transition-colors hover:bg-[#5F6600] bg-[#4C5200]"
+              </div>
+              {/* project title and live link/github repo */}
+              <div className="border border-transparent mt-4 flex justify-between items-center w-full">
+                <p
+                  className={`text-white font-medium ${
+                    screenWidth > 1024 ? "text-2xl" : "text-xl"
+                  }`}
                 >
-                  Github <GoArrowUpRight className="text-lg font-thin ml-1"/>
-                </a>
-              ) : currentProject.liveLink ? (
-                <>
-                  <a
-                    href={currentProject.liveLink}
-                    onClick={(e) =>
-                      handleLiveLinkClick(e, currentProject.liveLink)
-                    }
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-3 py-1.5 transition-colors hover:bg-[#5F6600] bg-[#4C5200]"
+                  {currentProject.title}
+                </p>
+                <div className="links">
+                  {currentProject.repoLink && currentProject.title === "Current Portfolio Site" ? (
+                    <a
+                      href={currentProject.repoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-3 py-1.5 transition-colors hover:bg-[#5F6600] bg-[#4C5200]"
+                    >
+                      Github <GoArrowUpRight className="text-lg font-thin ml-1" />
+                    </a>
+                  ) : currentProject.liveLink ? (
+                    <>
+                      <a
+                        href={currentProject.liveLink}
+                        onClick={(e) => handleLiveLinkClick(e, currentProject.liveLink)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white text-sm inline-flex items-center border border-white rounded-full pl-4 pr-3 py-1.5 transition-colors hover:bg-[#5F6600] bg-[#4C5200]"
+                      >
+                        Live Link <GoArrowUpRight className="text-lg font-thin ml-1" />
+                      </a>
+                    </>
+                  ) : null}
+                </div>
+              </div>
+              {/* project description */}
+              <p className="mt-2 text-white font-thin text-sm sm:text-base md:text-lg lg:text-lg">
+                {currentProject.desc}
+              </p>
+              <div
+                className="subdesc mt-4 text-sm sm:text-base md:text-lg lg:text-lg"
+                dangerouslySetInnerHTML={{ __html: currentProject.subdesc }}
+                style={{
+                  height: subdescHeight,
+                }}
+              ></div>
+              {/* add tags */}
+              <div className="tags my-4 flex flex-wrap gap-2">
+                {currentProject.tags.map((tag) => (
+                  <span
+                    key={tag.id}
+                    className="px-3 py-1 text-sm font-thin rounded-full text-white"
+                    style={{
+                      backgroundColor: tag.color,
+                      color: tag.textColor || "#ffffff",
+                    }}
                   >
-                    Live Link <GoArrowUpRight className="text-lg font-thin ml-1"/>
-                  </a>
-                </>
-              ) : null}
+                    {tag.name}
+                  </span>
+                ))}
+              </div>
             </div>
-
-            {/* sub-description */}
-            <div
-              className="subdesc mt-4"
-              dangerouslySetInnerHTML={{ __html: currentProject.subdesc }}
-              style={{
-                height: subdescHeight,
-              }}
-            ></div>
-
-            {/* add tags */}
-            <div className="tags my-4 flex flex-wrap gap-2">
-              {currentProject.tags.map((tag) => (
-                <span
-                  key={tag.id}
-                  className="px-3 py-1 text-sm font-thin rounded-full text-white"
-                  style={{
-                    backgroundColor: tag.color,
-                    color: tag.textColor || "#ffffff",
-                  }}
-                >
-                  {tag.name}
-                </span>
-              ))}
-            </div>
-          </div>
-
           {/* navigation buttons for projects */}
           <div className="flex justify-between items-center px-1 pb-1 w-full">
             {/* previous button */}
@@ -257,7 +255,6 @@ const Projects = () => {
             {/* next button */}
             <button
               className="text-lg flex items-center "
-              // className="text-sm flex items-center rounded-full gap-2 px-2 py-2 border border-white hover:border-gray-400 transition-colors hover:bg-[#464d5c] bg-[#343944] text-white"
               onClick={() => handleNavigation("next")}
             >
               <GoArrowRight className="mr-1 text-grey transition-colors" />
