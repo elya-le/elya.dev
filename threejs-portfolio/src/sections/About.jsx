@@ -41,7 +41,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="about-section relative z-10 flex justify-center items-center bg-transparent px-4 py-2 pb-2 sm:pb-10 mb-10"
+      className="about-section relative z-10 flex justify-center items-center bg-transparent px-4 py-1 sm:px-4 sm:py-2 pb-2 sm:pb-10 mb-10"
       style={{
         marginTop: `${marginTop}px`, // dynamic margin-top for overlap
       }}
@@ -53,15 +53,14 @@ const About = () => {
           height: responsiveDimensions.height,
         }}
       >
-        {/* first container */}
-        <div className="p-5 bg-[#262900] w-full lg:w-[415px] lg:mr-auto md:w-[440px] md:mr-auto">
+        {/* first container */ }
+        <div className="p-3 sm:p-5 bg-[#262900] w-full lg:w-[415px] lg:mr-auto md:w-[440px] md:mr-auto">
           <p className="text-lg font-thin">
             Full-Stack Developer with a background in UI/UX, motion design, and 3D art. <br /> <br />
-            Guided by my beleifs in autonomy, equity and empowerment — I strive to build secure, meaningful tools that fosters inclusion, and uplifts communities. 
+            Guided by my beliefs in autonomy, equity, and empowerment — I strive to build secure, meaningful tools that foster inclusion & uplift communities.
           </p>
         </div>
-        {/* second container */}
-        {/* Add other containers here if needed */}
+        {/* second container pleace holder */}
       </div>
     </section>
   );

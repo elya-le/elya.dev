@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { RiSendPlaneLine } from "react-icons/ri";
 
 const ContactForm = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -64,12 +65,20 @@ const ContactForm = () => {
         width: responsiveSectionDimensions.width,
       }}>
         <div className="w-full text-left mb-2 pl-3 sm:pl-6 sm:mb-4">
-          <p className="text-white text-lg sm:text-xl font-thin">Lets build together</p>
+          <p className="text-white text-lg sm:text-xl font-thin">Lets build together!</p>
         </div>
 
         <div className="w-full flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
           <div className="w-full sm:w-1/2 bg-[#262900] p-6">
-            {/* Placeholder content */}
+          <img
+            src="./public/assets/Elya_PhotonDesk2019.jpg"
+            alt="Elya Photon Desk 2019"
+            style={{
+              width: '100%', // or any specific width
+              height: '300px', // or any specific height
+              objectFit: 'cover', // 'cover', 'contain', 'fill', 'none', 'scale-down'
+            }}
+          />
           </div>
           <div className="w-full sm:w-1/2 max-w-lg bg-[#262900] p-6">
             <h2 className="text-2xl font-bold mb-6 text-left"></h2>
@@ -113,16 +122,20 @@ const ContactForm = () => {
                   required
                 ></textarea>
               </div>
-              <div className="text-right">
-                <button
-                  type="submit"
-                  className="text-white text-sm inline-flex items-center border border-white border-opacity-50 rounded-full pl-4 pr-4 py-1.5 transition-colors bg-[#4C5200] hover:bg-[#5F6600]"
-                >
-                  Send
-                </button>
+              <div className="flex justify-between items-center">
+                <div className="flex-1 flex items-center">
+                  {status && <p className="inline-flex items-center text-white text-left" style={{ alignSelf: 'center' }}>{status}</p>}
+                </div>
+                <div className="">
+                  <button
+                    type="submit"
+                    className="text-white text-sm inline-flex items-center border border-white border-opacity-50 rounded-full pl-4 pr-4 py-1.5 transition-colors bg-[#4C5200] hover:bg-[#5F6600]"
+                  >
+                  Send <RiSendPlaneLine className="pl-1.5" size={18} />
+                  </button>
+                </div>
               </div>
             </form>
-            {status && <p className="mt-4 text-white">{status}</p>}
           </div>
         </div>
       </div>
