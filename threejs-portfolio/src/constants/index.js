@@ -26,9 +26,10 @@ Result: <span class="font-thin"> Delivered a precise, high-quality web app while
     liveLink: 'https://elya-le-banter.onrender.com',
     repoLink: 'https://github.com/elya-le/Banter/',
     texture: '/textures/project/project1.mp4',
-    previewImg2: '/assets/Banter2.png',
-    previewImg3: '/assets/Banter3.png',
-    previewImg4: '/assets/Banter4.png',
+    previewImg1: '/assets/banter1.png',
+    previewImg2: '/assets/banter2.png',
+    previewImg3: '/assets/banter3.png',
+    previewImg4: '/assets/banter4.png',
     tags: [
       { id: 1, name: 'React.js', color: '#393D00', }, // React.js
       { id: 3, name: 'Flask', color: '#393D00' }, // Flask
@@ -49,6 +50,7 @@ Result: <span class="font-thin"> Delivered a React web app using agile workflows
     previewImg1: '/assets/getsy1.png',
     previewImg2: '/assets/getsy2.png',
     previewImg3: '/assets/getsy3.png',
+    previewImg3: '/assets/getsy4.png',
     tags: [
       { id: 1, name: 'React.js', color: '#393D00', }, // React - highly impressive, widely used frontend framework
       { id: 2, name: 'Python', color: '#393D00', }, // Python - versatile, backend and data-oriented
@@ -67,9 +69,11 @@ Result: <span class="font-thin"> Delivered a React web app using agile workflows
 Result:<span class="font-thin"> A fully functional app that equips users in organizing and joining local meetups, showcasing my proficiency in backend and frontend integration. (2 feature CRUD)</span>`,
     liveLink: 'https://meetpup-elya.onrender.com/',
     repoLink: 'https://github.com/elya-le/authme-elya',
-    previewImg1: '/assets/meetpup4.png',
+    previewImg1: '/assets/meetpup1.png',
     previewImg2: '/assets/meetpup2.png',
     previewImg3: '/assets/meetpup3.png',
+    previewImg3: '/assets/meetpup4.png',
+    previewImg3: '/assets/meetpup5.png',
     tags: [
       { id: 1, name: 'Node.js', color: '#393D00' }, // Node.js green
       { id: 2, name: 'Express', color: '#393D00' }, // Express gray
@@ -134,7 +138,6 @@ Result: <span class="font-thin"> Delivered a to-do list app that allows users to
     ],
   },
 ];
-
 
 // export const workExperiences = [
 //   {
