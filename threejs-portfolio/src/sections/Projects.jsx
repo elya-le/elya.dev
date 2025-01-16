@@ -39,15 +39,6 @@ const Projects = () => {
     cancelAnimationFrame(scrollRef.current);
     clearTimeout(interactionTimeoutRef.current);
     interactionTimeoutRef.current = setTimeout(() => {
-      const scroll = () => {
-        if (carouselRef.current) {
-          carouselRef.current.scrollLeft += 1; // Adjust the scroll speed as needed
-          if (carouselRef.current.scrollLeft >= carouselRef.current.scrollWidth - carouselRef.current.clientWidth) {
-            carouselRef.current.scrollLeft = 0; // Reset scroll position to create a loop
-          }
-        }
-        scrollRef.current = requestAnimationFrame(scroll);
-      };
       scrollRef.current = requestAnimationFrame(scroll);
     }, 3000); // Resume auto-scroll after 3 seconds of inactivity
   };
